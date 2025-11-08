@@ -107,6 +107,41 @@ html {
     margin-right: -1rem;
 }
 
+/* Container div */
+.container {
+    width: 90%;
+    /* container width */
+    max-width: 1000px;
+    /* maximum width */
+    margin: 0 auto;
+    /* center it horizontally */
+    padding: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+}
+
+.grid-item {
+    display: block;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.grid-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.grid-item:hover img {
+    transform: scale(1.05);
+}
+
 
 /* ABOUT */
 
