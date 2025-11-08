@@ -65,3 +65,37 @@ html {
     color: #333;
     font-weight: bold;
 }
+
+.shape__header {
+    background-color: var(--color-black);
+    border-radius: 25rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    margin-right: 2rem;
+    margin-left: -5rem;
+}
+
+.exploration {
+    background-color: var(--color-black);
+}
+
+.exploration__text {
+    color: var(--main-color);
+    font-size: 0.8rem;
+}
+
+/* ABOUT */
+
+.intro {
+    background-color: var(--color-black);
+    border-radius: 25rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-right: 2rem;
+    margin-left: -5rem;
+}
+
+.intro__text {
+    color: var(--main-color);
+    font-size: 0.8rem;
+}
