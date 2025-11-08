@@ -3,7 +3,9 @@ import Base from "../layouts/Base.astro";
 import { getCollection } from "astro:content";
 const work = await getCollection("work");
 
-import Photography from "..components/Photography.astro";
+import Photography from "../components/Photographs.astro";
+import Quotes from "../components/Quotes.astro";
+import Works from "../components/Works.astro";
 ---
 
 <Base title="samples Page">
@@ -16,9 +18,14 @@ import Photography from "..components/Photography.astro";
             my vision and the ideas that move me. I hope these glimpses into my
             world resonate with you.
         </p>
-
-        <h2>Free work</h2>
-        <h2>Quotes</h2>
-        <h2>Photography</h2>
+    </section>
+    <section class="work-samples">
+        <Works />
+    </section>
+    <section class="quotes-samples">
+        <Quotes />
+    </section>
+    <section class="photography-samples">
+        <Photography />
     </section>
 </Base>
