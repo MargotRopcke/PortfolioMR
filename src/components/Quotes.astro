@@ -1,6 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 const quotes = await getCollection("quotes");
+
+import QuotesCard from "./QuotesCard.astro";
 ---
 
 <section class="container" id="quotes">
@@ -15,7 +17,7 @@ const quotes = await getCollection("quotes");
         {
             quotes.map((quote) => (
                 <li>
-                    <n {quote} />
+                    <QuotesCard {quote} />
                 </li>
             ))
         }

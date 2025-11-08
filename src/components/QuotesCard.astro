@@ -1,0 +1,9 @@
+---
+const { quote } = Astro.props;
+---
+
+<article>
+    <a href={`/team/${quote.id}`}></a>
+    <p>{quote.data.title}</p>
+    <p>{quote.data.author}</p>
+</article>
