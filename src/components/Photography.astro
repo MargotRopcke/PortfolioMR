@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+const Photography = await getCollection("photography");
+
+---
+
+<section class="container" id="photography">
+    <header>
+        <h2><span>Our foundations</span></h2>
+        <p>
+            These foundations create an environment that encourages innovation,
+            creativity, and personal growth.
+        </p>
+    </header>
+    <ul>
+        {
+            Photography.map((Photography) => (
+                <li>
+                    <FoundationsCard {Photography} />
+                </li>
+            ))
+        }
+    </ul>
+</section>

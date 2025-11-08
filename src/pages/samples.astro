@@ -1,5 +1,9 @@
 ---
 import Base from "../layouts/Base.astro";
+import { getCollection } from "astro:content";
+const work = await getCollection("work");
+
+import FoundationsCard from "./FoundationsCard.astro";
 ---
 
 <Base title="samples Page">
