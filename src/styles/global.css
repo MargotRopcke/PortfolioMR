@@ -23,6 +23,11 @@ html {
 :root {
     --main-color: #F2F2F2;
     --color-black: #0C0C0C;
+    --color-pink: #FFBCEB;
+    --color-green: #88EC96;
+    --color-orange: #FFB993;
+    --color-red: #FF6272;
+
 
     --font-primary: "Roboto", sans-serif;
     --font-secondary: "Inter", sans-serif;
@@ -47,6 +52,7 @@ html {
 
 /* INDEX */
 
+/* nav */
 .nav__list {
     display: flex;
     justify-content: center;
@@ -75,17 +81,36 @@ html {
     margin-left: -5rem;
 }
 
-.exploration {
-    background-color: var(--color-black);
+/* specialties */
+.s1 {
+    color: var(--color-pink);
 }
 
-.exploration__text {
+.s2 {
+    color: var(--color-orange);
+}
+
+.s3 {
+    color: var(--color-green);
+}
+
+/* explore */
+.title__exploration {
     color: var(--main-color);
     font-size: 0.8rem;
+    padding: 1rem;
 }
+
+.exploration {
+    background-color: var(--color-black);
+    margin-left: -1rem;
+    margin-right: -1rem;
+}
+
 
 /* ABOUT */
 
+/* intro */
 .intro {
     background-color: var(--color-black);
     border-radius: 25rem;
