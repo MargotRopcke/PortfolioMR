@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-const Photography = await getCollection("photography");
+const photographs = await getCollection("photography");
 
 ---
 
@@ -14,9 +14,9 @@ const Photography = await getCollection("photography");
     </header>
     <ul>
         {
-            Photography.map((Photography) => (
+            photographs.map((photograph) => (
                 <li>
-                    <FoundationsCard {Photography} />
+                    <FoundationsCard {photograph} />
                 </li>
             ))
         }
