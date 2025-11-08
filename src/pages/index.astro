@@ -28,3 +28,25 @@ import Header from "../components/Header.astro";
 		</header>
 	</body>
 </html>
+
+<style>
+	.nav {
+		padding: var(--sp-l) 0;
+	}
+
+	.nav__list {
+		display: flex;
+		gap: var(--sp-xl);
+		justify-content: center;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.nav__link {
+		text-decoration: none;
+		color: var(--color-text);
+		font-weight: 600;
+		font-size: var(--font-size-md);
+	}
+</style>
