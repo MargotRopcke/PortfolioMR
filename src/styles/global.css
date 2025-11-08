@@ -1,9 +1,28 @@
 /* GENERAL */
 
+html {
+    position: relative;
+    background-color: var(--main-color);
+    background-image:
+        linear-gradient(to right,
+            black 0%, black 0.25%,
+            transparent 0.25%, transparent 65%,
+            black 65%, black 65.25%,
+            transparent 65.25%, transparent 100%),
+        linear-gradient(to bottom,
+            black 0%, black 0.25%,
+            transparent 0.25%, transparent 30%,
+            black 30%, black 30.25%,
+            transparent 30.25%, transparent 70%,
+            black 70%, black 70.25%,
+            transparent 70.25%, transparent 100%);
+    background-size: 100% 100%;
+    z-index: -1;
+}
+
 :root {
-    --main-color: #002587;
-    --color-green: #ADFF00;
-    --color-white: #F5F5F5;
+    --main-color: #F2F2F2;
+    --color-black: #0C0C0C;
 
     --font-primary: "Roboto", sans-serif;
     --font-secondary: "Inter", sans-serif;
@@ -24,4 +43,25 @@
     --font-weight-sb: 600;
     --font-weight-b: 700;
     --font-weight-eb: 800;
+}
+
+/* INDEX */
+
+.nav__list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav__item {}
+
+.nav__link--home,
+.nav__link--about,
+.nav__link--samples {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
 }
