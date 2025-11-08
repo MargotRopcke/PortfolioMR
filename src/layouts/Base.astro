@@ -1,7 +1,6 @@
 ---
 import "../styles/markdown.css";
 import "../styles/global.css";
-import "../styles/global.css";
 
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
@@ -25,6 +24,7 @@ const { pageTitle } = Astro.props;
         <title>Portfolio{pageTitle}</title>
     </head>
     <body>
+        <div class="grid-layout"></div>
         <Nav />
         <main>
             <slot />
@@ -32,3 +32,14 @@ const { pageTitle } = Astro.props;
         <Footer />
     </body>
 </html>
+
+<style>
+    body {
+    background-image:
+        repeating-linear-gradient(to right, black 2px, transparent 2px 100px),
+        repeating-linear-gradient(to bottom, black 2px, transparent 2px 100px);
+    background-size: 100px 100px;
+    background-repeat: repeat;
+    background-color: transparent;
+}
+</style>
