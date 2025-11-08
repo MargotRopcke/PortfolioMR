@@ -1,14 +1,23 @@
 ---
 import { getCollection } from "astro:content";
 const works = await getCollection("works");
+
+import WorkCard from "./WorkCard.astro";
 ---
 
-<section class="container" id="works">
-    <header>
-        <h2><span>Free work</span></h2>
-        <p>
-            These foundations create an environment that encourages innovation,
-            creativity, and personal growth.
-        </p>
-    </header>
+<section class="exploration">
+    <div class="works-container">
+        <div class="works">
+            <div class="grid">
+                {
+                    works.map((work) => (
+                        <li>
+                            <WorkCard {work} />
+                        </li>
+                    ))
+                }
+            </div>
+            <h2 class="title__exploration">Discover my work</h2>
+        </div>
+    </div>
 </section>

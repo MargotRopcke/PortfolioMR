@@ -1,0 +1,10 @@
+---
+const { work } = Astro.props;
+---
+
+<details>
+    <summary>{work.data.title}</summary>
+    <p>{work.data.description}</p>
+    <a href={`/foundations/${work.id}`}>Read More
+    </a>
+</details>
