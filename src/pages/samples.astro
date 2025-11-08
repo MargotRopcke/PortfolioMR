@@ -3,9 +3,9 @@ import Base from "../layouts/Base.astro";
 import { getCollection } from "astro:content";
 const work = await getCollection("work");
 
+import Extras from "../components/Extras.astro";
 import Photography from "../components/Photographs.astro";
 import Quotes from "../components/Quotes.astro";
-import Works from "../components/Extras.astro";
 ---
 
 <Base title="samples Page">
