@@ -20,7 +20,6 @@ import PhotoCard from "./PhotoCard.astro";
                 photoCollections.map((photo) => (
                     <li class="photo__item">
                         <a href={`/photo/${photo.id}`} class="photo__link" />
-                        {photo.data.title}
                         <PhotoCard {photo} />
                     </li>
                 ))

@@ -5,6 +5,7 @@ import { getCollection } from "astro:content";
 import Extras from "../components/Extras.astro";
 import Photo from "../components/Photo.astro";
 import Quotes from "../components/Quotes.astro";
+import "../styles/global.css";
 ---
 
 <Base title="samples Page">
@@ -24,8 +25,8 @@ import Quotes from "../components/Quotes.astro";
     <section class="quotes-samples">
         <Quotes />
     </section>
-    
-    <section id="picsamples" class="photography-samples">
+
+    <section id="picsamples" class="photographs">
         <Photo />
     </section>
 </Base>
