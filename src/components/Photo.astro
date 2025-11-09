@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+const photoCollections = await getCollection("photo");
+
+import PhotoCard from "./PhotoCard.astro";
+---
+
+<section class="container" id="photography">
+    <header>
+        <h2><span>Photography</span></h2>
+        <p>
+            My photography captures the beauty and complexity of the world
+            around us, offering unique perspectives and moments frozen in time.
+        </p>
+    </header>
+
+    <div class="photos">
+        <ul class="photos__list">
+            {
+                photoCollections.map((photo) => (
+                    <li class="photo__item">
+                        <a href={`/photo/${photo.id}`} class="photo__link" />
+                        <PhotoCard {photo} />
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</section>

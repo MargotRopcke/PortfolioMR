@@ -1,0 +1,27 @@
+---
+import Base from "../../layouts/Base.astro";
+
+import { Image } from "astro:assets";
+import { render } from "astro:content";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const workCollections = await getCollection("work");
+    return workCollections.map((work) => ({
+        params: { detail: work.id },
+        props: { work },
+    }));
+}
+
+const { work } = Astro.props;
+const { Content } = await render(work);
+---
+
+<Base>
+    <section class="work">
+        <h1 class="work__title">{work.data.name}</h1>
+        <div class="work__content">
+            <Content />
+        </div>
+    </section>
+</Base>
