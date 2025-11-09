@@ -6,18 +6,16 @@ import WorkCard from "./WorkCard.astro";
 ---
 
 <section class="exploration">
-    <div class="works__container">
-        <div class="works__card">
-            <div class="works">
-                {
-                    workCollections.map((work) => (
-                        <li>
-                            <WorkCard {work} />
-                        </li>
-                    ))
-                }
-            </div>
-            <h2 class="title__exploration">Discover my work</h2>
+    <div class="works__card">
+        <div class="works">
+            {
+                workCollections.map((work) => (
+                    <li class="works__item">
+                        <WorkCard {work} />
+                    </li>
+                ))
+            }
         </div>
+        <h2 class="title__exploration">Discover my work</h2>
     </div>
 </section>

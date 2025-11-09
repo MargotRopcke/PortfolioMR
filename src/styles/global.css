@@ -102,41 +102,38 @@ html {
     padding: 2rem;
 }
 
-.works-container {
-    display: flex;
-    align-items: flex-start;
+.works__card {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
     gap: 2rem;
 }
 
-.grid {
+.works {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 1.5rem;
+    list-style: none;
+    padding-top: 1rem;
+    padding-bottom: 10rem;
+    grid-column: 1;
 }
 
-.grid-item {
-    display: block;
-    overflow: hidden;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.grid-item img {
-    width: 100%;
-    display: block;
-    transition: transform 0.3s;
-}
-
-.grid-item:hover img {
-    transform: scale(1.05);
+.works__item {
+    background-color: var(--main-color);
+    border-radius: 25rem;
 }
 
 .title__exploration {
-    margin-right: -1.5rem;
+    font-size: 2rem;
+    display: inline-block;
+    white-space: nowrap;
     color: var(--main-color);
-    font-size: 4rem;
-    writing-mode: vertical-rl;
+    grid-column: 2;
+    transform: rotate(90deg);
+    transform-origin: left top;
+    vertical-align: top;
+    margin-left: 3rem;
 }
 
 /* connect */
