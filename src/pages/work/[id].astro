@@ -1,7 +1,9 @@
 ---
+
 import { render, getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import Markdown from "../../layouts/Markdown.astro";
+
 
 export async function getStaticPaths() {
     const workCollections = await getCollection("work");
