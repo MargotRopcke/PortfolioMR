@@ -1,6 +1,7 @@
 /* GENERAL */
 
 html {
+    scroll-behavior: smooth;
     position: relative;
     background-color: var(--main-color);
     background-image:
@@ -62,8 +63,6 @@ html {
     margin: 0;
 }
 
-.nav__item {}
-
 .nav__link--home,
 .nav__link--about,
 .nav__link--samples {
@@ -79,6 +78,18 @@ html {
     padding-bottom: 4rem;
     margin-right: 2rem;
     margin-left: -5rem;
+}
+
+.hero__button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.hero__button {
+    text-decoration: none;
+    background-color: var(--main-color);
+    color: var(--color-black);
+    padding: 0.1rem 0.4rem;
 }
 
 /* specialties */
