@@ -3,4 +3,7 @@ name: Creative code
 pic: img/motion.png
 ---
 
-Opdracht motion
+Opdracht cc
+
+
+This assignment contained: creative code

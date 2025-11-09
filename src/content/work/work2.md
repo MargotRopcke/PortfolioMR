@@ -3,4 +3,7 @@ name: Visual Design
 pic: img/motion.png
 ---
 
-Opdracht motion
+Opdracht visual
+
+
+This assignment contained: visual design

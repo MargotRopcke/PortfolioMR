@@ -8,13 +8,17 @@ import WorkCard from "./WorkCard.astro";
 <section class="exploration">
     <div class="works__card">
         <div class="works">
+            <ul class = 'works__list'>
             {
                 workCollections.map((work) => (
                     <li class="works__item">
+                        <a href={`/work/${work.id}`} class="work__link"></a>
+                        {work.data.title}
                         <WorkCard {work} />
                     </li>
                 ))
             }
+            </ul>
         </div>
         <h2 class="title__exploration">Discover my work</h2>
     </div>

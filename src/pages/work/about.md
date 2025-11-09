@@ -1,3 +1,0 @@
----
-layout: ../layouts/Markdown.astro
----
