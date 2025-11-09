@@ -1,0 +1,7 @@
+---
+const { photo } = Astro.props;
+---
+
+<article>
+    <a href={`/photo/${photo.id}`}>{photo.data.name}</a>
+</article>

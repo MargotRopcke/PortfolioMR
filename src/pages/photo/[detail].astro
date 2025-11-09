@@ -1,0 +1,26 @@
+---
+import Base from "../../layouts/Base.astro";
+
+import { render } from "astro:content";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const photoCollections = await getCollection("photo");
+    return photoCollections.map((photo) => ({
+        params: { detail: photo.id },
+        props: { photo },
+    }));
+}
+
+const { photo } = Astro.props;
+const { Content } = await render(photo);
+---
+
+<Base>
+    <section class="photo">
+        <h1 class="photo__title">{photo.data.name}</h1>
+        <div class="photo__content">
+            <Content />
+        </div>
+    </section>
+</Base>

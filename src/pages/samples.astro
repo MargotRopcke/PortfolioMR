@@ -3,7 +3,7 @@ import Base from "../layouts/Base.astro";
 import { getCollection } from "astro:content";
 
 import Extras from "../components/Extras.astro";
-import Photography from "../components/Photographs.astro";
+import Photo from "../components/Photo.astro";
 import Quotes from "../components/Quotes.astro";
 ---
 
@@ -24,7 +24,8 @@ import Quotes from "../components/Quotes.astro";
     <section class="quotes-samples">
         <Quotes />
     </section>
-    <section class="photography-samples">
-        <Photography />
+    
+    <section id="picsamples" class="photography-samples">
+        <Photo />
     </section>
 </Base>
