@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+const quotes = await getCollection("quotes");
+
+import QuotesCard from "./QuotesCard.astro";
+---
+
+<section class="container" id="quotes">
+    <header>
+        <h2><span>Quotes</span></h2>
+        <p>
+            These foundations create an environment that encourages innovation,
+            creativity, and personal growth.
+        </p>
+    </header>
+    <ul>
+        {
+            quotes.map((quote) => (
+                <li>
+                    <QuotesCard {quote} />
+                </li>
+            ))
+        }
+    </ul>
+</section>

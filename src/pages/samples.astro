@@ -1,5 +1,10 @@
 ---
 import Base from "../layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+import Extras from "../components/Extras.astro";
+import Photography from "../components/Photographs.astro";
+import Quotes from "../components/Quotes.astro";
 ---
 
 <Base title="samples Page">
@@ -12,9 +17,14 @@ import Base from "../layouts/Base.astro";
             my vision and the ideas that move me. I hope these glimpses into my
             world resonate with you.
         </p>
-
-        <h2>Free work</h2>
-        <h2>Quotes</h2>
-        <h2>photography</h2>
+    </section>
+    <section class="work-samples">
+        <Extras />
+    </section>
+    <section class="quotes-samples">
+        <Quotes />
+    </section>
+    <section class="photography-samples">
+        <Photography />
     </section>
 </Base>

@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+const extras = await getCollection("extras");
+
+import ExtrasCard from "./ExtrasCard.astro";
+---
+
+<section class="container" id="extras">
+    <header>
+        <h2><span>Free work</span></h2>
+        <p>
+            This work was entirely done in my free time, which encourages my own innovation,
+            creativity, and personal growth.
+        </p>
+    </header>
+    <ul>
+        {
+            extras.map((extra) => (
+                <li>
+                    <ExtrasCard {extra} />
+                </li>
+            ))
+        }
+    </ul>
+</section>

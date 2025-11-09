@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+const workCollections = await getCollection("work");
+
+import WorkCard from "./WorkCard.astro";
+---
+
+<section class="exploration">
+    <div class="works__card">
+        <div class="works">
+            {
+                workCollections.map((work) => (
+                    <li class="works__item">
+                        <WorkCard {work} />
+                    </li>
+                ))
+            }
+        </div>
+        <h2 class="title__exploration">Discover my work</h2>
+    </div>
+</section>

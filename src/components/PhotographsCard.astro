@@ -1,0 +1,9 @@
+---
+const { photograph } = Astro.props;
+---
+
+<details>
+    <summary>{photograph.data.title}</summary>
+    <p>{photograph.data.date}</p>
+    <p>{photograph.data.image}</p>
+</details>
