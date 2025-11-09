@@ -32,22 +32,6 @@ html {
     --font-primary: "Roboto", sans-serif;
     --font-secondary: "Inter", sans-serif;
     --font-tertiary: "Anton", sans-serif;
-
-    --font-size-s: 1.5rem;
-    --font-size-ss: 2.5rem;
-    --font-size-m: 3.25rem;
-    --font-size-l: 4.5rem;
-    --font-size-xl: 10.625rem;
-    --font-size-xxl: 12.5rem;
-
-    --font-weight-t: 100;
-    --font-weight-el: 200;
-    --font-weight-l: 300;
-    --font-weight-n: 400;
-    --font-weight-m: 500;
-    --font-weight-sb: 600;
-    --font-weight-b: 700;
-    --font-weight-eb: 800;
 }
 
 /* INDEX */
@@ -107,7 +91,7 @@ html {
     gap: 2rem;
 }
 
-.works {
+.works__list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
@@ -119,6 +103,7 @@ html {
 
 .works__item {
     background-color: var(--main-color);
+    margin-bottom: 2rem;
     border-radius: 25rem;
 }
 
@@ -131,7 +116,7 @@ html {
     transform: rotate(90deg);
     transform-origin: left top;
     vertical-align: top;
-    margin-left: 3rem;
+    margin-left: 2rem;
 }
 
 /* connect */
