@@ -1,9 +1,12 @@
 ---
+import { Image } from "astro:assets";
 const { work } = Astro.props;
 ---
 
-<article></article>
-<a href={`/work/${work.id}`} class="work__link"></a>
-<p class="img__work">{work.data.image}</p>
-<p class="img__work">{work.data.date}</p>
-<a href={`/work/${work.id}`}>{work.data.name}</a>
+<article>
+    <a href={`/work/${work.id}`}>
+        <img src={`work/img/${work.data.image}`} />
+    </a>
+    <p class="date__work">{work.data.date}</p>
+    <a href={`/work/${work.id}`}>{work.data.name}</a>
+</article>
