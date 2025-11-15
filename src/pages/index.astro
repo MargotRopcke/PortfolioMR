@@ -9,6 +9,13 @@ import "../styles/global.css";
 		<h1>Hi, I'm Margot</h1>
 		<div class="shape__header">
 			<img src="" alt="Picture of Margot" width="200" />
+			<img src="/profile.jpg" alt="Picture of Margot" width="200" />
+			<button
+				class="scroll-btn"
+				onclick="document.getElementById('samples').scrollIntoView({ behavior: 'smooth' })"
+			>
+				Take a look at my work
+			</button>
 			<div class="hero__button-container">
 				<a href="#creations" class="hero__button">Explore more</a>
 			</div>
@@ -22,6 +29,7 @@ import "../styles/global.css";
 		<h2 class="s3">development</h2>
 	</section>
 
+	<section id="samples" class="creations">
 	<section class="creations" id="creations">
 		<Work />
 	</section>
