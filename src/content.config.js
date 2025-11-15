@@ -6,16 +6,16 @@ const workCollections = defineCollection({
     schema: ({ image }) =>
         z.object({
             name: z.string(),
-            image: image(),
+ 
         }),
 });
 
 const photoCollections = defineCollection({
     loader: glob({ pattern: "**/*.md", base: "./src/content/photo" }),
-    schema: () => z.object({
+    schema: ({ image }) => z.object({
         title: z.string(),
-        date: z.string(),
-        image: image(),
+        date: z.date(),
+    
     }),
 });
 

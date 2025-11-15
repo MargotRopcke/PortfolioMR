@@ -1,6 +1,6 @@
 ---
 name: Visual Design
-pic: img/motion.png
+image: img/motion.png
 ---
 
 Opdracht visual

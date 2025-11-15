@@ -1,6 +1,6 @@
 ---
 name: Experience
-pic: img/motion.png
+image: img/motion.png
 ---
 
 Opdracht experience

@@ -1,6 +1,6 @@
 ---
 name: Creative code
-pic: img/motion.png
+image: img/motion.png
 ---
 
 Opdracht cc

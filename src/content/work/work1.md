@@ -1,6 +1,6 @@
 ---
 name: Motion
-pic: img/motion.png
+image: img/motion.png
 ---
 
 Opdracht motion

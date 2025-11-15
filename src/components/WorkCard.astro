@@ -2,7 +2,8 @@
 const { work } = Astro.props;
 ---
 
-<article>
-    </div>
-    <a href={`/work/${work.id}`}>{work.data.name}</a>
-</article>
+<article></article>
+<a href={`/work/${work.id}`} class="work__link"></a>
+<p class="img__work">{work.data.image}</p>
+<p class="img__work">{work.data.date}</p>
+<a href={`/work/${work.id}`}>{work.data.name}</a>
