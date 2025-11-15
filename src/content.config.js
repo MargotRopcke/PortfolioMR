@@ -3,22 +3,23 @@ import { defineCollection, z } from "astro:content";
 
 const workCollections = defineCollection({
     loader: glob({ pattern: "**/*.md", base: "./src/content/work" }),
-    schema: z.object({
+    schema: ({ image }) =>
+        z.object({
             name: z.string(),
-            pic: image(),
+            image: image(),
         }),
 });
 
 const photoCollections = defineCollection({
     loader: glob({ pattern: "**/*.md", base: "./src/content/photo" }),
-    schema: z.object({
-            title: z.string(),
-            date: z.string(),
-            pic: image(),
-        }),
+    schema: () => z.object({
+        title: z.string(),
+        date: z.string(),
+        image: image(),
+    }),
 });
 
 export const collections = {
-    workCollections,
-    photoCollections,
+    work: workCollections,
+    photo: photoCollections,
 };

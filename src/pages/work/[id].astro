@@ -8,7 +8,7 @@ import { getCollection } from "astro:content";
 export async function getStaticPaths() {
     const workCollections = await getCollection("work");
     return workCollections.map((work) => ({
-        params: { detail: work.id },
+        params: { id: work.id },
         props: { work },
     }));
 }
