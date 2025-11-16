@@ -55,13 +55,25 @@ html {
     font-weight: bold;
 }
 
+.hero__button {
+    border-radius: 20px;
+}
+
 .shape__header {
     background-color: var(--color-black);
     border-radius: 25rem;
     padding-top: 4rem;
     padding-bottom: 4rem;
     margin-right: 2rem;
-    margin-left: -5rem;
+    margin-left: -10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6rem;
+}
+
+.profilepic {
+    margin-bottom: -2rem;
 }
 
 .hero__button-container {
