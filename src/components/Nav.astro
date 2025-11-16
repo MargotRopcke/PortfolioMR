@@ -12,4 +12,23 @@
             </li>
         </ul>
     </nav>
+    <button class="theme-toggle" aria-label="Toggle Dark Mode"></button>
 </div>
+
+<script>
+    const toggleBtn = document.querySelector(".theme-toggle");
+    const root = document.documentElement;
+
+    function updateIcon() {
+        toggleBtn.textContent = root.classList.contains("dark")
+            ? "light"
+            : "dark";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+        root.classList.toggle("dark");
+        updateIcon();
+    });
+
+    updateIcon();
+</script>
