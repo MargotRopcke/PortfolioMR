@@ -321,7 +321,7 @@ html.dark {
     background-color: var(--color-black);
     border-radius: 25rem;
     padding: var(--sp-l);
-    margin: var(--sp-2xl) 0;
+    margin: var(--sp-2xl) 1rem;
 }
 
 .intro__text {
