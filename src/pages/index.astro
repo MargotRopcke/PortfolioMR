@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Work from "../components/Work.astro";
 import "../styles/global.css";
+import me from "../assets/profilepic.png";
 ---
 
 <Base title="Home Page">
@@ -12,7 +13,7 @@ import "../styles/global.css";
 				<a href="#creations" class="hero__button">Explore more</a>
 			</div>
 			<img
-				src="/src/assets/profilepic.png"
+				src={me.src}
 				alt="Picture of Margot"
 				width="200"
 				class="profilepic"

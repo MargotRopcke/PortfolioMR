@@ -6,7 +6,7 @@ const workCollections = defineCollection({
     schema: ({ image }) =>
         z.object({
             name: z.string(),
-
+            image: image(),
         }),
 });
 
