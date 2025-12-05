@@ -136,6 +136,18 @@ html.dark {
 }
 
 /* HERO */
+.arrow {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    opacity: 0.6;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border-top: 2px solid var(--color-blue);
+    border-right: 2px solid var(--color-blue);
+    border-radius: 2px;
+}
+
 .header {
     font-family: var(--font-primary);
 }
@@ -212,6 +224,7 @@ html.dark {
     align-items: center;
     text-align: center;
     margin: var(--sp-2xl, 50px) 0;
+    padding-top: 3rem;
 }
 
 .s1,
@@ -410,19 +423,6 @@ html.dark {
 }
 
 /* ABOUT */
-.intro {
-    background-color: var(--color-black);
-    border-radius: 25rem;
-    padding: var(--sp-l);
-    margin: var(--sp-2xl) 1rem;
-}
-
-.intro__text {
-    padding: var(--sp-m);
-    color: var(--main-color);
-    font-size: var(--fs--3);
-}
-
 .skills__one,
 .skills__two,
 .skills__three {
