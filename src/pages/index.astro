@@ -60,18 +60,18 @@ import me from "../assets/profilepic.png";
     arrow.style.width = '20px';
     arrow.style.height = '20px';
     arrow.style.position = 'absolute';
-
-    const startX = Math.random() * window.innerWidth;
-    const startY = Math.random() * window.innerHeight;
-
-    arrow.style.left = `${startX}px`;
-    arrow.style.top = `${startY}px`;
     arrow.style.pointerEvents = 'none';
     arrow.style.opacity = '0.6';
     arrow.style.transform = 'translate(-50%, -50%) rotate(45deg)';
     arrow.style.borderTop = '5px solid #95CEFF';
     arrow.style.borderRight = '5px solid #95CEFF';
     arrow.style.zIndex = '-1';
+
+    const startX = Math.random() * window.innerWidth;
+    const startY = Math.random() * window.innerHeight;
+
+    arrow.style.left = `${startX}px`;
+    arrow.style.top = `${startY}px`;
 
     document.body.appendChild(arrow);
 
@@ -82,32 +82,23 @@ import me from "../assets/profilepic.png";
       startX,
       startY,
       speed: 0.1 + Math.random() * 0.1,
-      behind: true
     });
   }
 
   function isInContainer(arrow) {
     const rect = container.getBoundingClientRect();
-
     const left = rect.left + window.scrollX;
     const right = rect.right + window.scrollX;
     const top = rect.top + window.scrollY;
     const bottom = rect.bottom + window.scrollY;
 
-    return (
-      arrow.x >= left &&
-      arrow.x <= right &&
-      arrow.y >= top &&
-      arrow.y <= bottom
-    );
+    return arrow.x >= left && arrow.x <= right && arrow.y >= top && arrow.y <= bottom;
   }
 
   function animate() {
     arrows.forEach((arrow) => {
-
       if (mouse.active) {
         arrow.el.style.zIndex = '10';
-        arrow.behind = false;
 
         const dx = mouse.x - arrow.x;
         const dy = mouse.y - arrow.y;
@@ -118,9 +109,16 @@ import me from "../assets/profilepic.png";
         const angle = Math.atan2(dy, dx) * (180 / Math.PI);
         arrow.el.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
 
+        // Only turn red if inside the container while hovering
+        if (isInContainer(arrow)) {
+          arrow.el.style.borderTop = '5px solid #FF6272';
+          arrow.el.style.borderRight = '5px solid #FF6272';
+        } else {
+          arrow.el.style.borderTop = '5px solid #95CEFF';
+          arrow.el.style.borderRight = '5px solid #95CEFF';
+        }
       } else {
         arrow.el.style.zIndex = '-1';
-        arrow.behind = true;
 
         const dx = arrow.startX - arrow.x;
         const dy = arrow.startY - arrow.y;
@@ -129,24 +127,20 @@ import me from "../assets/profilepic.png";
         arrow.y += dy * arrow.speed;
 
         arrow.el.style.transform = 'translate(-50%, -50%) rotate(45deg)';
+        arrow.el.style.borderTop = '5px solid #95CEFF';
+        arrow.el.style.borderRight = '5px solid #95CEFF';
       }
 
       arrow.el.style.left = `${arrow.x}px`;
       arrow.el.style.top = `${arrow.y}px`;
-
-      if (!arrow.behind && isInContainer(arrow)) {
-        arrow.el.style.borderTop = '5px solid #FF6272';
-        arrow.el.style.borderRight = '5px solid #FF6272';
-      } else {
-        arrow.el.style.borderTop = '5px solid #95CEFF';
-        arrow.el.style.borderRight = '5px solid #95CEFF';
-      }
     });
 
     requestAnimationFrame(animate);
   }
+
   animate();
 </script>
+
 
 
 
