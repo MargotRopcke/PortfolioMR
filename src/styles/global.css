@@ -207,11 +207,11 @@ html.dark {
 .specialties {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--sp-l);
+    gap: var(--sp-l, 20px);
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: var(--sp-2xl) 0;
+    margin: var(--sp-2xl, 50px) 0;
 }
 
 .s1,
@@ -219,30 +219,123 @@ html.dark {
 .s3 {
     font-size: 2rem;
     color: var(--main-color);
-    padding: calc(var(--sp-xs) * 2) calc(var(--sp-m) * 2);
-    border-radius: var(--br-l);
+    padding: calc(var(--sp-xs, 5px) * 2) calc(var(--sp-m, 10px) * 2);
+    border-radius: var(--br-l, 10px);
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.s1:hover {
+    animation-play-state: paused;
+    color: var(--color-pink);
+    background-color: var(--main-color);
+}
+
+.s2:hover {
+    animation-play-state: paused;
+    color: var(--color-orange);
+    background-color: var(--main-color);
+}
+
+
+.s3:hover {
+    animation-play-state: paused;
+    color: var(--color-green);
+    background-color: var(--main-color);
 }
 
 .s1 {
-    transform: rotate(-6deg);
-    font-family: var(--font-secondary);
-    background-color: var(--color-pink);
-    border: 1px solid var(--color-pink);
+    --rotate: -6deg;
+    transform: rotate(var(--rotate));
+    font-family: var(--font-secondary, Arial);
+    background-color: var(--color-pink, #ff69b4);
+    border: 1px solid var(--color-pink, #ff69b4);
+    animation: float1 3s ease-in-out infinite;
 }
 
 .s2 {
-    transform: rotate(5deg);
-    font-family: var(--font-tertiary);
-    background-color: var(--color-orange);
-    border: 1px solid var(--color-orange);
+    --rotate: 5deg;
+    transform: rotate(var(--rotate));
+    font-family: var(--font-tertiary, Arial);
+    background-color: var(--color-orange, #ffa500);
+    border: 1px solid var(--color-orange, #ffa500);
+    animation: float2 3.5s ease-in-out infinite;
 }
 
 .s3 {
-    transform: rotate(-4deg);
-    font-family: var(--font-quaternary);
+    --rotate: -4deg;
+    transform: rotate(var(--rotate));
+    font-family: var(--font-quaternary, Arial);
     letter-spacing: 1.5px;
-    background-color: var(--color-green);
-    border: 1px solid var(--color-green);
+    background-color: var(--color-green, #32cd32);
+    border: 1px solid var(--color-green, #32cd32);
+    animation: float3 4s ease-in-out infinite;
+}
+
+@keyframes float1 {
+    0% {
+        transform: translate(0, 0) rotate(var(--rotate));
+    }
+
+    25% {
+        transform: translate(10px, -10px) rotate(var(--rotate));
+    }
+
+    50% {
+        transform: translate(-8px, -5px) rotate(var(--rotate));
+    }
+
+    75% {
+        transform: translate(5px, 8px) rotate(var(--rotate));
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(var(--rotate));
+    }
+}
+
+@keyframes float2 {
+    0% {
+        transform: translate(0, 0) rotate(var(--rotate));
+    }
+
+    25% {
+        transform: translate(0, -12px) rotate(var(--rotate));
+    }
+
+    50% {
+        transform: translate(0, -8px) rotate(var(--rotate));
+    }
+
+    75% {
+        transform: translate(0, 10px) rotate(var(--rotate));
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(var(--rotate));
+    }
+}
+
+@keyframes float3 {
+    0% {
+        transform: translate(0, 0) rotate(var(--rotate));
+    }
+
+    25% {
+        transform: translate(-10px, 8px) rotate(var(--rotate));
+    }
+
+    50% {
+        transform: translate(12px, 5px) rotate(var(--rotate));
+    }
+
+    75% {
+        transform: translate(-5px, -8px) rotate(var(--rotate));
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(var(--rotate));
+    }
 }
 
 /* EXPLORATION */
