@@ -22,10 +22,13 @@ import me from "../assets/profilepic.png";
 		<div class="shape"></div>
 	</section>
 
-	<section class="specialties">
+	<section class="specialties__list">
+				<h1 class="skills">My skills</h1>
+		<div class="specialties">
 		<h2><a href="/portfolio/about" class="s1">Visual</a></h2>
 		<h2><a href="/portfolio/about" class="s2">UX/UI</a></h2>
 		<h2><a href="/portfolio/about" class="s3">development</a></h2>
+		</div>
 	</section>
 
 	<section id="samples" class="creations">
@@ -45,7 +48,16 @@ import me from "../assets/profilepic.png";
     align-items: center;
     text-align: center;
     margin: var(--sp-2xl, 50px) 0;
-    padding-top: 3rem;
+    padding-top: 1rem;
+	    padding-bottom: 3rem;
+}
+
+.skills {
+	font-family: var(--font-primary);
+	color: var(--color-black);
+    font-size: var( --sp-xl);
+    text-align: center;
+    margin: var(--sp-2xl) 0;
 }
 
 .s1,
