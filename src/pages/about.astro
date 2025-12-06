@@ -51,6 +51,20 @@ const skills = await getEntry("about", "skills");
 <style>
 /* ABOUT */
 
+ .intro {
+        background-color: var(--color-black);
+        border-radius: 25rem;
+        padding: var(--sp-l);
+        margin: var(--sp-2xl) 1rem;
+    }
+
+    .intro__text {
+        padding: var(--sp-m);
+        color: var(--main-color);
+        font-size: var(--fs--3);
+        font-family: var(--font-secondary);
+    }
+
 .skills {
     padding-left: 2rem;
 }
@@ -85,18 +99,4 @@ const skills = await getEntry("about", "skills");
     font-family: var(--font-secondary);
     color: var(--color-black);
 }
-
-    .intro {
-        background-color: var(--color-black);
-        border-radius: 25rem;
-        padding: var(--sp-l);
-        margin: var(--sp-2xl) 1rem;
-    }
-
-    .intro__text {
-        padding: var(--sp-m);
-        color: var(--main-color);
-        font-size: var(--fs--3);
-        font-family: var(--font-secondary);
-    }
 </style>

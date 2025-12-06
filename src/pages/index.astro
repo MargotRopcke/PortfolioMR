@@ -39,6 +39,86 @@ import me from "../assets/profilepic.png";
 </Base>
 
 <style>
+/* HERO */
+.arrow {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    opacity: 0.6;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border-top: 2px solid var(--color-blue);
+    border-right: 2px solid var(--color-blue);
+    border-radius: 2px;
+}
+
+.header {
+    font-family: var(--font-primary);
+}
+
+.hero__button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hero__button-container:hover .hero__button {
+    background-color: var(--color-blue);
+    color: var(--main-color);
+    transform: rotate(-6deg);
+}
+
+.hero__button {
+    border-radius: var(--br-l);
+    text-decoration: none;
+    background-color: var(--main-color);
+    color: var(--color-black);
+    padding: var(--hero-btn-vertical) var(--hero-btn-horizontal);
+    font-size: var(--hero-btn-font);
+}
+
+.home__title {
+    color: var(--color-blue);
+    font-size: clamp(2.5rem, 5vw + 1rem, 8rem);
+    text-align: center;
+    margin: var(--sp-2xl) 0;
+    animation: popFloat 3s ease-out infinite;
+}
+
+@keyframes popFloat {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(10px);
+    }
+
+    20% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+    60% {
+        transform: scale(1.03) translateY(-5px);
+    }
+
+    100% {
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* SHAPE HEADER */
+.shape__header {
+    background-color: var(--color-black);
+    border-radius: 25rem;
+    padding: var(--sp-2xl) var(--sp-l);
+    margin: 1rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--sp-2xl);
+    width: 90%;
+    max-width: 1200px;
+}
+
 /* SPECIALTIES */
 .specialties {
     display: flex;
@@ -187,110 +267,103 @@ import me from "../assets/profilepic.png";
 </style>
 
 <script>
-  const container = document.querySelector('.shape__header');
-  const numArrows = 15;
-  const arrows = [];
+const container = document.querySelector('.shape__header');
+const button = container.querySelector('.hero__button');
+const numArrows = 15;
+const arrows = [];
 
-  const mouse = { x: 0, y: 0, active: false };
+const mouse = { x: 0, y: 0, active: false };
 
-  container.addEventListener('mouseenter', () => {
-    mouse.active = true;
+container.addEventListener('mouseenter', () => {
+  mouse.active = true;
+});
+
+container.addEventListener('mouseleave', () => {
+  mouse.active = false;
+});
+
+container.addEventListener('mousemove', (e) => {
+  mouse.x = e.pageX;
+  mouse.y = e.pageY;
+});
+
+for (let i = 0; i < numArrows; i++) {
+  const arrow = document.createElement('div');
+  arrow.style.width = '20px';
+  arrow.style.height = '20px';
+  arrow.style.position = 'absolute';
+  arrow.style.pointerEvents = 'none';
+  arrow.style.opacity = '0.6';
+  
+  arrow.style.transformOrigin = '0% 50%'; 
+  arrow.style.transform = 'rotate(45deg)';
+  
+  arrow.style.borderTop = '5px solid #95CEFF';
+  arrow.style.borderRight = '5px solid #95CEFF';
+  arrow.style.zIndex = '0';
+
+  const rect = container.getBoundingClientRect();
+  const startX = rect.left + window.scrollX + Math.random() * rect.width;
+  const startY = rect.top + window.scrollY + Math.random() * rect.height;
+
+  arrow.style.left = `${startX}px`;
+  arrow.style.top = `${startY}px`;
+
+  document.body.appendChild(arrow);
+
+  arrows.push({
+    el: arrow,
+    x: startX,
+    y: startY,
+    startX,
+    startY,
+    speed: 0.1 + Math.random() * 0.1,
+  });
+}
+
+function animate() {
+  const btnRect = button.getBoundingClientRect();
+  const buttonCenterX = btnRect.left + window.scrollX + btnRect.width / 2;
+  const buttonCenterY = btnRect.top + window.scrollY + btnRect.height / 2;
+
+  arrows.forEach((arrow) => {
+    if (mouse.active) {
+      const dxPos = mouse.x - arrow.x;
+      const dyPos = mouse.y - arrow.y;
+      arrow.x += dxPos * arrow.speed;
+      arrow.y += dyPos * arrow.speed;
+
+      const dxRot = buttonCenterX - arrow.x;
+      const dyRot = buttonCenterY - arrow.y;
+      const angle = Math.atan2(dyRot, dxRot) * (180 / Math.PI);
+
+      arrow.el.style.transform = `rotate(${angle}deg)`;
+      arrow.el.style.borderTop = '5px solid #F2F2F2';
+      arrow.el.style.borderRight = '5px solid #F2F2F2';
+      arrow.el.style.zIndex = '10';
+    } else {
+  
+      const dx = arrow.startX - arrow.x;
+      const dy = arrow.startY - arrow.y;
+      arrow.x += dx * arrow.speed;
+      arrow.y += dy * arrow.speed;
+
+      arrow.el.style.transform = 'rotate(45deg)';
+      arrow.el.style.borderTop = '5px solid #95CEFF';
+      arrow.el.style.borderRight = '5px solid #95CEFF';
+      arrow.el.style.zIndex = '0';
+    }
+
+    arrow.el.style.left = `${arrow.x}px`;
+    arrow.el.style.top = `${arrow.y}px`;
   });
 
-  container.addEventListener('mouseleave', () => {
-    mouse.active = false;
-  });
+  requestAnimationFrame(animate);
+}
 
-  container.addEventListener('mousemove', (e) => {
-    mouse.x = e.pageX;
-    mouse.y = e.pageY;
-  });
-
-  for (let i = 0; i < numArrows; i++) {
-    const arrow = document.createElement('div');
-    arrow.style.width = '20px';
-    arrow.style.height = '20px';
-    arrow.style.position = 'absolute';
-    arrow.style.pointerEvents = 'none';
-    arrow.style.opacity = '0.6';
-    arrow.style.transform = 'translate(-50%, -50%) rotate(45deg)';
-    arrow.style.borderTop = '5px solid #95CEFF';
-    arrow.style.borderRight = '5px solid #95CEFF';
-    arrow.style.zIndex = '-1';
-
-    const startX = Math.random() * window.innerWidth;
-    const startY = Math.random() * window.innerHeight;
-
-    arrow.style.left = `${startX}px`;
-    arrow.style.top = `${startY}px`;
-
-    document.body.appendChild(arrow);
-
-    arrows.push({
-      el: arrow,
-      x: startX,
-      y: startY,
-      startX,
-      startY,
-      speed: 0.1 + Math.random() * 0.1,
-    });
-  }
-
-  function isInContainer(arrow) {
-    const rect = container.getBoundingClientRect();
-    const left = rect.left + window.scrollX;
-    const right = rect.right + window.scrollX;
-    const top = rect.top + window.scrollY;
-    const bottom = rect.bottom + window.scrollY;
-
-    return arrow.x >= left && arrow.x <= right && arrow.y >= top && arrow.y <= bottom;
-  }
-
-  function animate() {
-    arrows.forEach((arrow) => {
-      if (mouse.active) {
-        arrow.el.style.zIndex = '10';
-
-        const dx = mouse.x - arrow.x;
-        const dy = mouse.y - arrow.y;
-
-        arrow.x += dx * arrow.speed;
-        arrow.y += dy * arrow.speed;
-
-        const angle = Math.atan2(dy, dx) * (180 / Math.PI);
-        arrow.el.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
-
-        // Only turn red if inside the container while hovering
-        if (isInContainer(arrow)) {
-          arrow.el.style.borderTop = '5px solid #FF6272';
-          arrow.el.style.borderRight = '5px solid #FF6272';
-        } else {
-          arrow.el.style.borderTop = '5px solid #95CEFF';
-          arrow.el.style.borderRight = '5px solid #95CEFF';
-        }
-      } else {
-        arrow.el.style.zIndex = '-1';
-
-        const dx = arrow.startX - arrow.x;
-        const dy = arrow.startY - arrow.y;
-
-        arrow.x += dx * arrow.speed;
-        arrow.y += dy * arrow.speed;
-
-        arrow.el.style.transform = 'translate(-50%, -50%) rotate(45deg)';
-        arrow.el.style.borderTop = '5px solid #95CEFF';
-        arrow.el.style.borderRight = '5px solid #95CEFF';
-      }
-
-      arrow.el.style.left = `${arrow.x}px`;
-      arrow.el.style.top = `${arrow.y}px`;
-    });
-
-    requestAnimationFrame(animate);
-  }
-
-  animate();
+animate();
 </script>
+
 
 
 
