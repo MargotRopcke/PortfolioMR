@@ -257,7 +257,6 @@ import me from "../assets/profilepic.png";
     ease: "back.out(1.7)",
   });
 
-  // 🌟 Arrow Interaction
   const container = document.querySelector('.shape__header');
   const button = container.querySelector('.hero__button');
   const numArrows = 15;
@@ -334,8 +333,8 @@ import me from "../assets/profilepic.png";
         arrow.y += dy * arrow.speed;
 
         arrow.el.style.transform = 'rotate(45deg)';
-        arrow.el.style.borderTop = '5px solid #363636';
-        arrow.el.style.borderRight = '5px solid #363636';
+        arrow.el.style.borderTop = '5px solid #d4d4d4';
+        arrow.el.style.borderRight = '5px solid #d4d4d4';
         arrow.el.style.zIndex = '0';
       }
 

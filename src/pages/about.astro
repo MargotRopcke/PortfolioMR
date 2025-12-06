@@ -9,16 +9,15 @@ const skills = await getEntry("about", "skills");
 
 <Base title="Home Page">
     <section class="intro">
+        <h1 class="intro__title">Who am I?</h1>
         <p class="intro__text">
-            <b>Hi, I’m Margot</b> — a designer, programmer, and UI/UX enthusiast
-            who thrives at the intersection of creativity and functionality. <br />
             I’m passionate about turning ideas into intuitive, visually
-            compelling digital experiences that people actually enjoy using. I’m
+            compelling digital experiences that people actually enjoy using.<br> I’m
             a fast learner, a reliable teammate, and a professional who gets
             things done — all while keeping a dash of wit and creativity in my
             work. Whether it’s crafting clean, user-friendly interfaces or
             diving into code to bring designs to life, I tackle challenges with
-            curiosity and precision. When I’m not designing or programming, you
+            curiosity and precision.<br> When I’m not designing or programming, you
             might catch me trying out new trends, experimenting with my own
             creative projects, or finding inspiration in the world around me.
         </p>
@@ -39,7 +38,7 @@ const skills = await getEntry("about", "skills");
             ))}
         </ul>
 
-        <h2 class="skills__three">UX Design Skills</h2>
+        <h2 class="skills__three">UX/UI Skills</h2>
         <ul class="skills__text-three">
             {skills.data.ux.map((item) => (
                 <li>{item}</li>
@@ -54,8 +53,8 @@ const skills = await getEntry("about", "skills");
  .intro {
         background-color: var(--color-black);
         border-radius: 25rem;
-        padding: var(--sp-l);
-        margin: var(--sp-2xl) 1rem;
+        padding: var(--sp-l) var(--sp-l) var(--sp-xl) var(--sp-l);
+        margin: var(--sp-2xl);
     }
 
     .intro__text {
@@ -65,6 +64,14 @@ const skills = await getEntry("about", "skills");
         font-family: var(--font-secondary);
     }
 
+    .intro__title {
+        font-family: var(--font-primary);
+        color: var(--main-color);
+        font-size: clamp(2rem, 5vw + 1rem, 6rem);
+        text-align: center;
+        margin: var(--sp-s) 0;
+    }
+
 .skills {
     padding-left: 2rem;
 }
@@ -72,9 +79,11 @@ const skills = await getEntry("about", "skills");
 .skills__one,
 .skills__two,
 .skills__three {
-    font-size: clamp(1.2rem, 5vw, 4rem);
-    padding-left: 2rem;
+    display: flex;
+    justify-content: center;
+    font-size: var(--fs-5);
 }
+
 
 .skills__one {
     font-family: var(--font-quaternary);
@@ -96,7 +105,21 @@ const skills = await getEntry("about", "skills");
 .skills__text-one,
 .skills__text-two,
 .skills__text-three {
+    font-size: var(--fs-1);
     font-family: var(--font-secondary);
     color: var(--color-black);
 }
+
+.skills__text-one li::marker {
+    color: var(--color-green);
+}
+
+.skills__text-two li::marker {
+    color: var(--color-pink);
+}
+
+.skills__text-three li::marker {
+    color: var(--color-orange);
+}
+
 </style>
