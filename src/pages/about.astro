@@ -1,14 +1,18 @@
 ---
 import Base from "../layouts/Base.astro";
 import "../styles/global.css";
+
+import { getEntry } from "astro:content";
+
+const skills = await getEntry("about", "skills");
 ---
 
 <Base title="Home Page">
     <section class="intro">
         <p class="intro__text">
             <b>Hi, I’m Margot</b> — a designer, programmer, and UI/UX enthusiast
-            who thrives at the intersection of creativity and functionality. <br
-            />I’m passionate about turning ideas into intuitive, visually
+            who thrives at the intersection of creativity and functionality. <br />
+            I’m passionate about turning ideas into intuitive, visually
             compelling digital experiences that people actually enjoy using. I’m
             a fast learner, a reliable teammate, and a professional who gets
             things done — all while keeping a dash of wit and creativity in my
@@ -23,48 +27,39 @@ import "../styles/global.css";
     <section class="skills">
         <h2 class="skills__one">Development Skills</h2>
         <ul class="skills__text-one">
-            <li>Front-End: HTML, CSS, JavaScript, responsive design</li>
-            <li>Back-End: PHP, SQL/NoSQL</li>
-            <li>
-                Full-Stack & Others: Git, mobile frameworks, security basics
-            </li>
+            {skills.data.development.map((item) => (
+                <li>{item}</li>
+            ))}
         </ul>
 
         <h2 class="skills__two">Visual Design Skills</h2>
         <ul class="skills__text-two">
-            <li>Layout & composition</li>
-            <li>Typography & color theory</li>
-            <li>Icons, imagery & illustration</li>
-            <li>Branding & visual identity</li>
-            <li>Motion graphics & animation</li>
-            <li>Visual hierarchy & storytelling</li>
-            <li>Tools: Figma, Adobe XD, Sketch, Illustrator, Photoshop</li>
+            {skills.data.visual.map((item) => (
+                <li>{item}</li>
+            ))}
         </ul>
 
         <h2 class="skills__three">UX Design Skills</h2>
         <ul class="skills__text-three">
-            <li>User research & personas</li>
-            <li>Wireframing & prototyping</li>
-            <li>User journey mapping & flow diagrams</li>
-            <li>Usability testing & heuristic evaluation</li>
-            <li>Information architecture & content strategy</li>
-            <li>Interaction design principles</li>
+            {skills.data.ux.map((item) => (
+                <li>{item}</li>
+            ))}
         </ul>
     </section>
 </Base>
 
 <style>
     .intro {
-    background-color: var(--color-black);
-    border-radius: 25rem;
-    padding: var(--sp-l);
-    margin: var(--sp-2xl) 1rem;
-}
+        background-color: var(--color-black);
+        border-radius: 25rem;
+        padding: var(--sp-l);
+        margin: var(--sp-2xl) 1rem;
+    }
 
-.intro__text {
-    padding: var(--sp-m);
-    color: var(--main-color);
-    font-size: var(--fs--3);
-    font-family: var(--font-secondary);
-}
+    .intro__text {
+        padding: var(--sp-m);
+        color: var(--main-color);
+        font-size: var(--fs--3);
+        font-family: var(--font-secondary);
+    }
 </style>

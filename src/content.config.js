@@ -37,9 +37,19 @@ const ExtrasCard = defineCollection({
     }),
 });
 
+const aboutCollection = defineCollection({
+    type: "data",
+    schema: z.object({
+        development: z.array(z.string()).optional(),
+        visual: z.array(z.string()).optional(),
+        ux: z.array(z.string()).optional()
+    })
+});
+
 export const collections = {
     work: workCollections,
     photo: photoCollections,
     quotes: QuotesCard,
     extras: ExtrasCard,
+    about: aboutCollection,
 };
