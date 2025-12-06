@@ -3,6 +3,9 @@ import Base from "../layouts/Base.astro";
 import "../styles/global.css";
 
 import { getEntry } from "astro:content";
+import comp from "../assets/comp.png";
+import lightbulb from "../assets/lightbulb.png";
+import palette from "../assets/palette.png";
 
 const skills = await getEntry("about", "skills");
 ---
@@ -25,65 +28,88 @@ const skills = await getEntry("about", "skills");
 
     <section class="skills">
         <h2 class="skills__one">Development Skills</h2>
+        <div class="skills__development">
         <ul class="skills__text-one">
             {skills.data.development.map((item) => (
                 <li>{item}</li>
             ))}
         </ul>
+        <img
+        src={comp.src}
+        alt="Picture of Computer"
+        width="200"
+        class="comp skill-image"
+      />
+    </div>
 
         <h2 class="skills__two">Visual Design Skills</h2>
+          <div class="skills__design">
         <ul class="skills__text-two">
             {skills.data.visual.map((item) => (
                 <li>{item}</li>
             ))}
         </ul>
+          <img
+        src={palette.src}
+        alt="Picture of Palette"
+        width="200"
+        class="palette skill-image"
+      />
+            </div>
 
         <h2 class="skills__three">UX/UI Skills</h2>
+         <div class="skills__ux">
         <ul class="skills__text-three">
             {skills.data.ux.map((item) => (
                 <li>{item}</li>
             ))}
         </ul>
+          <img
+        src={lightbulb.src}
+        alt="Picture of Lightbulb"
+        width="200"
+        class="lightbulb skill-image"
+      />
+        </div>
     </section>
 </Base>
 
 <style>
 /* ABOUT */
 
- .intro {
-        background-color: var(--color-black);
-        border-radius: 25rem;
-        padding: var(--sp-l) var(--sp-l) var(--sp-xl) var(--sp-l);
-        margin: var(--sp-2xl);
-    }
-
-    .intro__text {
-        padding: var(--sp-m);
-        color: var(--main-color);
-        font-size: var(--fs--3);
-        font-family: var(--font-secondary);
-    }
-
-    .intro__title {
-        font-family: var(--font-primary);
-        color: var(--main-color);
-        font-size: clamp(2rem, 5vw + 1rem, 6rem);
-        text-align: center;
-        margin: var(--sp-s) 0;
-    }
-
-.skills {
-    padding-left: 2rem;
+.intro {
+    background-color: var(--color-black);
+    border-radius: 25rem;
+    padding: var(--sp-l) var(--sp-l) var(--sp-xl) var(--sp-l);
+    margin: var(--sp-2xl);
 }
 
-.skills__one,
-.skills__two,
-.skills__three {
+.intro__text {
+    padding: var(--sp-l);
+    color: var(--main-color);
+    font-size: var(--fs--3);
+    font-family: var(--font-secondary);
+}
+
+.intro__title {
+    font-family: var(--font-primary);
+    color: var(--main-color);
+    font-size: clamp(2rem, 5vw + 1rem, 6rem);
+    text-align: center;
+    margin: var(--sp-3xs) 0;
+}
+
+.skills {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto; 
+}
+
+.skills__one, .skills__two, .skills__three {
     display: flex;
     justify-content: center;
     font-size: var(--fs-5);
 }
-
 
 .skills__one {
     font-family: var(--font-quaternary);
@@ -102,12 +128,34 @@ const skills = await getEntry("about", "skills");
     margin-bottom: 1rem;
 }
 
-.skills__text-one,
-.skills__text-two,
-.skills__text-three {
+.skills__text-one, .skills__text-two, .skills__text-three {
     font-size: var(--fs-1);
     font-family: var(--font-secondary);
     color: var(--color-black);
+}
+
+.skills__development,
+.skills__design,
+.skills__ux {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+}
+
+.skills__text-one,
+.skills__text-two,
+.skills__text-three {
+    flex: 2;
+    min-width: 250px;
+}
+
+.profilepic {
+    flex: 1;
+    max-width: 180px;
+    width: 100%;
 }
 
 .skills__text-one li::marker {
@@ -121,5 +169,15 @@ const skills = await getEntry("about", "skills");
 .skills__text-three li::marker {
     color: var(--color-orange);
 }
+
+.skill-image {
+    width: 10rem;       
+    height: auto;        
+    border-radius: 1rem; 
+    object-fit: contain; 
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
+    padding-left: 3rem;
+}
+
 
 </style>
