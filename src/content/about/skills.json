@@ -1,7 +1,7 @@
 {
     "development": [
         "Front-End: HTML, CSS, JavaScript, responsive design",
-        "Back-End: PHP, SQL/NoSQL",
+        "Back-End: PHP, SQL",
         "Full-Stack & Others: Git, mobile frameworks, security basics"
     ],
     "visual": [
@@ -11,7 +11,7 @@
         "Branding & visual identity",
         "Motion graphics & animation",
         "Visual hierarchy & storytelling",
-        "Tools: Figma, Adobe XD, Sketch, Illustrator, Photoshop"
+        "Tools: Figma, Adobe, Sketch, Illustrator, Photoshop, After effects"
     ],
     "ux": [
         "User research & personas",
