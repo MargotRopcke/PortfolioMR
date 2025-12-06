@@ -58,27 +58,6 @@ import { base } from "astro:config/server";
     font-family: var(--font-tertiary);
 }
 
-.theme-toggle {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    z-index: 999;
-    font-family: var(--font-primary);
-    font-size: clamp(1.2rem, 2vw, 2rem);
-    background-color: var(--main-color);
-    color: var(--color-black);
-    border: 2px solid var(--color-black);
-    border-radius: var(--br-l);
-    padding: var(--sp-xs) var(--sp-m);
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.theme-toggle:hover {
-    background-color: var(--color-blue);
-    color: var(--main-color);
-    transform: rotate(-6deg);
-}
 </style>
 
 <script>
