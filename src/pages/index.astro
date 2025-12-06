@@ -8,9 +8,11 @@ import me from "../assets/profilepic.png";
 <Base title="Home Page">
   <section class="header">
     <h1 class="home__title">Hi, I'm Margot</h1>
+	   <p class="home__intro"> a designer, programmer, and UI/UX enthusiast
+            who thrives at the intersection of creativity and functionality.</p>
     <div class="shape__header">
       <div class="hero__button-container">
-        <a href="#creations" class="hero__button">Explore more</a>
+        <a href="#creations" class="hero__button">Explore my work</a>
       </div>
       <img
         src={me.src}
@@ -40,6 +42,17 @@ import me from "../assets/profilepic.png";
 
 <style>
 /* HERO */
+
+  .home__intro{
+	display: flex;
+	justify-content: center;
+        color: var(--color-black);
+        font-size: var(--fs-0);
+		font-weight: 700;
+        font-family: var(--font-secondary);
+		margin-bottom: var(--sp-l);
+    }
+
 .arrow {
     position: absolute;
     width: 20px;
@@ -311,8 +324,8 @@ import me from "../assets/profilepic.png";
         const angle = Math.atan2(dyRot, dxRot) * (180/Math.PI);
 
         arrow.el.style.transform = `rotate(${angle}deg)`;
-        arrow.el.style.borderTop = '5px solid #FF6272';
-        arrow.el.style.borderRight = '5px solid #FF6272';
+        arrow.el.style.borderTop = '5px solid #95CEFF';
+        arrow.el.style.borderRight = '5px solid #95CEFF';
         arrow.el.style.zIndex = '10';
       } else {
         const dx = arrow.startX - arrow.x;
@@ -321,8 +334,8 @@ import me from "../assets/profilepic.png";
         arrow.y += dy * arrow.speed;
 
         arrow.el.style.transform = 'rotate(45deg)';
-        arrow.el.style.borderTop = '5px solid #95CEFF';
-        arrow.el.style.borderRight = '5px solid #95CEFF';
+        arrow.el.style.borderTop = '5px solid #363636';
+        arrow.el.style.borderRight = '5px solid #363636';
         arrow.el.style.zIndex = '0';
       }
 
