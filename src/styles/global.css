@@ -86,55 +86,6 @@ html.dark {
             transparent 70.1%, transparent 100%);
 }
 
-/* NAVIGATION */
-.nav__list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: calc(1.5rem + 3vw);
-    list-style: none;
-    padding-top: var(--sp-s);
-    margin: 0;
-}
-
-.nav__link--home,
-.nav__link--about,
-.nav__link--samples {
-    font-family: var(--font-primary);
-    text-decoration: none;
-    color: var(--color-black);
-    font-weight: bold;
-    font-size: calc(1rem + 1vw);
-}
-
-.nav__link--home:hover,
-.nav__link--about:hover,
-.nav__link--samples:hover {
-    font-family: var(--font-tertiary);
-}
-
-.theme-toggle {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    z-index: 999;
-    font-family: var(--font-primary);
-    font-size: clamp(1.2rem, 2vw, 2rem);
-    background-color: var(--main-color);
-    color: var(--color-black);
-    border: 2px solid var(--color-black);
-    border-radius: var(--br-l);
-    padding: var(--sp-xs) var(--sp-m);
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.theme-toggle:hover {
-    background-color: var(--color-blue);
-    color: var(--main-color);
-    transform: rotate(-6deg);
-}
-
 /* HERO */
 .arrow {
     position: absolute;
@@ -251,43 +202,6 @@ html.dark {
     color: var(--main-color);
     writing-mode: vertical-rl;
     text-orientation: mixed;
-}
-
-/* ABOUT */
-
-.skills {
-    padding-left: 2rem;
-}
-
-.skills__one,
-.skills__two,
-.skills__three {
-    font-size: clamp(1.2rem, 5vw, 4rem);
-    padding-left: 2rem;
-}
-
-.skills__one {
-    font-family: var(--font-quaternary);
-    letter-spacing: 1.5px;
-    color: var(--color-green);
-}
-
-.skills__two {
-    font-family: var(--font-secondary);
-    color: var(--color-pink);
-}
-
-.skills__three {
-    font-family: var(--font-tertiary);
-    color: var(--color-orange);
-    margin-bottom: 1rem;
-}
-
-.skills__text-one,
-.skills__text-two,
-.skills__text-three {
-    font-family: var(--font-secondary);
-    color: var(--color-black);
 }
 
 /* DETAIL */

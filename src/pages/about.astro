@@ -49,6 +49,43 @@ const skills = await getEntry("about", "skills");
 </Base>
 
 <style>
+/* ABOUT */
+
+.skills {
+    padding-left: 2rem;
+}
+
+.skills__one,
+.skills__two,
+.skills__three {
+    font-size: clamp(1.2rem, 5vw, 4rem);
+    padding-left: 2rem;
+}
+
+.skills__one {
+    font-family: var(--font-quaternary);
+    letter-spacing: 1.5px;
+    color: var(--color-green);
+}
+
+.skills__two {
+    font-family: var(--font-secondary);
+    color: var(--color-pink);
+}
+
+.skills__three {
+    font-family: var(--font-tertiary);
+    color: var(--color-orange);
+    margin-bottom: 1rem;
+}
+
+.skills__text-one,
+.skills__text-two,
+.skills__text-three {
+    font-family: var(--font-secondary);
+    color: var(--color-black);
+}
+
     .intro {
         background-color: var(--color-black);
         border-radius: 25rem;
