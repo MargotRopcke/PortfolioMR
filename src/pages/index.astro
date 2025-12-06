@@ -105,6 +105,11 @@ import me from "../assets/profilepic.png";
 }
 
 /* SHAPE HEADER */
+
+.profilepic {
+	z-index: 1;
+}
+
 .shape__header {
     background-color: var(--color-black);
     border-radius: 25rem;
@@ -294,17 +299,19 @@ for (let i = 0; i < numArrows; i++) {
   arrow.style.position = 'absolute';
   arrow.style.pointerEvents = 'none';
   arrow.style.opacity = '0.6';
-  
   arrow.style.transformOrigin = '0% 50%'; 
   arrow.style.transform = 'rotate(45deg)';
-  
   arrow.style.borderTop = '5px solid #95CEFF';
   arrow.style.borderRight = '5px solid #95CEFF';
   arrow.style.zIndex = '0';
 
   const rect = container.getBoundingClientRect();
-  const startX = rect.left + window.scrollX + Math.random() * rect.width;
-  const startY = rect.top + window.scrollY + Math.random() * rect.height;
+
+  const marginX = rect.width * 0.12; 
+  const marginY = rect.height * 0.12; 
+
+  const startX = rect.left + window.scrollX + marginX + Math.random() * (rect.width - 2 * marginX);
+  const startY = rect.top + window.scrollY + marginY + Math.random() * (rect.height - 2 * marginY);
 
   arrow.style.left = `${startX}px`;
   arrow.style.top = `${startY}px`;
@@ -342,7 +349,6 @@ function animate() {
       arrow.el.style.borderRight = '5px solid #F2F2F2';
       arrow.el.style.zIndex = '10';
     } else {
-  
       const dx = arrow.startX - arrow.x;
       const dy = arrow.startY - arrow.y;
       arrow.x += dx * arrow.speed;
@@ -363,6 +369,7 @@ function animate() {
 
 animate();
 </script>
+
 
 
 
