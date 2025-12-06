@@ -74,6 +74,7 @@ import me from "../assets/profilepic.png";
     color: var(--color-black);
     padding: var(--hero-btn-vertical) var(--hero-btn-horizontal);
     font-size: var(--hero-btn-font);
+	z-index: 1;
 }
 
 .home__title {
@@ -292,6 +293,8 @@ container.addEventListener('mousemove', (e) => {
   mouse.y = e.pageY;
 });
 
+const minDistance = 30; // minimum distance between arrows
+
 for (let i = 0; i < numArrows; i++) {
   const arrow = document.createElement('div');
   arrow.style.width = '20px';
@@ -299,19 +302,34 @@ for (let i = 0; i < numArrows; i++) {
   arrow.style.position = 'absolute';
   arrow.style.pointerEvents = 'none';
   arrow.style.opacity = '0.6';
-  arrow.style.transformOrigin = '0% 50%'; 
+  arrow.style.transformOrigin = '0% 50%';
   arrow.style.transform = 'rotate(45deg)';
   arrow.style.borderTop = '5px solid #95CEFF';
   arrow.style.borderRight = '5px solid #95CEFF';
   arrow.style.zIndex = '0';
 
   const rect = container.getBoundingClientRect();
+  const marginX = rect.width * 0.12;
+  const marginY = rect.height * 0.12;
 
-  const marginX = rect.width * 0.12; 
-  const marginY = rect.height * 0.12; 
+  let startX, startY, safe;
 
-  const startX = rect.left + window.scrollX + marginX + Math.random() * (rect.width - 2 * marginX);
-  const startY = rect.top + window.scrollY + marginY + Math.random() * (rect.height - 2 * marginY);
+  // Ensure arrows don't overlap initially
+  do {
+    safe = true;
+    startX = rect.left + window.scrollX + marginX + Math.random() * (rect.width - 2 * marginX);
+    startY = rect.top + window.scrollY + marginY + Math.random() * (rect.height - 2 * marginY);
+
+    for (const a of arrows) {
+      const dx = startX - a.startX;
+      const dy = startY - a.startY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < minDistance) {
+        safe = false;
+        break;
+      }
+    }
+  } while (!safe);
 
   arrow.style.left = `${startX}px`;
   arrow.style.top = `${startY}px`;
@@ -345,8 +363,8 @@ function animate() {
       const angle = Math.atan2(dyRot, dxRot) * (180 / Math.PI);
 
       arrow.el.style.transform = `rotate(${angle}deg)`;
-      arrow.el.style.borderTop = '5px solid #F2F2F2';
-      arrow.el.style.borderRight = '5px solid #F2F2F2';
+      arrow.el.style.borderTop = '5px solid #FF6272';
+      arrow.el.style.borderRight = '5px solid #FF6272';
       arrow.el.style.zIndex = '10';
     } else {
       const dx = arrow.startX - arrow.x;
@@ -369,6 +387,7 @@ function animate() {
 
 animate();
 </script>
+
 
 
 
