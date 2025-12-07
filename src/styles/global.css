@@ -90,8 +90,8 @@ html.dark {
 
 .theme-toggle {
     position: fixed;
-    top: 1rem;
-    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
     z-index: 999;
     font-family: var(--font-primary);
     font-size: clamp(1.2rem, 2vw, 2rem);
@@ -124,50 +124,77 @@ html.dark {
 
 .photo__title,
 .work__title {
-        font-family: var(--font-primary);
-            color: var(--color-blue);
-            font-size: clamp(1rem, 5vw + 0.5rem, 4rem);
-            text-align: center;
-            margin: var(--sp-2xl) 0;
+    font-family: var(--font-primary);
+    color: var(--color-blue);
+    font-size: clamp(1rem, 5vw + 0.5rem, 4rem);
+    text-align: center;
+    margin: var(--sp-2xl) 0;
 }
 
-/* MEDIA QUERIES */
-@media (max-width: 64rem) {
-    .works__card {
-        grid-template-columns: 1fr;
-    }
-
-    .shape__header {
-        flex-direction: column;
-        gap: var(--sp-m);
-        margin: 0 auto;
-    }
+.works__card {
+    grid-template-columns: 1fr;
 }
 
-@media (max-width: 48rem) {
+.shape__header {
+    flex-direction: column;
+    gap: var(--sp-m);
+    margin: 0 auto;
+}
+
+.specialties {
+    flex-direction: column;
+}
+
+.hero__button-container {
+    justify-content: center;
+}
+
+.intro {
+    margin: var(--sp-m);
+    padding: var(--sp-m);
+}
+
+.title__exploration {
+    font-size: var(--fs-1);
+    margin-left: var(--sp-s);
+}
+
+@media (min-width: 48rem) {
     .specialties {
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .hero__button-container {
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .intro {
-        margin: var(--sp-m);
-        padding: var(--sp-m);
+        margin: initial;
+        padding: initial;
     }
 
     .title__exploration {
-        font-size: var(--fs-1);
-        margin-left: var(--sp-s);
+        font-size: var(--fs-2);
+        margin-left: initial;
     }
 
     .theme-toggle {
-        top: auto;
-        bottom: 1rem;
-        right: auto;
-        left: 1rem;
+        top: 1rem;
+        right: 1rem;
+        bottom: auto;
+        left: auto;
+    }
+}
+
+@media (min-width: 64rem) {
+    .works__card {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .shape__header {
+        flex-direction: row;
+        gap: var(--sp-l);
+        margin: initial;
     }
 }
 
