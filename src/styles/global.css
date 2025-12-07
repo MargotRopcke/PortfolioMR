@@ -186,5 +186,5 @@ main {
 }
 
 a {
-    text-decoration: none;
+    color: var(--color-red);
 }

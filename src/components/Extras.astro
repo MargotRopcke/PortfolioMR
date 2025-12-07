@@ -13,13 +13,21 @@ import ExtrasCard from "./ExtrasCard.astro";
             innovation, creativity, and personal growth.
         </p>
     </header>
-    <div>
+    <div class="extras-list">
         {
             extras.map((extra) => (
-                <p>
+                <li class="extra__item">
                     <ExtrasCard {extra} />
-                </p>
+                </li>
             ))
         }
     </div>
 </section>
+
+<style>
+    .extra__item {
+         list-style: none;
+         color: #b0b0b0;
+        margin-bottom: var(--sp-m);
+    }
+</style>

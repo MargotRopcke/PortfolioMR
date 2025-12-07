@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-const quotes = await getCollection("quotes");
-
 import QuotesCard from "./QuotesCard.astro";
+
+const quotes = await getCollection("quotes");
 ---
 
 <section class="container" id="quotes">
@@ -13,18 +13,52 @@ import QuotesCard from "./QuotesCard.astro";
             creativity, and personal growth.
         </p>
     </header>
-    <ul>
+
+    <div class="quotes-rotator" data-total={quotes.length} client:load>
         {
-            quotes.map((quote) => (
-                <li class="quote__item">
+            quotes.map((quote, i) => (
+                <li 
+                    class={`quote__item ${i === 0 ? "active" : ""}`}
+                    data-index={i}
+                >
                     <QuotesCard {quote} />
                 </li>
             ))
         }
-    </ul>
+    </div>
 </section>
 
 <style>
     .quote__item {
+        font-family: var(--font-tertiary);
+        color: var(--main-color);
         list-style: none;
+        opacity: 0;
+        position: absolute;
+        transition: opacity 0.6s ease;
     }
+
+    .quote__item.active {
+        opacity: 1;
+        position: relative;
+    }
+
+    .quotes-rotator {
+       display: flex;
+         flex-direction: column;
+        align-items: center;
+    }
+</style>
+
+<script>
+    const rotator = document.querySelector(".quotes-rotator");
+    const items = rotator.querySelectorAll(".quote__item");
+    let index = 0;
+    const total = items.length;
+
+    setInterval(() => {
+        items[index].classList.remove("active");
+        index = (index + 1) % total;
+        items[index].classList.add("active");
+    }, 4000); 
+</script>
