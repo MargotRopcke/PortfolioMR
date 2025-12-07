@@ -1,0 +1,37 @@
+---
+import linkedin from "../assets/linkedinlogo.png";
+import gmail from "../assets/gmaillogo.png";
+---
+
+<section class="contact">
+       <ul class="footer">
+            <li class="footer__item">
+                <a
+                    class="footer__link"
+                    href="https://share.google/R78IFRyeP7E3xaMvO"
+                    ><img src={gmail.src} alt="gmail" /></a
+                >
+            </li>
+            <li class="footer__item">
+                <a class="footer__link" href="https://be.linkedin.com/"
+                    ><img
+                        src={linkedin.src}
+                        alt="linkedin"
+                    /></a
+                >
+            </li>
+        </ul>
+</section>
+
+<style>
+    .footer__item {
+    display: inline-block;
+    margin-right: var(--sp-m);
+}
+
+.footer__link img {
+    width: 10vw;
+    height: auto;
+    max-width: 4rem;
+}
+</style>
