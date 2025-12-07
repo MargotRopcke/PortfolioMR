@@ -8,9 +8,9 @@ import Quotes from "../components/Quotes.astro";
 import "../styles/global.css";
 ---
 
-<Base title="samples Page">
+<Base title="Samples Page">
     <section class="header">
-        <h1 class="samples__title">My samples</h1>
+        <h1 class="samples__title">My Samples</h1>
         <p class="samples__intro">
             Welcome to my personal collection of creativity. Here, I share my
             own work, photography that captures moments and perspectives, and a
@@ -19,23 +19,31 @@ import "../styles/global.css";
             world resonate with you.
         </p>
     </section>
-    <section class="work__samples">
-        <Extras />
-    </section>
-    <section class="quotes__samples">
-        <Quotes />
-    </section>
 
-    <section id="picsamples" class="pic__samples">
-        <Photo />
-    </section>
+    <div class="samples__content">
+        <section class="work__samples card">
+            <Extras />
+        </section>
+
+        <section class="quotes__samples card">
+            <Quotes />
+        </section>
+
+        <section id="picsamples" class="pic__samples card">
+            <Photo />
+        </section>
+    </div>
 </Base>
 
-<style> 
-/* SAMPLES */
+<style>
+.header {
+    text-align: center;
+    padding: var(--sp-m);
+    margin-bottom: var(--sp-xl);
+}
 
 .samples__title {
-          font-family: var(--font-primary);
+    font-family: var(--font-primary);
     color: var(--color-blue);
     font-size: clamp(1rem, 5vw + 0.5rem, 4rem);
     text-align: center;
@@ -45,16 +53,52 @@ import "../styles/global.css";
 .samples__intro {
     padding: var(--sp-m);
     color: var(--color-black);
-        font-size: var(--fs--5);
-        font-family: var(--font-secondary);
-        font-weight: 800;
+    font-size: var(--fs--5);
+    font-family: var(--font-secondary);
+    font-weight: 800;
 }
 
-.work__samples,
-.quotes__samples,
+.samples__content {
+    display: flex;
+    flex-wrap: wrap;       
+    gap: 1.5rem;        
+    justify-content: center;
+}
+
+.card {
+    background-color: var(--main-color); 
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 1rem;
+    flex: 1 1 300px;     
+    max-width: 350px;         
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.work__samples {
+    font-family: var(--font-secondary);
+    color: var(--color-black);
+    border: 2px solid var(--color-green);
+}
+
+.quotes__samples {
+    font-family: var(--font-secondary);
+    color: var(--color-black);
+     border: 2px solid var(--color-pink);
+}
+
+
 .pic__samples {
     font-family: var(--font-secondary);
     color: var(--color-black);
-    padding-left: 1rem;
+     border: 2px solid var(--color-orange);
 }
 </style>

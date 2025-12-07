@@ -14,8 +14,7 @@ import PhotoCard from "./PhotoCard.astro";
         </p>
     </header>
 
-    <div class="photos">
-        <ul class="photos__list">
+        <div class="photos__list">
             {
                 photoCollections.map((photo) => (
                     <li class="photo__item">
@@ -24,6 +23,30 @@ import PhotoCard from "./PhotoCard.astro";
                     </li>
                 ))
             }
-        </ul>
-    </div>
+        </div>
 </section>
+
+<style>
+    .photos__list {
+        list-style: none;
+    }
+
+    .photo__link {
+         text-decoration: none;
+    }
+
+    .photo__item {
+         text-decoration: none;
+      border: 2px solid var(--color-orange);
+      border-radius: 1rem;
+      margin-bottom: var(--sp-s);
+    }
+
+    .photo__item:hover {
+         text-decoration: none;
+         background-color: var(--color-orange);
+      border: 2px solid var(--color-orange);
+      border-radius: 1rem;
+      margin-bottom: var(--sp-s);
+    }
+</style>

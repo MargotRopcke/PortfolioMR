@@ -94,7 +94,7 @@ const skills = await getEntry("about", "skills");
 .intro__title {
     font-family: var(--font-primary);
     color: var(--main-color);
-    font-size: clamp(2rem, 5vw + 1rem, 6rem);
+    font-size: var(--fs-5);
     text-align: center;
     margin: var(--sp-3xs) 0;
 }
@@ -179,5 +179,45 @@ const skills = await getEntry("about", "skills");
     padding-left: 3rem;
 }
 
+.comp {
+    --rotate: -6deg;
+    transform: rotate(var(--rotate));
+    animation: floatComp 3s ease-in-out infinite;
+}
 
+.palette {
+    --rotate: 5deg;
+    transform: rotate(var(--rotate));
+    animation: floatPalette 3.5s ease-in-out infinite;
+}
+
+.lightbulb {
+    --rotate: -4deg;
+    transform: rotate(var(--rotate));
+    animation: floatLightbulb 4s ease-in-out infinite;
+}
+
+@keyframes floatComp {
+    0% { transform: translate(0, 0) rotate(var(--rotate)); }
+    25% { transform: translate(10px, -10px) rotate(var(--rotate)); }
+    50% { transform: translate(-8px, -5px) rotate(var(--rotate)); }
+    75% { transform: translate(5px, 8px) rotate(var(--rotate)); }
+    100% { transform: translate(0, 0) rotate(var(--rotate)); }
+}
+
+@keyframes floatPalette {
+    0% { transform: translate(0, 0) rotate(var(--rotate)); }
+    25% { transform: translate(0, -12px) rotate(var(--rotate)); }
+    50% { transform: translate(0, -8px) rotate(var(--rotate)); }
+    75% { transform: translate(0, 10px) rotate(var(--rotate)); }
+    100% { transform: translate(0, 0) rotate(var(--rotate)); }
+}
+
+@keyframes floatLightbulb {
+    0% { transform: translate(0, 0) rotate(var(--rotate)); }
+    25% { transform: translate(-10px, 8px) rotate(var(--rotate)); }
+    50% { transform: translate(12px, 5px) rotate(var(--rotate)); }
+    75% { transform: translate(-5px, -8px) rotate(var(--rotate)); }
+    100% { transform: translate(0, 0) rotate(var(--rotate)); }
+}
 </style>

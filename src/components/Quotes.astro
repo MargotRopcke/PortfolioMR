@@ -9,17 +9,22 @@ import QuotesCard from "./QuotesCard.astro";
     <header>
         <h2><span>Quotes</span></h2>
         <p>
-            These foundations create an environment that encourages innovation,
+            These quotes create an environment that encourages innovation,
             creativity, and personal growth.
         </p>
     </header>
     <ul>
         {
             quotes.map((quote) => (
-                <li>
+                <li class="quote__item">
                     <QuotesCard {quote} />
                 </li>
             ))
         }
     </ul>
 </section>
+
+<style>
+    .quote__item {
+        list-style: none;
+    }

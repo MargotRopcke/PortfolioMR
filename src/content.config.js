@@ -32,8 +32,6 @@ const ExtrasCard = defineCollection({
     loader: glob({ pattern: "**/*.md", base: "./src/content/extras" }),
     schema: ({ image }) => z.object({
         title: z.string(),
-        date: z.date(),
-
     }),
 });
 
