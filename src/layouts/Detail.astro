@@ -1,8 +1,32 @@
 ---
-import Footer from "../components/Footer.astro";
-import Base from "./Base.astro";
+import "../styles/global.css";
+
+import Nav from "../components/Nav.astro";
+
+const { pageTitle } = Astro.props;
 ---
 
-<Base>
-   
-</Base>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <link rel="stylesheet" href="https://use.typekit.net/cgq1cqk.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Arya:wght@400;700&family=Caveat:wght@400..700&family=Karantina:wght@300;400;700&family=League+Gothic&display=swap"
+            rel="stylesheet"
+        />
+        <title>Portfolio{pageTitle}</title>
+    </head>
+    <body>
+        <div class="grid-layout"></div>
+        <Nav />
+        <main>
+            <slot />
+        </main>
+        <Footer />
+    </body>
+</html>

@@ -29,6 +29,37 @@ import { base } from "astro:config/server";
     <button class="theme-toggle" aria-label="Toggle Dark Mode"></button>
 </div>
 
+<style>
+/* NAVIGATION */
+.nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: calc(1.5rem + 3vw);
+    list-style: none;
+    padding-top: var(--sp-s);
+    margin: 0;
+         background-color: var(--main-color);
+}
+
+.nav__link--home,
+.nav__link--about,
+.nav__link--samples {
+    font-family: var(--font-primary);
+    text-decoration: none;
+    color: var(--color-black);
+    font-weight: bold;
+    font-size: calc(1rem + 1vw);
+}
+
+.nav__link--home:hover,
+.nav__link--about:hover,
+.nav__link--samples:hover {
+    font-family: var(--font-tertiary);
+}
+
+</style>
+
 <script>
     const toggleBtn = document.querySelector(".theme-toggle");
     const root = document.documentElement;

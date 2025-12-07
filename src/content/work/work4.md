@@ -1,6 +1,6 @@
 ---
 name: Development
-image: img/motion.png
+image: img/nmbs.png
 ---
 
 Opdracht development

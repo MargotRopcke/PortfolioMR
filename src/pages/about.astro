@@ -1,20 +1,26 @@
 ---
 import Base from "../layouts/Base.astro";
 import "../styles/global.css";
+
+import { getEntry } from "astro:content";
+import comp from "../assets/comp.png";
+import lightbulb from "../assets/lightbulb.png";
+import palette from "../assets/palette.png";
+
+const skills = await getEntry("about", "skills");
 ---
 
 <Base title="Home Page">
     <section class="intro">
+        <h1 class="intro__title">Who am I?</h1>
         <p class="intro__text">
-            <b>Hi, I’m Margot</b> — a designer, programmer, and UI/UX enthusiast
-            who thrives at the intersection of creativity and functionality. <br
-            />I’m passionate about turning ideas into intuitive, visually
-            compelling digital experiences that people actually enjoy using. I’m
+            I’m passionate about turning ideas into intuitive, visually
+            compelling digital experiences that people actually enjoy using.<br> I’m
             a fast learner, a reliable teammate, and a professional who gets
             things done — all while keeping a dash of wit and creativity in my
             work. Whether it’s crafting clean, user-friendly interfaces or
             diving into code to bring designs to life, I tackle challenges with
-            curiosity and precision. When I’m not designing or programming, you
+            curiosity and precision.<br> When I’m not designing or programming, you
             might catch me trying out new trends, experimenting with my own
             creative projects, or finding inspiration in the world around me.
         </p>
@@ -22,33 +28,156 @@ import "../styles/global.css";
 
     <section class="skills">
         <h2 class="skills__one">Development Skills</h2>
+        <div class="skills__development">
         <ul class="skills__text-one">
-            <li>Front-End: HTML, CSS, JavaScript, responsive design</li>
-            <li>Back-End: PHP, SQL/NoSQL</li>
-            <li>
-                Full-Stack & Others: Git, mobile frameworks, security basics
-            </li>
+            {skills.data.development.map((item) => (
+                <li>{item}</li>
+            ))}
         </ul>
+        <img
+        src={comp.src}
+        alt="Picture of Computer"
+        width="200"
+        class="comp skill-image"
+      />
+    </div>
 
         <h2 class="skills__two">Visual Design Skills</h2>
+          <div class="skills__design">
         <ul class="skills__text-two">
-            <li>Layout & composition</li>
-            <li>Typography & color theory</li>
-            <li>Icons, imagery & illustration</li>
-            <li>Branding & visual identity</li>
-            <li>Motion graphics & animation</li>
-            <li>Visual hierarchy & storytelling</li>
-            <li>Tools: Figma, Adobe XD, Sketch, Illustrator, Photoshop</li>
+            {skills.data.visual.map((item) => (
+                <li>{item}</li>
+            ))}
         </ul>
+          <img
+        src={palette.src}
+        alt="Picture of Palette"
+        width="200"
+        class="palette skill-image"
+      />
+            </div>
 
-        <h2 class="skills__three">UX Design Skills</h2>
+        <h2 class="skills__three">UX/UI Skills</h2>
+         <div class="skills__ux">
         <ul class="skills__text-three">
-            <li>User research & personas</li>
-            <li>Wireframing & prototyping</li>
-            <li>User journey mapping & flow diagrams</li>
-            <li>Usability testing & heuristic evaluation</li>
-            <li>Information architecture & content strategy</li>
-            <li>Interaction design principles</li>
+            {skills.data.ux.map((item) => (
+                <li>{item}</li>
+            ))}
         </ul>
+          <img
+        src={lightbulb.src}
+        alt="Picture of Lightbulb"
+        width="200"
+        class="lightbulb skill-image"
+      />
+        </div>
     </section>
 </Base>
+
+<style>
+/* ABOUT */
+
+.intro {
+    background-color: var(--color-black);
+    border-radius: 25rem;
+    padding: var(--sp-l) var(--sp-l) var(--sp-xl) var(--sp-l);
+    margin: var(--sp-2xl);
+}
+
+.intro__text {
+    padding: var(--sp-l);
+    color: var(--main-color);
+    font-size: var(--fs--3);
+    font-family: var(--font-secondary);
+}
+
+.intro__title {
+    font-family: var(--font-primary);
+    color: var(--main-color);
+    font-size: clamp(2rem, 5vw + 1rem, 6rem);
+    text-align: center;
+    margin: var(--sp-3xs) 0;
+}
+
+.skills {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto; 
+}
+
+.skills__one, .skills__two, .skills__three {
+    display: flex;
+    justify-content: center;
+    font-size: var(--fs-5);
+}
+
+.skills__one {
+    font-family: var(--font-quaternary);
+    letter-spacing: 1.5px;
+    color: var(--color-green);
+}
+
+.skills__two {
+    font-family: var(--font-secondary);
+    color: var(--color-pink);
+}
+
+.skills__three {
+    font-family: var(--font-tertiary);
+    color: var(--color-orange);
+    margin-bottom: 1rem;
+}
+
+.skills__text-one, .skills__text-two, .skills__text-three {
+    font-size: var(--fs-1);
+    font-family: var(--font-secondary);
+    color: var(--color-black);
+}
+
+.skills__development,
+.skills__design,
+.skills__ux {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+}
+
+.skills__text-one,
+.skills__text-two,
+.skills__text-three {
+    flex: 2;
+    min-width: 250px;
+}
+
+.profilepic {
+    flex: 1;
+    max-width: 180px;
+    width: 100%;
+}
+
+.skills__text-one li::marker {
+    color: var(--color-green);
+}
+
+.skills__text-two li::marker {
+    color: var(--color-pink);
+}
+
+.skills__text-three li::marker {
+    color: var(--color-orange);
+}
+
+.skill-image {
+    width: 10rem;       
+    height: auto;        
+    border-radius: 1rem; 
+    object-fit: contain; 
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
+    padding-left: 3rem;
+}
+
+
+</style>

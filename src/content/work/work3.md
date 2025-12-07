@@ -1,9 +1,8 @@
 ---
 name: Creative code
-image: img/motion.png
+image: img/cc.png
 ---
 
 Opdracht cc
-
 
 This assignment contained: creative code

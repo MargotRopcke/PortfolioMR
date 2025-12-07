@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 const workCollections = await getCollection("work");
+import { Image } from "astro:assets";
 
 import WorkCard from "./WorkCard.astro";
 ---
@@ -21,3 +22,42 @@ import WorkCard from "./WorkCard.astro";
         <h2 class="title__exploration">Discover my work</h2>
     </div>
 </section>
+
+<style>
+/* EXPLORATION */
+.exploration {
+    background-color: var(--color-black);
+    padding: var(--sp-l);
+}
+
+.works__card {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--sp-l);
+    align-items: start;
+}
+
+.works__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: var(--sp-m);
+    padding: var(--sp-s) 0 var(--sp-2xl);
+    list-style: none;
+}
+
+.works__item {
+  border-radius: 1rem;
+  padding: var(--sp-s);
+}
+
+.title__exploration {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    display: inline-block;
+    white-space: nowrap;
+    grid-column: 2;
+    font-family: var(--font-primary);
+    color: var(--main-color);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
+    </style>

@@ -6,31 +6,344 @@ import me from "../assets/profilepic.png";
 ---
 
 <Base title="Home Page">
-	<section class="header">
-		<h1 class="home__title">Hi, I'm Margot</h1>
-		<div class="shape__header">
-			<div class="hero__button-container">
-				<a href="#creations" class="hero__button">Explore more</a>
-			</div>
-			<img
-				src={me.src}
-				alt="Picture of Margot"
-				width="200"
-				class="profilepic"
-			/>
-		</div>
-		<div class="shape"></div>
-	</section>
+  <section class="header">
+    <h1 class="home__title">Hi, I'm Margot</h1>
+	   <p class="home__intro"> a designer, programmer, and UI/UX enthusiast
+            who thrives at the intersection of creativity and functionality.</p>
+    <div class="shape__header">
+      <div class="hero__button-container">
+        <a href="#creations" class="hero__button">Explore my work</a>
+      </div>
+      <img
+        src={me.src}
+        alt="Picture of Margot"
+        width="200"
+        class="profilepic"
+      />
+    </div>
+    <div class="shape"></div>
+  </section>
 
-	<section class="specialties">
-		<h2 class="s1">Visual</h2>
-		<h2 class="s2">UX/UI</h2>
-		<h2 class="s3">development</h2>
-	</section>
+  <section class="specialties__list">
+    <h1 class="skills">My skills</h1>
+    <div class="specialties">
+      <h2><a href="/portfolio/about" class="s1">Visual</a></h2>
+      <h2><a href="/portfolio/about" class="s2">UX/UI</a></h2>
+      <h2><a href="/portfolio/about" class="s3">development</a></h2>
+    </div>
+  </section>
 
-	<section id="samples" class="creations">
-		<section class="creations" id="creations">
-			<Work />
-		</section>
-	</section>
+  <section id="samples" class="creations">
+    <section class="creations" id="creations">
+      <Work />
+    </section>
+  </section>
 </Base>
+
+<style>
+/* HERO */
+
+  .home__intro{
+	display: flex;
+	justify-content: center;
+        color: var(--color-black);
+        font-size: var(--fs-0);
+		font-weight: 700;
+        font-family: var(--font-secondary);
+		margin-bottom: var(--sp-l);
+    }
+
+.arrow {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    opacity: 0.6;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border-top: 2px solid var(--color-blue);
+    border-right: 2px solid var(--color-blue);
+    border-radius: 2px;
+}
+
+.header {
+    font-family: var(--font-primary);
+}
+
+.hero__button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hero__button-container:hover .hero__button {
+    background-color: var(--color-blue);
+    color: var(--main-color);
+    transform: rotate(-6deg);
+}
+
+.hero__button {
+    border-radius: var(--br-l);
+    text-decoration: none;
+    background-color: var(--main-color);
+    color: var(--color-black);
+    padding: var(--hero-btn-vertical) var(--hero-btn-horizontal);
+    font-size: var(--hero-btn-font);
+    z-index: 1;
+}
+
+.home__title {
+    color: var(--color-blue);
+    font-size: clamp(2.5rem, 5vw + 1rem, 8rem);
+    text-align: center;
+    margin: var(--sp-2xl) 0;
+    animation: popFloat 3s ease-out infinite;
+}
+
+@keyframes popFloat {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(10px);
+    }
+
+    20% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+    60% {
+        transform: scale(1.03) translateY(-5px);
+    }
+
+    100% {
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* SHAPE HEADER */
+.profilepic {
+    z-index: 1;
+}
+
+.shape__header {
+    background-color: var(--color-black);
+    border-radius: 25rem;
+    padding: var(--sp-2xl) var(--sp-l);
+    margin: 1rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--sp-2xl);
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* SPECIALTIES */
+.specialties {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-l, 20px);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: var(--sp-2xl, 50px) 0;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+}
+
+.skills {
+    font-family: var(--font-primary);
+    color: var(--color-black);
+    font-size: var(--sp-xl);
+    text-align: center;
+    margin: var(--sp-2xl) 0;
+}
+
+.s1,
+.s2,
+.s3 {
+    text-decoration: none;
+    font-size: 2rem;
+    color: var(--main-color);
+    padding: calc(var(--sp-xs, 5px) * 2) calc(var(--sp-m, 10px) * 2);
+    border-radius: var(--br-l, 10px);
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.s1:hover {
+    animation-play-state: paused;
+    color: var(--color-pink);
+    background-color: var(--main-color);
+}
+
+.s2:hover {
+    animation-play-state: paused;
+    color: var(--color-orange);
+    background-color: var(--main-color);
+}
+
+.s3:hover {
+    animation-play-state: paused;
+    color: var(--color-green);
+    background-color: var(--main-color);
+}
+
+.s1 {
+    --rotate: -6deg;
+    transform: rotate(var(--rotate));
+    font-family: var(--font-secondary, Arial);
+    background-color: var(--color-pink, #ff69b4);
+    border: 1px solid var(--color-pink, #ff69b4);
+    animation: float1 3s ease-in-out infinite;
+}
+
+.s2 {
+    --rotate: 5deg;
+    transform: rotate(var(--rotate));
+    font-family: var(--font-tertiary, Arial);
+    background-color: var(--color-orange, #ffa500);
+    border: 1px solid var(--color-orange, #ffa500);
+    animation: float2 3.5s ease-in-out infinite;
+}
+
+.s3 {
+    --rotate: -4deg;
+    transform: rotate(var(--rotate));
+    font-family: var(--font-quaternary, Arial);
+    letter-spacing: 1.5px;
+    background-color: var(--color-green, #32cd32);
+    border: 1px solid var(--color-green, #32cd32);
+    animation: float3 4s ease-in-out infinite;
+}
+
+@keyframes float1 {
+    0% { transform: translate(0, 0) rotate(var(--rotate)); }
+    25% { transform: translate(10px, -10px) rotate(var(--rotate)); }
+    50% { transform: translate(-8px, -5px) rotate(var(--rotate)); }
+    75% { transform: translate(5px, 8px) rotate(var(--rotate)); }
+    100% { transform: translate(0, 0) rotate(var(--rotate)); }
+}
+
+@keyframes float2 {
+    0% { transform: translate(0, 0) rotate(var(--rotate)); }
+    25% { transform: translate(0, -12px) rotate(var(--rotate)); }
+    50% { transform: translate(0, -8px) rotate(var(--rotate)); }
+    75% { transform: translate(0, 10px) rotate(var(--rotate)); }
+    100% { transform: translate(0, 0) rotate(var(--rotate)); }
+}
+
+@keyframes float3 {
+    0% { transform: translate(0, 0) rotate(var(--rotate)); }
+    25% { transform: translate(-10px, 8px) rotate(var(--rotate)); }
+    50% { transform: translate(12px, 5px) rotate(var(--rotate)); }
+    75% { transform: translate(-5px, -8px) rotate(var(--rotate)); }
+    100% { transform: translate(0, 0) rotate(var(--rotate)); }
+}
+</style>
+
+<script type="module">
+  import gsap from "https://cdn.skypack.dev/gsap@3.13.0";
+  import { SplitText } from "https://cdn.skypack.dev/gsap@3.13.0/SplitText";
+
+  const skillsHeading = document.querySelector(".home__title");
+  const split = new SplitText(skillsHeading, { type: "chars, words" });
+
+  gsap.from(split.chars, {
+    opacity: 0,
+    y: 50,
+    rotationX: -90,
+    duration: 1,
+    stagger: 0.05,
+    ease: "back.out(1.7)",
+  });
+
+  const container = document.querySelector('.shape__header');
+  const button = container.querySelector('.hero__button');
+  const numArrows = 15;
+  const arrows = [];
+  const mouse = { x: 0, y: 0, active: false };
+
+  container.addEventListener('mouseenter', () => { mouse.active = true; });
+  container.addEventListener('mouseleave', () => { mouse.active = false; });
+  container.addEventListener('mousemove', (e) => { mouse.x = e.pageX; mouse.y = e.pageY; });
+
+  const minDistance = 30;
+  for (let i = 0; i < numArrows; i++) {
+    const arrow = document.createElement('div');
+    arrow.style.width = '20px';
+    arrow.style.height = '20px';
+    arrow.style.position = 'absolute';
+    arrow.style.pointerEvents = 'none';
+    arrow.style.opacity = '0.6';
+    arrow.style.transformOrigin = '0% 50%';
+    arrow.style.transform = 'rotate(45deg)';
+    arrow.style.borderTop = '5px solid #95CEFF';
+    arrow.style.borderRight = '5px solid #95CEFF';
+    arrow.style.zIndex = '0';
+
+    const rect = container.getBoundingClientRect();
+    const marginX = rect.width * 0.12;
+    const marginY = rect.height * 0.12;
+
+    let startX, startY, safe;
+    do {
+      safe = true;
+      startX = rect.left + window.scrollX + marginX + Math.random() * (rect.width - 2 * marginX);
+      startY = rect.top + window.scrollY + marginY + Math.random() * (rect.height - 2 * marginY);
+
+      for (const a of arrows) {
+        const dx = startX - a.startX;
+        const dy = startY - a.startY;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < minDistance) { safe = false; break; }
+      }
+    } while (!safe);
+
+    arrow.style.left = `${startX}px`;
+    arrow.style.top = `${startY}px`;
+    document.body.appendChild(arrow);
+
+    arrows.push({ el: arrow, x: startX, y: startY, startX, startY, speed: 0.1 + Math.random()*0.1 });
+  }
+
+  function animate() {
+    const btnRect = button.getBoundingClientRect();
+    const buttonCenterX = btnRect.left + window.scrollX + btnRect.width/2;
+    const buttonCenterY = btnRect.top + window.scrollY + btnRect.height/2;
+
+    arrows.forEach((arrow) => {
+      if (mouse.active) {
+        const dxPos = mouse.x - arrow.x;
+        const dyPos = mouse.y - arrow.y;
+        arrow.x += dxPos * arrow.speed;
+        arrow.y += dyPos * arrow.speed;
+
+        const dxRot = buttonCenterX - arrow.x;
+        const dyRot = buttonCenterY - arrow.y;
+        const angle = Math.atan2(dyRot, dxRot) * (180/Math.PI);
+
+        arrow.el.style.transform = `rotate(${angle}deg)`;
+        arrow.el.style.borderTop = '5px solid #95CEFF';
+        arrow.el.style.borderRight = '5px solid #95CEFF';
+        arrow.el.style.zIndex = '10';
+      } else {
+        const dx = arrow.startX - arrow.x;
+        const dy = arrow.startY - arrow.y;
+        arrow.x += dx * arrow.speed;
+        arrow.y += dy * arrow.speed;
+
+        arrow.el.style.transform = 'rotate(45deg)';
+        arrow.el.style.borderTop = '5px solid #d4d4d4';
+        arrow.el.style.borderRight = '5px solid #d4d4d4';
+        arrow.el.style.zIndex = '0';
+      }
+
+      arrow.el.style.left = `${arrow.x}px`;
+      arrow.el.style.top = `${arrow.y}px`;
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+</script>

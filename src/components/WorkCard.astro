@@ -1,12 +1,53 @@
 ---
+import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 const { work } = Astro.props;
 ---
 
 <article>
-    <a href={`/work/${work.id}`}>
-        <img src={`work/img/${work.data.image}`} />
-    </a>
-    <p class="date__work">{work.data.date}</p>
-    <a href={`/work/${work.id}`}>{work.data.name}</a>
+  <a href={`/work/${work.id}/`} class="work-link">
+    <div class="image-wrapper">
+      <Image
+        src={work.data.image}
+        alt="workpic"
+        width="200"
+        class="work__images"
+      />
+      <div class="overlay"></div>
+    </div>
+  </a>
 </article>
+
+
+<style>
+.image-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.work__images {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--main-color);
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.image-wrapper:hover .overlay {
+  opacity: 0;
+}
+</style>
