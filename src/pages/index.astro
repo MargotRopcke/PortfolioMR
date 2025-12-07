@@ -262,12 +262,11 @@ gsap.from(split.chars, {
 
 const container = document.querySelector('.shape__header');
 const button = container.querySelector('.hero__button');
-const numArrows = 50;
+const numArrows = 40;
 const arrows = [];
 const mouse = { x: 0, y: 0, active: false };
 
 container.style.position = 'relative';
-
 container.addEventListener('mouseenter', () => { mouse.active = true; });
 container.addEventListener('mouseleave', () => { mouse.active = false; });
 container.addEventListener('mousemove', (e) => {
@@ -280,8 +279,8 @@ function getRandomPosition(minDistance) {
   const width = container.offsetWidth;
   const height = container.offsetHeight;
 
-  const marginX = width * 0.1; 
-  const marginY = height * 0.1;
+  const marginX = width * 0.15; 
+  const marginY = height * 0.2;
 
   let safe, x, y;
   do {
