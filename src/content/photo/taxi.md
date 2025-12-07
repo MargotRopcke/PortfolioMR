@@ -1,5 +1,5 @@
 ---
-title: "Taxic traffic"
+title: "Taxi traffic"
 date: 2023-10-01
 image: img/taxi.jpg
 ---
