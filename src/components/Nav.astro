@@ -26,11 +26,12 @@ import { base } from "astro:config/server";
             </li>
         </ul>
     </nav>
-    <button class="theme-toggle" aria-label="Toggle Dark Mode"></button>
+    <button class="theme-toggle" aria-label="Toggle Dark Mode" transition:persist></button>
 </div>
 
 <style>
 /* NAVIGATION */
+
 .nav__list {
     display: flex;
     flex-wrap: wrap;
@@ -57,33 +58,42 @@ import { base } from "astro:config/server";
 .nav__link--samples:hover {
     font-family: var(--font-tertiary);
 }
-
 </style>
 
-<script>
-  const toggleBtn = document.querySelector(".theme-toggle");
+<script transition:persist>
   const root = document.documentElement;
+  let toggleBtn;
 
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    root.classList.add("dark");
-  } else {
-    root.classList.remove("dark");
+  function initTheme() {
+    toggleBtn = document.querySelector(".theme-toggle"); // re-query button each time
+    if (!toggleBtn) return;
+
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+    updateIcon();
+
+    toggleBtn.addEventListener("click", toggleTheme);
   }
 
-  function updateIcon() {
-    toggleBtn.textContent = root.classList.contains("dark") ? "light" : "dark";
-  }
-
-  toggleBtn.addEventListener("click", () => {
+  function toggleTheme() {
     root.classList.toggle("dark");
     localStorage.setItem(
       "theme",
       root.classList.contains("dark") ? "dark" : "light"
     );
     updateIcon();
-  });
+  }
 
-  updateIcon();
+  function updateIcon() {
+    if (!toggleBtn) return;
+    toggleBtn.textContent = root.classList.contains("dark") ? "light" : "dark";
+  }
+
+  initTheme();
+  document.addEventListener("astro:after-swap", initTheme);
 </script>
 
