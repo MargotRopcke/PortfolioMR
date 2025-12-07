@@ -1,11 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
+const workCollections = await getCollection("work");
 const { work } = Astro.props;
 ---
 
 <article>
-  <a href={`/work/${work.id}/`} class="work-link">
+  <a href={`/portfolio/work/${work.id}/`} class="work-link">
     <div class="image-wrapper">
       <Image
         src={work.data.image}
