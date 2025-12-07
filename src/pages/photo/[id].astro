@@ -23,6 +23,7 @@ const { Content } = await render(photo);
         <h1 class="photo__title">{photo.data.title}</h1>
         <div class="photo__image">      
        <Image
+       transition:animate="slide"
   src={photo.data.image}
   alt={photo.data.title}
   class="photo__images"
