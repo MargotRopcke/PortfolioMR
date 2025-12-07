@@ -122,8 +122,11 @@ html.dark {
 
 .photo__title,
 .work__title {
-    font-family: var(--font-primary);
-    color: var(--color-blue);
+        font-family: var(--font-primary);
+            color: var(--color-blue);
+            font-size: clamp(1rem, 5vw + 0.5rem, 4rem);
+            text-align: center;
+            margin: var(--sp-2xl) 0;
 }
 
 /* MEDIA QUERIES */

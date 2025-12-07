@@ -1,5 +1,5 @@
 ---
-import Base from "../../layouts/Base.astro";
+import Detail from "../../layouts/Detail.astro";
 
 import { render } from "astro:content";
 import { getCollection } from "astro:content";
@@ -16,11 +16,11 @@ const { photo } = Astro.props;
 const { Content } = await render(photo);
 ---
 
-<Base>
+<Detail>
     <section class="photo">
         <h1 class="photo__title">{photo.data.title}</h1>
         <div class="photo__content">
             <Content />
         </div>
     </section>
-</Base>
+</Detail>
