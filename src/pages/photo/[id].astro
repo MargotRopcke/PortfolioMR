@@ -20,17 +20,45 @@ const { Content } = await render(photo);
 <Detail>
     <section class="photo">
         <h1 class="photo__title">{photo.data.title}</h1>
-        <div class="photo__image">
-                     <Image
+        <div class="photo__image">      
+            <Image
         src={photo.data.image}
         alt="workpic"
         width="200"
         class="photo__images"
       />
                 </div>
+                <a href="/portfolio/#photography" class="back-button">← Go Back</a>   
         <p class="photo__date">{photo.data.date}</p>
         <div class="photo__content">
             <Content />
         </div>
     </section>
 </Detail>
+
+<style>
+.photo {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+     .back-button {
+        font-family: var(--font-secondary);
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        margin-bottom: var(--sp-m);
+        background-color: var(--color-blue);
+        color: var(--main-color);
+        text-decoration: none;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+        background-color: var(--color-red);
+        transform: translateX(-4px);
+    }
+</style>

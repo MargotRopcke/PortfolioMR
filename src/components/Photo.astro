@@ -18,7 +18,7 @@ import PhotoCard from "./PhotoCard.astro";
             {
                 photoCollections.map((photo) => (
                     <li class="photo__item">
-                        <a href={`/portfolio/photo/${photo.id}/`} class="photo__link" />
+                        <a href class="photo__link"={`/portfolio/photo/${photo.id}/`}/>
                         <PhotoCard {photo} />
                     </li>
                 ))
@@ -32,21 +32,14 @@ import PhotoCard from "./PhotoCard.astro";
     }
 
     .photo__link {
-         text-decoration: none;
+
     }
 
     .photo__item {
-         text-decoration: none;
-      border: 2px solid var(--color-orange);
-      border-radius: 1rem;
-      margin-bottom: var(--sp-s);
+
     }
 
     .photo__item:hover {
-         text-decoration: none;
-         background-color: var(--color-orange);
-      border: 2px solid var(--color-orange);
-      border-radius: 1rem;
-      margin-bottom: var(--sp-s);
+ 
     }
 </style>
