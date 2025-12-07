@@ -1,6 +1,6 @@
 ---
 name: Visual Design
-image: img/coffee.png
+image: img/coffee1.png
 ---
 
 Opdracht visual
