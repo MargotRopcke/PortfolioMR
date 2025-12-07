@@ -8,6 +8,9 @@ import Social from "./Social.astro";
 <div class="footer__container">
     <footer>
         <h2 class="footer__title">Let's connect.</h2>
+        <p class="footer__cta">
+            Always ready to help you take the next step.
+        </p>
         <div class="footer__list">
         <Social />
         </div>
@@ -16,10 +19,18 @@ import Social from "./Social.astro";
 
 <style>
 /* FOOTER */
+
+.footer__cta {
+    font-family: var(--font-secondary);
+    font-size: var(--fs-2);
+    margin-bottom: var(--sp-xs);
+       padding-left: 3rem;
+}
+
 .footer__container {
     background-color: var(--main-color);
     color: var(--color-red);
-    padding: var(--sp-s) 0;
+    padding: var(--sp-3xs) 0 var(--sp-s) 0;
     width: 100%;
 }
 
@@ -31,7 +42,7 @@ import Social from "./Social.astro";
 
 .footer__title {
     font-family: var(--font-primary);
-    margin-bottom: var(--sp-m);
+    margin-bottom: var(--sp-xs);
     font-size: clamp(2.5rem, 5vw + 1rem, 8rem);
     text-align: start;
     padding-left: 3rem;
