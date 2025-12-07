@@ -18,7 +18,7 @@ const skills = await getEntry("about", "skills");
             compelling digital experiences that people actually enjoy using.<br> I’m
             a fast learner, a reliable teammate, and a professional who gets
             things done — all while keeping a dash of wit and creativity in my
-            work. Whether it’s crafting clean, user-friendly interfaces or
+            work. <br>Whether it’s crafting clean, user-friendly interfaces or
             diving into code to bring designs to life, I tackle challenges with
             curiosity and precision.<br> When I’m not designing or programming, you
             might catch me trying out new trends, experimenting with my own
@@ -94,7 +94,7 @@ const skills = await getEntry("about", "skills");
 .intro__title {
     font-family: var(--font-primary);
     color: var(--main-color);
-    font-size: clamp(2rem, 5vw + 1rem, 6rem);
+    font-size: var(--fs-5);
     text-align: center;
     margin: var(--sp-3xs) 0;
 }
@@ -179,5 +179,45 @@ const skills = await getEntry("about", "skills");
     padding-left: 3rem;
 }
 
+.comp {
+    --rotate: -6deg;
+    transform: rotate(var(--rotate));
+    animation: floatComp 3s ease-in-out infinite;
+}
 
+.palette {
+    --rotate: 5deg;
+    transform: rotate(var(--rotate));
+    animation: floatPalette 3.5s ease-in-out infinite;
+}
+
+.lightbulb {
+    --rotate: -4deg;
+    transform: rotate(var(--rotate));
+    animation: floatLightbulb 4s ease-in-out infinite;
+}
+
+@keyframes floatComp {
+    0% { transform: translate(0, 0) rotate(var(--rotate)); }
+    25% { transform: translate(10px, -10px) rotate(var(--rotate)); }
+    50% { transform: translate(-8px, -5px) rotate(var(--rotate)); }
+    75% { transform: translate(5px, 8px) rotate(var(--rotate)); }
+    100% { transform: translate(0, 0) rotate(var(--rotate)); }
+}
+
+@keyframes floatPalette {
+    0% { transform: translate(0, 0) rotate(var(--rotate)); }
+    25% { transform: translate(0, -12px) rotate(var(--rotate)); }
+    50% { transform: translate(0, -8px) rotate(var(--rotate)); }
+    75% { transform: translate(0, 10px) rotate(var(--rotate)); }
+    100% { transform: translate(0, 0) rotate(var(--rotate)); }
+}
+
+@keyframes floatLightbulb {
+    0% { transform: translate(0, 0) rotate(var(--rotate)); }
+    25% { transform: translate(-10px, 8px) rotate(var(--rotate)); }
+    50% { transform: translate(12px, 5px) rotate(var(--rotate)); }
+    75% { transform: translate(-5px, -8px) rotate(var(--rotate)); }
+    100% { transform: translate(0, 0) rotate(var(--rotate)); }
+}
 </style>

@@ -10,20 +10,18 @@ import PhotoCard from "./PhotoCard.astro";
         <h2><span>Photography</span></h2>
         <p>
             My photography captures the beauty and complexity of the world
-            around us, offering unique perspectives and moments frozen in time.
+            around us, offering unique perspectives and moments frozen in time. <br><b>Click one to see more!</b>
         </p>
     </header>
 
-    <div class="photos">
-        <ul class="photos__list">
+        <ol class="photos__list">
             {
                 photoCollections.map((photo) => (
                     <li class="photo__item">
-                        <a href={`/photo/${photo.id}`} class="photo__link" />
+                        <a href class="photo__link"={`/portfolio/photo/${photo.id}/`}/>
                         <PhotoCard {photo} />
                     </li>
                 ))
             }
-        </ul>
-    </div>
+        </ol>
 </section>
