@@ -6,9 +6,10 @@ import { Image } from "astro:assets";
 import WorkCard from "./WorkCard.astro";
 ---
 
-<section class="exploration">
+<section class="exploration" aria-labelledby="work-title">
     <div class="works__card">
         <div class="works">
+            <div class="section-label"><span>02</span><span id="work-title">Selected work</span></div>
             <ul class="works__list">
                 {
                     workCollections.map((work) => (
@@ -20,9 +21,7 @@ import WorkCard from "./WorkCard.astro";
                 }
             </ul>
         </div>
-        <div class="title-wrapper">
-            <h2 class="title__exploration">Hover and discover my work!</h2>
-        </div>
+        <p class="work-note">A selection of recent experiments, interfaces and visual stories.</p>
     </div>
 </section>
 
@@ -30,13 +29,13 @@ import WorkCard from "./WorkCard.astro";
 /* EXPLORATION */
 .exploration {
     background-color: var(--color-black);
-    padding: var(--sp-l);
+    color: var(--main-color);
+    padding: clamp(3rem, 7vw, 7rem) clamp(1.25rem, 6vw, 6rem);
 }
 
 .works__card {
     display: grid;
-    grid-template-columns: 2fr auto; 
-    gap: var(--sp-l);
+    grid-template-columns: 1fr;
     align-items: stretch; 
 }
 
@@ -45,12 +44,11 @@ import WorkCard from "./WorkCard.astro";
     grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
     grid-auto-rows: 1fr; 
     gap: var(--sp-m);
-    padding: var(--sp-s) 0 var(--sp-xl);
+    padding: 3rem 0 1rem;
     list-style: none;
 }
 
 .works__item {
-    border-radius: 1rem;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -68,19 +66,7 @@ import WorkCard from "./WorkCard.astro";
     border-radius: 1rem;
 }
 
-.title-wrapper {
-    display: flex;
-    align-items: flex-start; 
-    justify-content: center;
-}
-
-.title__exploration {
-    font-size: clamp(1.5rem, 5vw, 3rem);
-    font-family: var(--font-primary);
-    color: var(--main-color);
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    white-space: nowrap;
-    margin-top: 2rem;
-}
+.section-label { color: var(--color-accent); display: flex; font: .65rem var(--font-mono); justify-content: space-between; letter-spacing: .08em; text-transform: uppercase; }
+.work-note { color: rgba(244,243,238,.65); font-size: .9rem; margin: 1rem 0 0; max-width: 28ch; }
+@media (min-width: 64rem) { .works__list { grid-template-columns: repeat(3, 1fr); } }
 </style>

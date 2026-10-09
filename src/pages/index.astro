@@ -5,373 +5,53 @@ import "../styles/global.css";
 import me from "../assets/profilepic.png";
 ---
 
-<Base title="Home Page">
-  <section class="header">
-    <h1 class="home__title">Hi, I'm Margot</h1>
-	   <p class="home__intro"> a designer, programmer, and UI/UX enthusiast
-            who thrives at the intersection of creativity and functionality.</p>
-    <div class="shape__header">
-      <div class="hero__button-container">
-        <a href="#creations" class="hero__button">Explore my work</a>
+<Base pageTitle=" / Home">
+  <section class="hero">
+    <div class="hero__meta"><span>Portfolio / 2025</span><span>Designer + developer</span></div>
+    <div class="hero__grid">
+      <h1 class="home__title">Margot<br /><em>Ropcke</em><span>.</span></h1>
+      <div class="hero__aside">
+        <img src={me.src} alt="Picture of Margot" class="profilepic" />
+        <p class="home__intro">I design clear, expressive digital experiences where visual craft meets thoughtful technology.</p>
+        <a href="#creations" class="hero__button"><span>Scroll to explore</span><b>↓</b></a>
       </div>
-      <img
-        src={me.src}
-        alt="Picture of Margot"
-        width="200"
-        class="profilepic"
-      />
     </div>
-    <div class="shape"></div>
+    <div class="hero__line"><span>Based in Belgium</span><span>Available for select projects</span></div>
   </section>
 
-  <section class="specialties__list">
-    <h1 class="skills">My skills</h1>
-    <div class="specialties">
-      <h2><a href="/portfolio/about" class="s1">Visual</a></h2>
-      <h2><a href="/portfolio/about" class="s2">UX/UI</a></h2>
-      <h2><a href="/portfolio/about" class="s3">development</a></h2>
+  <section class="specialties" aria-labelledby="skills-title">
+    <div class="section-label"><span>01</span><span id="skills-title">What I do</span></div>
+    <div class="specialties__list">
+      <a href="/portfolio/about" class="specialty"><span>01</span><strong>Visual<br />design</strong><b>↗</b></a>
+      <a href="/portfolio/about" class="specialty"><span>02</span><strong>UX / UI<br />systems</strong><b>↗</b></a>
+      <a href="/portfolio/about" class="specialty"><span>03</span><strong>Front-end<br />development</strong><b>↗</b></a>
     </div>
   </section>
 
-  <section id="samples" class="creations">
-    <section class="creations" id="creations">
-      <Work />
-    </section>
-  </section>
+  <section id="creations" class="creations"><Work /></section>
 </Base>
 
 <style>
-/* HERO */
- .home__intro {
-	display: flex;
-	justify-content: center;
-	text-align: center;
-  font-family: var(--font-secondary);
-  font-size: var(--fs-0);
-  line-height: 1.6;
-  max-width: 40ch;
-  margin: 0 auto var(--sp-m) auto;
-  padding-bottom:0.5rem;
-  color: var(--color-black);
-}
-
-
-.arrow {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    pointer-events: none;
-    opacity: 0.6;
-    transform: translate(-50%, -50%) rotate(45deg);
-    border-top: 2px solid var(--color-blue);
-    border-right: 2px solid var(--color-blue);
-    border-radius: 2px;
-}
-
-.header {
-    font-family: var(--font-primary);
-}
-
-.hero__button-container {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.hero__button-container:hover .hero__button {
-    background-color: var(--color-blue);
-    color: var(--main-color);
-    transform: rotate(-6deg);
-}
-
-.hero__button {
-    border-radius: var(--br-l);
-    text-decoration: none;
-    background-color: var(--main-color);
-    color: var(--color-black);
-    padding: var(--hero-btn-vertical) var(--hero-btn-horizontal);
-    font-size: var(--hero-btn-font);
-    z-index: 1;
-}
-
-.home__title {
-    color: var(--color-blue);
-    font-size: clamp(2.5rem, 5vw + 1rem, 8rem);
-    text-align: center;
-	padding-top: 0.8rem;
-    margin: var(--sp-xl) 0;
-    animation: popFloat 3s ease-out infinite;
-}
-
-@keyframes popFloat {
-    0% {
-        opacity: 0;
-        transform: scale(0.8) translateY(10px);
-    }
-
-    20% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-
-    60% {
-        transform: scale(1.03) translateY(-5px);
-    }
-
-    100% {
-        transform: scale(1) translateY(0);
-    }
-}
-
-/* SHAPE HEADER */
-.profilepic {
-    z-index: 1;
-}
-
-.shape__header {
-    background-color: var(--color-black);
-    border-radius: 25rem;
-    padding: var(--sp-2xl) var(--sp-l);
-    margin: 1rem auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: var(--sp-2xl);
-    width: 90%;
-    max-width: 1200px;
-}
-
-/* SPECIALTIES */
-.specialties {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--sp-l, 20px);
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: var(--sp-2xl, 50px) 0;
-    padding-top: 1rem;
-    padding-bottom: 3rem;
-}
-
-.skills {
-    font-family: var(--font-primary);
-    color: var(--color-black);
-    font-size: var(--sp-xl);
-    text-align: center;
-    margin: var(--sp-2xl) 0;
-}
-
-.s1,
-.s2,
-.s3 {
-    text-decoration: none;
-    font-size: 2rem;
-    color: var(--main-color);
-    padding: calc(var(--sp-xs, 5px) * 2) calc(var(--sp-m, 10px) * 2);
-    border-radius: var(--br-l, 10px);
-    display: inline-block;
-    transition: transform 0.3s ease;
-}
-
-.s1:hover {
-    animation-play-state: paused;
-    color: var(--color-pink);
-    background-color: var(--main-color);
-}
-
-.s2:hover {
-    animation-play-state: paused;
-    color: var(--color-orange);
-    background-color: var(--main-color);
-}
-
-.s3:hover {
-    animation-play-state: paused;
-    color: var(--color-green);
-    background-color: var(--main-color);
-}
-
-.s1 {
-    --rotate: -6deg;
-    transform: rotate(var(--rotate));
-    font-family: var(--font-secondary, Arial);
-    background-color: var(--color-pink, #ff69b4);
-    border: 1px solid var(--color-pink, #ff69b4);
-    animation: float1 3s ease-in-out infinite;
-}
-
-.s2 {
-    --rotate: 5deg;
-    transform: rotate(var(--rotate));
-    font-family: var(--font-tertiary, Arial);
-    background-color: var(--color-orange, #ffa500);
-    border: 1px solid var(--color-orange, #ffa500);
-    animation: float2 3.5s ease-in-out infinite;
-}
-
-.s3 {
-    --rotate: -4deg;
-    transform: rotate(var(--rotate));
-    font-family: var(--font-quaternary, Arial);
-    letter-spacing: 1.5px;
-    background-color: var(--color-green, #32cd32);
-    border: 1px solid var(--color-green, #32cd32);
-    animation: float3 4s ease-in-out infinite;
-}
-
-@keyframes float1 {
-    0% { transform: translate(0, 0) rotate(var(--rotate)); }
-    25% { transform: translate(10px, -10px) rotate(var(--rotate)); }
-    50% { transform: translate(-8px, -5px) rotate(var(--rotate)); }
-    75% { transform: translate(5px, 8px) rotate(var(--rotate)); }
-    100% { transform: translate(0, 0) rotate(var(--rotate)); }
-}
-
-@keyframes float2 {
-    0% { transform: translate(0, 0) rotate(var(--rotate)); }
-    25% { transform: translate(0, -12px) rotate(var(--rotate)); }
-    50% { transform: translate(0, -8px) rotate(var(--rotate)); }
-    75% { transform: translate(0, 10px) rotate(var(--rotate)); }
-    100% { transform: translate(0, 0) rotate(var(--rotate)); }
-}
-
-@keyframes float3 {
-    0% { transform: translate(0, 0) rotate(var(--rotate)); }
-    25% { transform: translate(-10px, 8px) rotate(var(--rotate)); }
-    50% { transform: translate(12px, 5px) rotate(var(--rotate)); }
-    75% { transform: translate(-5px, -8px) rotate(var(--rotate)); }
-    100% { transform: translate(0, 0) rotate(var(--rotate)); }
-}
+  .hero { padding: clamp(2rem, 7vw, 7rem) clamp(1.25rem, 6vw, 6rem) 2rem; }
+  .hero__meta, .hero__line, .section-label { display: flex; justify-content: space-between; color: var(--color-black); font: .65rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+  .hero__meta { border-bottom: 1px solid var(--color-black); padding-bottom: .75rem; }
+  .hero__grid { align-items: end; display: grid; gap: 3rem; grid-template-columns: minmax(0, 1.5fr) minmax(15rem, .65fr); padding: clamp(3rem, 10vw, 9rem) 0 clamp(2rem, 5vw, 5rem); }
+  .home__title { color: var(--color-black); font: 400 clamp(5rem, 16vw, 15rem)/.78 var(--font-display); letter-spacing: -.035em; margin: 0; text-transform: uppercase; }
+  .home__title em { color: var(--color-accent); font-style: normal; }
+  .home__title span { color: var(--color-accent); }
+  .hero__aside { display: grid; gap: 1.5rem; max-width: 20rem; }
+  .profilepic { aspect-ratio: 1; border-radius: 50%; filter: grayscale(1); object-fit: cover; width: clamp(8rem, 16vw, 13rem); }
+  .home__intro { font-size: clamp(1rem, 1.5vw, 1.25rem); line-height: 1.35; margin: 0; }
+  .hero__button { align-items: center; border-bottom: 1px solid var(--color-black); display: flex; font: .7rem var(--font-mono); justify-content: space-between; letter-spacing: .08em; padding: .75rem 0; text-decoration: none; text-transform: uppercase; }
+  .hero__button b { background: var(--color-accent); border-radius: 50%; display: grid; font-size: 1.1rem; height: 2.2rem; place-items: center; width: 2.2rem; }
+  .hero__line { border-top: 1px solid var(--color-black); padding-top: .75rem; }
+  .specialties { background: var(--color-black); color: var(--main-color); padding: clamp(3rem, 7vw, 7rem) clamp(1.25rem, 6vw, 6rem); }
+  .section-label { color: var(--color-accent); }
+  .specialties__list { margin-top: clamp(3rem, 7vw, 7rem); }
+  .specialty { align-items: center; border-top: 1px solid rgba(244,243,238,.35); color: var(--main-color); display: grid; gap: 1rem; grid-template-columns: 4rem 1fr auto; padding: 1.5rem 0; text-decoration: none; transition: color .25s ease, padding .25s ease; }
+  .specialty:last-child { border-bottom: 1px solid rgba(244,243,238,.35); }
+  .specialty span, .specialty b { color: var(--color-accent); font: .68rem var(--font-mono); }
+  .specialty strong { font: 400 clamp(2.4rem, 6vw, 6rem)/.82 var(--font-display); letter-spacing: -.025em; text-transform: uppercase; }
+  .specialty:hover { color: var(--color-accent); padding-left: 1rem; }
+  @media (max-width: 46rem) { .hero__grid { grid-template-columns: 1fr; } .hero__aside { max-width: 100%; } .profilepic { width: 8rem; } .hero__meta span:last-child, .hero__line span:last-child { text-align: right; } }
 </style>
-
-<script type="module">
-import gsap from "https://cdn.skypack.dev/gsap@3.13.0";
-import { SplitText } from "https://cdn.skypack.dev/gsap@3.13.0/SplitText";
-
-const skillsHeading = document.querySelector(".home__title");
-const split = new SplitText(skillsHeading, { type: "chars, words" });
-gsap.from(split.chars, {
-  opacity: 0,
-  y: 50,
-  rotationX: -90,
-  duration: 1,
-  stagger: 0.05,
-  ease: "back.out(1.7)",
-});
-
-const container = document.querySelector('.shape__header');
-const button = container.querySelector('.hero__button');
-const numArrows = 40;
-const arrows = [];
-const mouse = { x: 0, y: 0, active: false };
-
-container.style.position = 'relative';
-container.addEventListener('mouseenter', () => { mouse.active = true; });
-container.addEventListener('mouseleave', () => { mouse.active = false; });
-container.addEventListener('mousemove', (e) => {
-  const rect = container.getBoundingClientRect();
-  mouse.x = e.clientX - rect.left;
-  mouse.y = e.clientY - rect.top;
-});
-
-function getRandomPosition(minDistance) {
-  const width = container.offsetWidth;
-  const height = container.offsetHeight;
-
-  const marginX = width * 0.15; 
-  const marginY = height * 0.2;
-
-  let safe, x, y;
-  do {
-    safe = true;
-    x = marginX + Math.random() * (width - 2 * marginX);
-    y = marginY + Math.random() * (height - 2 * marginY);
-
-    for (const a of arrows) {
-      const dx = x - a.startX;
-      const dy = y - a.startY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < minDistance) { safe = false; break; }
-    }
-  } while (!safe);
-  return { x, y };
-}
-
-for (let i = 0; i < numArrows; i++) {
-  const arrow = document.createElement('div');
-  arrow.className = 'arrow';
-  arrow.style.position = 'absolute';
-  arrow.style.pointerEvents = 'none';
-  arrow.style.opacity = '0.6';
-  arrow.style.width = '20px';
-  arrow.style.height = '20px';
-  arrow.style.transformOrigin = '0% 50%';
-
-  const initialRotation = Math.random() * 360;
-  arrow.style.transform = `rotate(${initialRotation}deg)`;
-  arrow.style.borderTop = '5px solid #95CEFF';
-  arrow.style.borderRight = '5px solid #95CEFF';
-  arrow.style.zIndex = '0';
-
-  const { x, y } = getRandomPosition(30);
-  arrow.style.left = `${x}px`;
-  arrow.style.top = `${y}px`;
-
-  container.appendChild(arrow);
-  arrows.push({ el: arrow, x, y, startX: x, startY: y, speed: 0.1 + Math.random() * 0.1, initialRotation });
-}
-
-function animate() {
-  const btnRect = button.getBoundingClientRect();
-  const containerRect = container.getBoundingClientRect();
-  const buttonCenterX = btnRect.left - containerRect.left + btnRect.width / 2;
-  const buttonCenterY = btnRect.top - containerRect.top + btnRect.height / 2;
-
-  arrows.forEach((arrow) => {
-    if (mouse.active) {
-      const dxPos = mouse.x - arrow.x;
-      const dyPos = mouse.y - arrow.y;
-      arrow.x += dxPos * arrow.speed;
-      arrow.y += dyPos * arrow.speed;
-
-      const dxRot = buttonCenterX - arrow.x;
-      const dyRot = buttonCenterY - arrow.y;
-      const angle = Math.atan2(dyRot, dxRot) * (180 / Math.PI);
-
-      arrow.el.style.transform = `rotate(${angle}deg)`;
-      arrow.el.style.borderTop = '5px solid #FF6272';
-      arrow.el.style.borderRight = '5px solid #FF6272';
-      arrow.el.style.zIndex = '10';
-    } else {
-      const dx = arrow.startX - arrow.x;
-      const dy = arrow.startY - arrow.y;
-      arrow.x += dx * arrow.speed;
-      arrow.y += dy * arrow.speed;
-
-      arrow.el.style.transform = `rotate(${arrow.initialRotation}deg)`;
-      arrow.el.style.borderTop = '5px solid #95CEFF';
-      arrow.el.style.borderRight = '5px solid #95CEFF';
-      arrow.el.style.zIndex = '0';
-    }
-
-    arrow.el.style.left = `${arrow.x}px`;
-    arrow.el.style.top = `${arrow.y}px`;
-  });
-
-  requestAnimationFrame(animate);
-}
-
-animate();
-
-window.addEventListener('resize', () => {
-  arrows.forEach(a => {
-    const { x, y } = getRandomPosition(30);
-    a.startX = x;
-    a.startY = y;
-  });
-});
-</script>
-
-
-

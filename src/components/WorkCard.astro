@@ -14,7 +14,7 @@ const { work } = Astro.props;
         width="200"
         class="work__images"
       />
-      <div class="overlay"></div>
+      <div class="overlay"><span>View project ↗</span></div>
     </div>
   </a>
 </article>
@@ -25,40 +25,37 @@ const { work } = Astro.props;
   position: relative;
   display: block;
   width: 100%;
-  border-radius: 1rem;
+  background: var(--main-color);
   overflow: hidden;
 }
 
 .work__images {
   display: block;
   width: 100%;
-  height: auto;
+  aspect-ratio: 4 / 3;
+  height: 100%;
   object-fit: cover;
-  filter: blur(5px); 
-  transition: opacity 0.3s ease;
+  filter: grayscale(1);
+  transition: filter 0.35s ease, transform 0.35s ease;
 }
 
 .overlay {
-  display: none;
+  align-items: flex-end;
+  display: flex;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--main-color);
+  background: linear-gradient(transparent 45%, rgba(23,23,23,.8));
+  color: var(--main-color);
+  font: .65rem var(--font-mono);
+  justify-content: flex-end;
+  padding: 1rem;
   transition: opacity 0.3s ease;
   z-index: 2;
 }
 
-@media (min-width: 64rem) {
-  .overlay {
-    display: block;
-    opacity: 1;
-  }
-
-  .image-wrapper:hover .overlay {
-    opacity: 0;
-  }
-}
+.image-wrapper:hover .work__images { filter: grayscale(0); transform: scale(1.03); }
 
 </style>
