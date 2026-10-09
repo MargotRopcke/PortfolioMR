@@ -6,52 +6,187 @@ import me from "../assets/profilepic.png";
 ---
 
 <Base pageTitle=" / Home">
-  <section class="hero">
-    <div class="hero__meta"><span>Portfolio / 2025</span><span>Designer + developer</span></div>
-    <div class="hero__grid">
-      <h1 class="home__title">Margot<br /><em>Ropcke</em><span>.</span></h1>
-      <div class="hero__aside">
-        <img src={me.src} alt="Picture of Margot" class="profilepic" />
-        <p class="home__intro">I design clear, expressive digital experiences where visual craft meets thoughtful technology.</p>
-        <a href="#creations" class="hero__button"><span>Scroll to explore</span><b>↓</b></a>
-      </div>
-    </div>
-    <div class="hero__line"><span>Based in Belgium</span><span>Available for select projects</span></div>
-  </section>
+    <section class="hero">
+        <div class="hero__meta">
+            <span>Portfolio / 2025</span><span>Designer + developer</span>
+        </div>
+        <div class="hero__grid">
+            <h1 class="home__title">
+                Margot<br /><em>Ropcke</em><span>.</span>
+            </h1>
+            <div class="hero__aside">
+                <img src={me.src} alt="Picture of Margot" class="profilepic" />
+                <p class="home__intro">
+                    I design clear, expressive digital experiences where visual
+                    craft meets thoughtful technology.
+                </p>
+                <a href="#creations" class="hero__button"
+                    ><span>Scroll to explore</span><b>↓</b></a
+                >
+            </div>
+        </div>
+        <div class="hero__line">
+            <span>Based in Belgium</span><span
+                >Available for select projects</span>
+        </div>
+    </section>
 
-  <section class="specialties" aria-labelledby="skills-title">
-    <div class="section-label"><span>01</span><span id="skills-title">What I do</span></div>
-    <div class="specialties__list">
-      <a href="/portfolio/about" class="specialty"><span>01</span><strong>Visual<br />design</strong><b>↗</b></a>
-      <a href="/portfolio/about" class="specialty"><span>02</span><strong>UX / UI<br />systems</strong><b>↗</b></a>
-      <a href="/portfolio/about" class="specialty"><span>03</span><strong>Front-end<br />development</strong><b>↗</b></a>
-    </div>
-  </section>
+    <section class="specialties" aria-labelledby="skills-title">
+        <div class="section-label">
+            <span>01</span><span id="skills-title">What I do</span>
+        </div>
+        <div class="specialties__list">
+            <a href="/portfolio/about" class="specialty"
+                ><span>01</span><strong>Visual<br />design</strong><b>↗</b></a
+            >
+            <a href="/portfolio/about" class="specialty"
+                ><span>02</span><strong>UX / UI<br />systems</strong><b>↗</b></a
+            >
+            <a href="/portfolio/about" class="specialty"
+                ><span>03</span><strong>Front-end<br />development</strong><b
+                    >↗</b
+                ></a
+            >
+        </div>
+    </section>
 
-  <section id="creations" class="creations"><Work /></section>
+    <section id="creations" class="creations"><Work /></section>
 </Base>
 
 <style>
-  .hero { padding: clamp(2rem, 7vw, 7rem) clamp(1.25rem, 6vw, 6rem) 2rem; }
-  .hero__meta, .hero__line, .section-label { display: flex; justify-content: space-between; color: var(--color-black); font: .65rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
-  .hero__meta { border-bottom: 1px solid var(--color-black); padding-bottom: .75rem; }
-  .hero__grid { align-items: end; display: grid; gap: 3rem; grid-template-columns: minmax(0, 1.5fr) minmax(15rem, .65fr); padding: clamp(3rem, 10vw, 9rem) 0 clamp(2rem, 5vw, 5rem); }
-  .home__title { color: var(--color-black); font: 400 clamp(5rem, 16vw, 15rem)/.78 var(--font-display); letter-spacing: -.035em; margin: 0; text-transform: uppercase; }
-  .home__title em { color: var(--color-accent); font-style: normal; }
-  .home__title span { color: var(--color-accent); }
-  .hero__aside { display: grid; gap: 1.5rem; max-width: 20rem; }
-  .profilepic { aspect-ratio: 1; border-radius: 50%; filter: grayscale(1); object-fit: cover; width: clamp(8rem, 16vw, 13rem); }
-  .home__intro { font-size: clamp(1rem, 1.5vw, 1.25rem); line-height: 1.35; margin: 0; }
-  .hero__button { align-items: center; border-bottom: 1px solid var(--color-black); display: flex; font: .7rem var(--font-mono); justify-content: space-between; letter-spacing: .08em; padding: .75rem 0; text-decoration: none; text-transform: uppercase; }
-  .hero__button b { background: var(--color-accent); border-radius: 50%; display: grid; font-size: 1.1rem; height: 2.2rem; place-items: center; width: 2.2rem; }
-  .hero__line { border-top: 1px solid var(--color-black); padding-top: .75rem; }
-  .specialties { background: var(--color-black); color: var(--main-color); padding: clamp(3rem, 7vw, 7rem) clamp(1.25rem, 6vw, 6rem); }
-  .section-label { color: var(--color-accent); }
-  .specialties__list { margin-top: clamp(3rem, 7vw, 7rem); }
-  .specialty { align-items: center; border-top: 1px solid rgba(244,243,238,.35); color: var(--main-color); display: grid; gap: 1rem; grid-template-columns: 4rem 1fr auto; padding: 1.5rem 0; text-decoration: none; transition: color .25s ease, padding .25s ease; }
-  .specialty:last-child { border-bottom: 1px solid rgba(244,243,238,.35); }
-  .specialty span, .specialty b { color: var(--color-accent); font: .68rem var(--font-mono); }
-  .specialty strong { font: 400 clamp(2.4rem, 6vw, 6rem)/.82 var(--font-display); letter-spacing: -.025em; text-transform: uppercase; }
-  .specialty:hover { color: var(--color-accent); padding-left: 1rem; }
-  @media (max-width: 46rem) { .hero__grid { grid-template-columns: 1fr; } .hero__aside { max-width: 100%; } .profilepic { width: 8rem; } .hero__meta span:last-child, .hero__line span:last-child { text-align: right; } }
+    .hero {
+        padding: clamp(2rem, 7vw, 7rem) clamp(1.25rem, 6vw, 6rem) 2rem;
+    }
+    .hero__meta,
+    .hero__line,
+    .section-label {
+        display: flex;
+        justify-content: space-between;
+        color: var(--color-black);
+        font: 0.65rem var(--font-mono);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+    .hero__meta {
+        border-bottom: 1px solid var(--color-black);
+        padding-bottom: 0.75rem;
+    }
+    .hero__grid {
+        align-items: end;
+        display: grid;
+        gap: 3rem;
+        grid-template-columns: minmax(0, 1.5fr) minmax(15rem, 0.65fr);
+        padding: clamp(3rem, 10vw, 9rem) 0 clamp(2rem, 5vw, 5rem);
+    }
+    .home__title {
+        color: var(--color-black);
+        font: 400 clamp(5rem, 16vw, 15rem)/0.78 var(--font-display);
+        letter-spacing: -0.035em;
+        margin: 0;
+        text-transform: uppercase;
+    }
+    .home__title em {
+        color: var(--color-accent);
+        font-style: normal;
+    }
+    .home__title span {
+        color: var(--color-accent);
+    }
+    .hero__aside {
+        display: grid;
+        gap: 1.5rem;
+        max-width: 20rem;
+    }
+    .profilepic {
+        aspect-ratio: 1;
+        border-radius: 50%;
+        filter: grayscale(1);
+        object-fit: cover;
+        width: clamp(8rem, 16vw, 13rem);
+    }
+    .home__intro {
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        line-height: 1.35;
+        margin: 0;
+    }
+    .hero__button {
+        align-items: center;
+        border-bottom: 1px solid var(--color-black);
+        display: flex;
+        font: 0.7rem var(--font-mono);
+        justify-content: space-between;
+        letter-spacing: 0.08em;
+        padding: 0.75rem 0;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+    .hero__button b {
+        background: var(--color-accent);
+        border-radius: 50%;
+        display: grid;
+        font-size: 1.1rem;
+        height: 2.2rem;
+        place-items: center;
+        width: 2.2rem;
+    }
+    .hero__line {
+        border-top: 1px solid var(--color-black);
+        padding-top: 0.75rem;
+    }
+    .specialties {
+        background: var(--color-black);
+        color: var(--main-color);
+        padding: clamp(3rem, 7vw, 7rem) clamp(1.25rem, 6vw, 6rem);
+    }
+    .section-label {
+        color: var(--color-accent);
+    }
+    .specialties__list {
+        margin-top: clamp(3rem, 7vw, 7rem);
+    }
+    .specialty {
+        align-items: center;
+        border-top: 1px solid rgba(244, 243, 238, 0.35);
+        color: var(--main-color);
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 4rem 1fr auto;
+        padding: 1.5rem 0;
+        text-decoration: none;
+        transition:
+            color 0.25s ease,
+            padding 0.25s ease;
+    }
+    .specialty:last-child {
+        border-bottom: 1px solid rgba(244, 243, 238, 0.35);
+    }
+    .specialty span,
+    .specialty b {
+        color: var(--color-accent);
+        font: 0.68rem var(--font-mono);
+    }
+    .specialty strong {
+        font: 400 clamp(2.4rem, 6vw, 6rem)/0.82 var(--font-display);
+        letter-spacing: -0.025em;
+        text-transform: uppercase;
+    }
+    .specialty:hover {
+        color: var(--color-accent);
+        padding-left: 1rem;
+    }
+    @media (max-width: 46rem) {
+        .hero__grid {
+            grid-template-columns: 1fr;
+        }
+        .hero__aside {
+            max-width: 100%;
+        }
+        .profilepic {
+            width: 8rem;
+        }
+        .hero__meta span:last-child,
+        .hero__line span:last-child {
+            text-align: right;
+        }
+    }
 </style>

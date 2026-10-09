@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ViewTransitions } from "astro:transitions";
 import "../styles/global.css";
 
 import Nav from "../components/Nav.astro";
@@ -20,7 +20,7 @@ const { pageTitle } = Astro.props;
             href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Mono:wght@400;500&display=swap"
             rel="stylesheet"
         />
-           <ViewTransitions />
+        <ViewTransitions />
         <title>Portfolio{pageTitle}</title>
     </head>
     <body>
@@ -34,8 +34,7 @@ const { pageTitle } = Astro.props;
 </html>
 
 <style>
-    body { background: transparent; }
+    body {
+        background: transparent;
+    }
 </style>
-
-
-

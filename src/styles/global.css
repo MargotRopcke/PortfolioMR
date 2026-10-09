@@ -173,5 +173,13 @@ a {
     color: inherit;
 }
 
-body { color: var(--color-black); font-family: var(--font-display); }
-main { max-width: 90rem; margin: 0 auto; width: 100%; }
+body {
+    color: var(--color-black);
+    font-family: var(--font-display);
+}
+
+main {
+    max-width: 90rem;
+    margin: 0 auto;
+    width: 100%;
+}
