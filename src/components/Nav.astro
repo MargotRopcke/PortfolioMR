@@ -180,7 +180,8 @@
         font: 0.65rem var(--font-mono);
     }
     .menu__link > span:nth-child(2) {
-        font: 400 clamp(3.5rem, 10vw, 10rem)/0.9 var(--font-display);
+        --menu-link-size: clamp(3.5rem, 10vw, 10rem);
+        font: 400 var(--menu-link-size)/0.9 var(--font-display);
         text-transform: uppercase;
         transition:
             color 0.25s ease,
@@ -194,8 +195,8 @@
     }
     .menu__link:hover > span:nth-child(2) {
         font-family: var(--font-mono);
-        font-size: clamp(1.5rem, 4vw, 4rem);
-        letter-spacing: 0.02em;
+        font-size: var(--menu-link-size);
+        letter-spacing: 0;
     }
     .menu-overlay__footer {
         color: rgba(244, 243, 238, 0.6);
