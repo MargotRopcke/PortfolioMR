@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ViewTransitions } from "astro:transitions";
 import "../styles/global.css";
 
 import Nav from "../components/Nav.astro";
@@ -14,14 +14,13 @@ const { pageTitle } = Astro.props;
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <link rel="stylesheet" href="https://use.typekit.net/cgq1cqk.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Arya:wght@400;700&family=Caveat:wght@400..700&family=Karantina:wght@300;400;700&family=League+Gothic&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Mono:wght@400;500&display=swap"
             rel="stylesheet"
         />
-           <ViewTransitions />
+        <ViewTransitions />
         <title>Portfolio{pageTitle}</title>
     </head>
     <body>
@@ -36,21 +35,6 @@ const { pageTitle } = Astro.props;
 
 <style>
     body {
-        background-image: repeating-linear-gradient(
-                to right,
-                black 2px,
-                transparent 2px 100px
-            ),
-            repeating-linear-gradient(
-                to bottom,
-                black 2px,
-                transparent 2px 100px
-            );
-        background-size: 100px 100px;
-        background-repeat: repeat;
-        background-color: transparent;
+        background: transparent;
     }
 </style>
-
-
-

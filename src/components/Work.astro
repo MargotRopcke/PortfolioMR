@@ -6,81 +6,90 @@ import { Image } from "astro:assets";
 import WorkCard from "./WorkCard.astro";
 ---
 
-<section class="exploration">
+<section class="exploration" aria-labelledby="work-title">
     <div class="works__card">
         <div class="works">
+            <div class="section-label">
+                <span>02</span><span id="work-title">Selected work</span>
+            </div>
             <ul class="works__list">
                 {
                     workCollections.map((work) => (
                         <li class="works__item">
-                            <a href={`/portfolio/work/${work.id}/`} class="work__link" />
+                            <a
+                                href={`/portfolioMR/work/${work.id}/`}
+                                class="work__link"
+                            />
                             <WorkCard {work} />
                         </li>
                     ))
                 }
             </ul>
         </div>
-        <div class="title-wrapper">
-            <h2 class="title__exploration">Hover and discover my work!</h2>
-        </div>
+        <p class="work-note">
+            A selection of recent experiments, interfaces and visual stories.
+        </p>
     </div>
 </section>
 
 <style>
-/* EXPLORATION */
-.exploration {
-    background-color: var(--color-black);
-    padding: var(--sp-l);
-}
+    /* EXPLORATION */
+    .exploration {
+        background-color: var(--color-black);
+        color: var(--main-color);
+        padding: clamp(3rem, 7vw, 7rem) clamp(1.25rem, 6vw, 6rem);
+    }
 
-.works__card {
-    display: grid;
-    grid-template-columns: 2fr auto; 
-    gap: var(--sp-l);
-    align-items: stretch; 
-}
+    .works__card {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: stretch;
+    }
 
-.works__list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-    grid-auto-rows: 1fr; 
-    gap: var(--sp-m);
-    padding: var(--sp-s) 0 var(--sp-xl);
-    list-style: none;
-}
+    .works__list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+        grid-auto-rows: 1fr;
+        gap: var(--sp-m);
+        padding: 3rem 0 1rem;
+        list-style: none;
+    }
 
-.works__item {
-    border-radius: 1rem;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    height: 100%; 
-}
+    .works__item {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
 
-.works__item > * {
-    flex-grow: 1; 
-}
+    .works__item > * {
+        flex-grow: 1;
+    }
 
-.work-card img {
-    width: 100%;
-    height: 200px; 
-    object-fit: cover;
-    border-radius: 1rem;
-}
+    .work-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 1rem;
+    }
 
-.title-wrapper {
-    display: flex;
-    align-items: flex-start; 
-    justify-content: center;
-}
-
-.title__exploration {
-    font-size: clamp(1.5rem, 5vw, 3rem);
-    font-family: var(--font-primary);
-    color: var(--main-color);
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    white-space: nowrap;
-    margin-top: 2rem;
-}
+    .section-label {
+        color: var(--color-accent);
+        display: flex;
+        font: 0.65rem var(--font-mono);
+        justify-content: space-between;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+    .work-note {
+        color: rgba(244, 243, 238, 0.65);
+        font-size: 0.9rem;
+        margin: 1rem 0 0;
+        max-width: 28ch;
+    }
+    @media (min-width: 64rem) {
+        .works__list {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
 </style>
