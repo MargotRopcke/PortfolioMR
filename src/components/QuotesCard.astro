@@ -2,9 +2,40 @@
 const { quote } = Astro.props;
 ---
 
-<article>
-    <a href={`/portfolio/quotes/${quote.id}`}></a>
-    <p>{quote.data.title}</p>
-        <p>{quote.data.description}</p>
-    <p>{quote.data.author}</p>
+<article class="quote-card">
+    <p class="quote-card__title">{quote.data.title}</p>
+    <p class="quote-card__description">{quote.data.description}</p>
+    <p class="quote-card__author">{quote.data.author}</p>
 </article>
+
+<style>
+    .quote-card {
+        display: grid;
+        gap: 0.55rem;
+    }
+
+    .quote-card__title,
+    .quote-card__description,
+    .quote-card__author {
+        margin: 0;
+    }
+
+    .quote-card__title {
+        font: 300 clamp(1.6rem, 3vw, 3rem)/1.1 var(--font-display);
+        letter-spacing: -0.06em;
+        text-transform: uppercase;
+    }
+
+    .quote-card__description {
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .quote-card__author {
+        color: rgba(255, 255, 255, 0.55);
+        font: 0.7rem var(--font-mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+</style>

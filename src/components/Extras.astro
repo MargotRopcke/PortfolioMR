@@ -6,7 +6,7 @@ import ExtrasCard from "./ExtrasCard.astro";
 ---
 
 <section class="container" id="extras">
-    <header>
+    <header class="extras-header">
         <h2><span>Free work</span></h2>
         <p>
             This work was entirely done in my free time, which encourages my own
@@ -25,9 +25,38 @@ import ExtrasCard from "./ExtrasCard.astro";
 </section>
 
 <style>
+    .extras-header {
+        border-top: 1px solid var(--color-divider);
+        display: grid;
+        gap: 0.75rem;
+        padding-top: 1rem;
+    }
+
+    .extras-header h2 {
+        color: var(--main-color);
+        font: 300 clamp(2.2rem, 5vw, 4rem)/0.9 var(--font-display);
+        letter-spacing: -0.07em;
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    .extras-header p {
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .extras-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
     .extra__item {
-         list-style: none;
-         color: #b0b0b0;
-        margin-bottom: var(--sp-m);
+        list-style: none;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 0.75rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--color-divider);
     }
 </style>

@@ -20,15 +20,18 @@ import Social from "./Social.astro";
     /* FOOTER */
 
     .footer__cta {
-        font-family: var(--font-secondary);
-        font-size: var(--fs-2);
+        color: rgba(255, 255, 255, 0.78);
+        font-family: var(--font-display);
+        font-size: clamp(1rem, 1.4vw, 1.4rem);
+        line-height: 1.6;
         margin-bottom: var(--sp-xs);
-        padding-left: 3rem;
+        padding-left: 0;
     }
 
     .footer__container {
-        background-color: var(--main-color);
-        color: var(--color-black);
+        background: var(--color-black);
+        border-top: 1px solid var(--color-divider);
+        color: var(--main-color);
         padding: clamp(3rem, 7vw, 7rem) clamp(1.25rem, 6vw, 6rem);
         width: 100%;
     }
@@ -40,20 +43,21 @@ import Social from "./Social.astro";
     }
 
     .footer__title {
-        font-family: var(--font-primary);
-        font-size: clamp(3.5rem, 10vw, 9rem);
-        letter-spacing: -0.1em;
-        line-height: 0.82;
+        color: var(--main-color);
+        font: 300 clamp(3.5rem, 10vw, 9rem)/0.85 var(--font-display);
+        letter-spacing: -0.08em;
         margin: 3rem 0 1.5rem;
         padding: 0;
+        text-transform: uppercase;
     }
     .footer__title em {
-        color: var(--color-accent);
+        color: var(--color-muted);
         font-style: normal;
     }
     .footer__label {
+        color: var(--color-muted);
         font: 0.65rem var(--font-mono);
-        letter-spacing: 0.08em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
     }
 </style>

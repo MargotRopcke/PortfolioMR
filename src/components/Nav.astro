@@ -49,9 +49,9 @@
         z-index: 20;
     }
     .brand {
-        color: var(--color-black);
+        color: var(--main-color);
         font: 400 1.2rem var(--font-display);
-        letter-spacing: -0.02em;
+        letter-spacing: -0.05em;
         text-decoration: none;
     }
     .brand span {
@@ -64,41 +64,30 @@
     }
     .theme-toggle {
         background: transparent;
-        border: 1px solid var(--color-black);
+        border: 1px solid var(--main-color);
         border-radius: 50%;
         height: 1.5rem;
         padding: 0;
-        position: static;
         width: 1.5rem;
     }
     .theme-toggle span {
-        background: var(--color-accent);
+        background: var(--main-color);
         border-radius: 50%;
         display: block;
         height: 0.5rem;
         margin: auto;
         width: 0.5rem;
     }
-    .site-header:has(+ .menu-overlay.is-open) .theme-toggle {
-        opacity: 0;
-        pointer-events: none;
-        transform: scale(0.7);
-    }
-    .theme-toggle {
-        transition:
-            opacity 0.25s ease,
-            transform 0.25s ease;
-    }
     .menu-toggle {
         align-items: center;
         background: transparent;
         border: 0;
-        color: var(--color-black);
+        color: var(--main-color);
         cursor: pointer;
         display: flex;
         font: 0.68rem var(--font-mono);
         gap: 0.6rem;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.12em;
         padding: 0.4rem 0;
         text-transform: uppercase;
     }
@@ -125,9 +114,7 @@
         pointer-events: none;
         position: fixed;
         transform: translateY(-100%);
-        transition:
-            opacity 0.35s ease,
-            transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+        transition: opacity 0.35s ease, transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
         z-index: 10;
     }
     .menu-overlay.is-open {
@@ -136,11 +123,11 @@
         transform: translateY(0);
     }
     .menu-overlay__top {
-        color: var(--color-accent);
+        color: var(--color-muted);
         display: flex;
         font: 0.65rem var(--font-mono);
         justify-content: space-between;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
     }
     .menu {
@@ -149,21 +136,18 @@
     }
     .menu__link {
         align-items: baseline;
-        border-bottom: 1px solid rgba(244, 243, 238, 0.3);
+        border-bottom: 1px solid var(--color-divider);
         color: var(--main-color);
         display: grid;
         gap: 1rem;
         grid-template-columns: 3rem 1fr auto;
-        padding: 0.75rem 0;
+        padding: 0.8rem 0;
         text-decoration: none;
         transform: translateY(1.5rem);
-        transition:
-            border-color 0.25s ease,
-            color 0.25s ease,
-            transform 0.25s ease;
+        transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
     }
     .menu__link:first-child {
-        border-top: 1px solid rgba(244, 243, 238, 0.3);
+        border-top: 1px solid var(--color-divider);
     }
     .menu-overlay.is-open .menu__link {
         animation: menu-link-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -176,32 +160,27 @@
     }
     .menu__index,
     .menu__link b {
-        color: var(--color-accent);
+        color: var(--color-muted);
         font: 0.65rem var(--font-mono);
     }
     .menu__link > span:nth-child(2) {
-        --menu-link-size: clamp(3.5rem, 10vw, 10rem);
-        font: 400 var(--menu-link-size)/0.9 var(--font-display);
+        --menu-link-size: clamp(3.3rem, 9vw, 9rem);
+        font: 300 var(--menu-link-size)/0.9 var(--font-display);
+        letter-spacing: -0.06em;
         text-transform: uppercase;
-        transition:
-            color 0.25s ease,
-            font-family 0.25s ease,
-            letter-spacing 0.25s ease;
+        transition: color 0.25s ease, letter-spacing 0.25s ease;
     }
     .menu__link:hover {
-        border-color: var(--color-accent);
         color: var(--color-accent);
-        transform: translateX(1rem);
+        transform: translateX(0.7rem);
     }
     .menu__link:hover > span:nth-child(2) {
-        font-family: var(--font-mono);
-        font-size: var(--menu-link-size);
-        letter-spacing: 0;
+        letter-spacing: -0.02em;
     }
     .menu-overlay__footer {
-        color: rgba(244, 243, 238, 0.6);
+        color: rgba(255, 255, 255, 0.62);
         font: 0.65rem var(--font-mono);
-        letter-spacing: 0.08em;
+        letter-spacing: 0.12em;
         line-height: 1.5;
         text-transform: uppercase;
     }

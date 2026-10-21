@@ -37,64 +37,48 @@ import "../styles/global.css";
 
 <style>
 .header {
-    text-align: center;
-    padding: var(--sp-m);
-    margin-bottom: var(--sp-xl);
+    background: var(--color-black);
+    border-bottom: 1px solid var(--color-divider);
+    padding: clamp(2.5rem, 6vw, 5rem) clamp(1.25rem, 4vw, 4rem) 2rem;
 }
 
 .samples__title {
-    font-family: var(--font-primary);
-    color: var(--color-blue);
-    font-size: clamp(1rem, 5vw + 0.5rem, 4rem);
-    text-align: center;
-    margin: var(--sp-2xl) 0;
+    color: var(--main-color);
+    font: 300 clamp(3.1rem, 8vw, 7.5rem)/0.9 var(--font-display);
+    letter-spacing: -0.08em;
+    margin: 0 0 1.25rem;
+    text-transform: uppercase;
 }
 
 .samples__intro {
-    padding: var(--sp-m);
-    color: var(--color-black);
-    font-size: var(--fs--5);
-    font-family: var(--font-secondary);
-    font-weight: 800;
+    color: rgba(255, 255, 255, 0.8);
+    font: 400 clamp(1rem, 1.5vw, 1.4rem)/1.6 var(--font-display);
+    margin: 0;
+    max-width: 52rem;
 }
 
 .samples__content {
-    display: flex;
-    flex-wrap: wrap;       
-    gap: 1.5rem;        
-    justify-content: center;
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    padding: clamp(1.5rem, 4vw, 3rem) clamp(1.25rem, 4vw, 4rem) 4rem;
 }
 
 .card {
-    background-color: var(--main-color); 
-    border-radius: 1rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    padding: 1rem;
-    flex: 1 1 300px;     
-    max-width: 350px;         
+    background: var(--color-black);
+    border: 1px solid var(--color-divider);
+    color: var(--main-color);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    transition: all 0.3s ease;
+    min-height: 12rem;
+    padding: 1.25rem;
+    text-align: left;
 }
 
-.work__samples {
-    font-family: var(--font-secondary);
-    color: var(--color-black);
-    border: 3px solid var(--color-blue);
-}
-
-.quotes__samples {
-    font-family: var(--font-secondary);
-    color: var(--color-black);
-     border: 3px solid var(--color-blue);
-}
-
-
+.work__samples,
+.quotes__samples,
 .pic__samples {
-    font-family: var(--font-secondary);
-    color: var(--color-black);
-     border: 3px solid var(--color-blue);
+    font-family: var(--font-display);
 }
+
 </style>
