@@ -90,12 +90,60 @@ import me from "../assets/profilepic.png";
         letter-spacing: -0.08em;
         margin: 0;
         text-transform: uppercase;
+        display: inline-block;
+        transform-origin: left center;
+        animation: nameReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
 
     .home__title em,
     .home__title span {
         color: var(--main-color);
         font-style: normal;
+        display: inline-block;
+        animation: nameAccent 1.2s ease both;
+    }
+
+    .home__title em {
+        animation: accentFloat 4.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes nameReveal {
+        0% {
+            opacity: 0;
+            transform: translateY(28px) scale(0.96);
+            filter: blur(8px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+    }
+
+    @keyframes nameAccent {
+        0% {
+            opacity: 0;
+            transform: translateY(16px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes accentFloat {
+        0% {
+            transform: translateY(0);
+            opacity: 0.92;
+        }
+        50% {
+            transform: translateY(-4px);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 0.92;
+        }
     }
 
     .hero__aside {
@@ -225,3 +273,45 @@ import me from "../assets/profilepic.png";
         }
     }
 </style>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from(".home__title", {
+        opacity: 0,
+        y: 36,
+        filter: "blur(8px)",
+        duration: 1.1,
+        ease: "power3.out",
+    });
+
+    gsap.from(".hero__aside > *", {
+        opacity: 0,
+        y: 26,
+        duration: 0.8,
+        stagger: 0.12,
+        ease: "power2.out",
+        delay: 0.15,
+    });
+
+    gsap.utils.toArray(".specialty, .works__item").forEach((item, index) => {
+        gsap.fromTo(
+            item,
+            { opacity: 0, y: 28 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                delay: index * 0.08,
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 85%",
+                },
+            },
+        );
+    });
+</script>
