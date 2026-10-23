@@ -1,37 +1,45 @@
----
-import linkedin from "../assets/linkedinlogo.png";
-import gmail from "../assets/gmaillogo.png";
----
-
-<section class="contact">
-       <ul class="footer">
-            <li class="footer__item">
-                <a
-                    class="footer__link"
-                    href="https://share.google/R78IFRyeP7E3xaMvO"
-                    ><img src={gmail.src} alt="gmail" /></a
-                >
-            </li>
-            <li class="footer__item">
-                <a class="footer__link" href="https://be.linkedin.com/"
-                    ><img
-                        src={linkedin.src}
-                        alt="linkedin"
-                    /></a
-                >
-            </li>
-        </ul>
-</section>
+<nav class="social" aria-label="Social media links">
+    <a class="social__link" href="https://share.google/R78IFRyeP7E3xaMvO" target="_blank" rel="noreferrer">
+        email <span>↗</span>
+    </a>
+    <a class="social__link" href="https://www.behance.net/" target="_blank" rel="noreferrer">
+        behance <span>↗</span>
+    </a>
+    <a class="social__link" href="https://be.linkedin.com/" target="_blank" rel="noreferrer">
+        linkedin <span>↗</span>
+    </a>
+</nav>
 
 <style>
-    .footer__item {
-    display: inline-block;
-    margin-right: var(--sp-m);
-}
+    .social {
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+        margin-top: 0;
+        width: 100%;
+    }
 
-.footer__link img {
-    width: 10vw;
-    height: auto;
-    max-width: 4rem;
-}
+    .social__link {
+        align-items: center;
+        color: var(--main-color);
+        display: inline-flex;
+        font: 0.7rem var(--font-mono);
+        gap: 0.6rem;
+        justify-content: space-between;
+        letter-spacing: 0.08em;
+        padding: 0.05rem 0;
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.2em;
+        text-transform: uppercase;
+        transition: opacity 0.2s ease;
+    }
+
+    .social__link span {
+        color: var(--color-muted);
+    }
+
+    .social__link:hover {
+        opacity: 0.8;
+    }
 </style>

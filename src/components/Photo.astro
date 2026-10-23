@@ -6,22 +6,72 @@ import PhotoCard from "./PhotoCard.astro";
 ---
 
 <section class="container" id="photography">
-    <header>
+    <header class="gallery-header">
         <h2><span>Photography</span></h2>
         <p>
             My photography captures the beauty and complexity of the world
-            around us, offering unique perspectives and moments frozen in time. <br><b>Click one to see more!</b>
+            around us, offering unique perspectives and moments frozen in time. <br /><b>Click one to see more!</b>
         </p>
     </header>
 
-        <ol class="photos__list">
-            {
-                photoCollections.map((photo) => (
-                    <li class="photo__item">
-                        <a href class="photo__link"={`/portfolioMR/photo/${photo.id}/`}/>
+    <ol class="photos__list">
+        {
+            photoCollections.map((photo) => (
+                <li class="photo__item">
+                    <a href={`/portfolioMR/photo/${photo.id}/`} class="photo__link">
                         <PhotoCard {photo} />
-                    </li>
-                ))
-            }
-        </ol>
+                    </a>
+                </li>
+            ))
+        }
+    </ol>
 </section>
+
+<style>
+    .container {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .gallery-header {
+        border-top: 1px solid var(--color-divider);
+        display: grid;
+        gap: 0.75rem;
+        padding-top: 1rem;
+    }
+
+    .gallery-header h2 {
+        color: var(--main-color);
+        font: 300 clamp(2.2rem, 5vw, 4rem)/0.9 var(--font-display);
+        letter-spacing: -0.07em;
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    .gallery-header p {
+        color: var(--color-muted);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .photos__list {
+        display: grid;
+        gap: 1rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .photo__item {
+        border-top: 1px solid var(--color-divider);
+        padding-top: 0.75rem;
+    }
+
+    .photo__link {
+        color: var(--main-color);
+        display: block;
+        font: 300 clamp(1.4rem, 2vw, 2rem)/1 var(--font-display);
+        letter-spacing: -0.04em;
+        text-transform: uppercase;
+    }
+</style>

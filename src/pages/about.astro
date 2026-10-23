@@ -75,149 +75,89 @@ const skills = await getEntry("about", "skills");
 </Base>
 
 <style>
-/* ABOUT */
+    .intro {
+        background: var(--color-black);
+        border-top: 1px solid var(--color-divider);
+        border-bottom: 1px solid var(--color-divider);
+        padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 5vw, 4rem);
+    }
 
-.intro {
-    background-color: var(--color-black);
-    border-radius: 25rem;
-    padding: var(--sp-l) var(--sp-l) var(--sp-xl) var(--sp-l);
-    margin: var(--sp-2xl);
-}
+    .intro__title {
+        color: var(--main-color);
+        font: 300 clamp(3rem, 8vw, 7rem)/0.9 var(--font-display);
+        letter-spacing: -0.08em;
+        margin: 0 0 1.25rem;
+        text-transform: uppercase;
+    }
 
-.intro__text {
-     padding: clamp(1rem, 2vw, 3rem);
-    color: var(--main-color);
-    font-size: var(--fs--3);
-    font-family: var(--font-secondary);
-}
+    .intro__text {
+        color: var(--color-muted);
+        font: 400 clamp(0.95rem, 1.5vw, 1.3rem)/1.6 var(--font-display);
+        margin: 0;
+        max-width: 60rem;
+    }
 
-.intro__title {
-    font-family: var(--font-primary);
-    color: var(--main-color);
-    font-size: var(--fs-5);
-    text-align: center;
-    margin: var(--sp-3xs) 0;
-}
+    .skills {
+        background: var(--color-black);
+        padding: clamp(2rem, 5vw, 5rem) clamp(1.25rem, 5vw, 4rem) 4rem;
+    }
 
-.skills {
-    padding: 2rem;
-    max-width: 900px;
-    margin: 0 auto; 
-}
+    .skills__one,
+    .skills__two,
+    .skills__three {
+        color: var(--main-color);
+        font: 300 clamp(2.2rem, 5vw, 4.5rem)/0.9 var(--font-display);
+        letter-spacing: -0.07em;
+        margin: 0 0 1.25rem;
+        text-transform: uppercase;
+    }
 
-.skills__one, .skills__two, .skills__three {
-    display: flex;
-    justify-content: center;
-    font-size: var(--fs-5);
-}
+    .skills__development,
+    .skills__design,
+    .skills__ux {
+        align-items: center;
+        border-top: 1px solid var(--color-divider);
+        display: flex;
+        gap: 1.5rem;
+        justify-content: space-between;
+        padding: 1.5rem 0;
+        flex-wrap: wrap;
+    }
 
-.skills__one {
-    font-family: var(--font-quaternary);
-    letter-spacing: 1.5px;
-    color: var(--color-green);
-}
+    .skills__text-one,
+    .skills__text-two,
+    .skills__text-three {
+        color: var(--color-muted);
+        flex: 2 1 16rem;
+        font: 400 clamp(1rem, 1.2vw, 1.3rem)/1.6 var(--font-display);
+        list-style: disc;
+        margin: 0;
+        padding-left: 1.5rem;
+    }
 
-.skills__two {
-    font-family: var(--font-secondary);
-    color: var(--color-pink);
-}
+    .skills__text-one li,
+    .skills__text-two li,
+    .skills__text-three li {
+        margin-bottom: 0.35rem;
+    }
 
-.skills__three {
-    font-family: var(--font-tertiary);
-    color: var(--color-orange);
-    margin-bottom: 1rem;
-}
+    .skill-image {
+        filter: grayscale(1);
+        height: auto;
+        max-width: 11rem;
+        object-fit: contain;
+        width: 100%;
+    }
 
-.skills__text-one, .skills__text-two, .skills__text-three {
-    font-size: var(--fs-1);
-    font-family: var(--font-secondary);
-    color: var(--color-black);
-}
+    @media (max-width: 46rem) {
+        .skills__development,
+        .skills__design,
+        .skills__ux {
+            align-items: flex-start;
+        }
 
-.skills__development,
-.skills__design,
-.skills__ux {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    padding: 1rem 0;
-}
-
-.skills__text-one,
-.skills__text-two,
-.skills__text-three {
-    flex: 2;
-    min-width: 250px;
-}
-
-.profilepic {
-    flex: 1;
-    max-width: 180px;
-    width: 100%;
-}
-
-.skills__text-one li::marker {
-    color: var(--color-green);
-}
-
-.skills__text-two li::marker {
-    color: var(--color-pink);
-}
-
-.skills__text-three li::marker {
-    color: var(--color-orange);
-}
-
-.skill-image {
-    width: 10rem;       
-    height: auto;        
-    border-radius: 1rem; 
-    object-fit: contain; 
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
-    padding-left: 3rem;
-}
-
-.comp {
-    --rotate: -6deg;
-    transform: rotate(var(--rotate));
-    animation: floatComp 3s ease-in-out infinite;
-}
-
-.palette {
-    --rotate: 5deg;
-    transform: rotate(var(--rotate));
-    animation: floatPalette 3.5s ease-in-out infinite;
-}
-
-.lightbulb {
-    --rotate: -4deg;
-    transform: rotate(var(--rotate));
-    animation: floatLightbulb 4s ease-in-out infinite;
-}
-
-@keyframes floatComp {
-    0% { transform: translate(0, 0) rotate(var(--rotate)); }
-    25% { transform: translate(10px, -10px) rotate(var(--rotate)); }
-    50% { transform: translate(-8px, -5px) rotate(var(--rotate)); }
-    75% { transform: translate(5px, 8px) rotate(var(--rotate)); }
-    100% { transform: translate(0, 0) rotate(var(--rotate)); }
-}
-
-@keyframes floatPalette {
-    0% { transform: translate(0, 0) rotate(var(--rotate)); }
-    25% { transform: translate(0, -12px) rotate(var(--rotate)); }
-    50% { transform: translate(0, -8px) rotate(var(--rotate)); }
-    75% { transform: translate(0, 10px) rotate(var(--rotate)); }
-    100% { transform: translate(0, 0) rotate(var(--rotate)); }
-}
-
-@keyframes floatLightbulb {
-    0% { transform: translate(0, 0) rotate(var(--rotate)); }
-    25% { transform: translate(-10px, 8px) rotate(var(--rotate)); }
-    50% { transform: translate(12px, 5px) rotate(var(--rotate)); }
-    75% { transform: translate(-5px, -8px) rotate(var(--rotate)); }
-    100% { transform: translate(0, 0) rotate(var(--rotate)); }
-}
+        .skill-image {
+            max-width: 7rem;
+        }
+    }
 </style>

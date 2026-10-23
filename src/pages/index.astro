@@ -8,7 +8,7 @@ import me from "../assets/profilepic.png";
 <Base pageTitle=" / Home">
     <section class="hero">
         <div class="hero__meta">
-            <span>Portfolio / 2025</span><span>Designer + developer</span>
+            <span>Portfolio / 2026</span><span>Designer / Developer / Researcher</span>
         </div>
         <div class="hero__grid">
             <h1 class="home__title">
@@ -55,73 +55,137 @@ import me from "../assets/profilepic.png";
 
 <style>
     .hero {
-        padding: clamp(2rem, 7vw, 7rem) clamp(1.25rem, 6vw, 6rem) 2rem;
+        background: var(--color-black);
+        color: var(--main-color);
+        padding: clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 4vw, 4rem) clamp(2rem, 6vw, 4rem);
     }
+
     .hero__meta,
     .hero__line,
     .section-label {
         display: flex;
         justify-content: space-between;
-        color: var(--color-black);
+        color: var(--main-color);
         font: 0.65rem var(--font-mono);
-        letter-spacing: 0.08em;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
     }
+
     .hero__meta {
-        border-bottom: 1px solid var(--color-black);
+        border-bottom: 1px solid var(--color-divider);
         padding-bottom: 0.75rem;
     }
+
     .hero__grid {
         align-items: end;
         display: grid;
-        gap: 3rem;
-        grid-template-columns: minmax(0, 1.5fr) minmax(15rem, 0.65fr);
-        padding: clamp(3rem, 10vw, 9rem) 0 clamp(2rem, 5vw, 5rem);
+        gap: clamp(2rem, 4vw, 4rem);
+        grid-template-columns: minmax(0, 1.4fr) minmax(15rem, 0.7fr);
+        padding: clamp(3rem, 9vw, 7rem) 0 clamp(2rem, 5vw, 4rem);
     }
+
     .home__title {
-        color: var(--color-black);
-        font: 400 clamp(5rem, 16vw, 15rem)/0.78 var(--font-display);
-        letter-spacing: -0.035em;
+        color: var(--main-color);
+        font: 300 clamp(4.1rem, 13vw, 16rem)/0.78 var(--font-display);
+        letter-spacing: -0.08em;
         margin: 0;
         text-transform: uppercase;
+        display: inline-block;
+        transform-origin: left center;
+        animation: nameReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
-    .home__title em {
-        color: var(--color-accent);
-        font-style: normal;
-    }
+
+    .home__title em,
     .home__title span {
-        color: var(--color-accent);
+        color: var(--main-color);
+        font-style: normal;
+        display: inline-block;
+        animation: nameAccent 1.2s ease both;
     }
+
+    .home__title em {
+        animation: accentFloat 4.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes nameReveal {
+        0% {
+            opacity: 0;
+            transform: translateY(28px) scale(0.96);
+            filter: blur(8px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+    }
+
+    @keyframes nameAccent {
+        0% {
+            opacity: 0;
+            transform: translateY(16px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes accentFloat {
+        0% {
+            transform: translateY(0);
+            opacity: 0.92;
+        }
+        50% {
+            transform: translateY(-4px);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 0.92;
+        }
+    }
+
     .hero__aside {
         display: grid;
         gap: 1.5rem;
-        max-width: 20rem;
+        justify-items: start;
+        margin-left: auto;
+        max-width: 22rem;
     }
+
     .profilepic {
         aspect-ratio: 1;
-        border-radius: 50%;
         filter: grayscale(1);
         object-fit: cover;
-        width: clamp(8rem, 16vw, 13rem);
+        width: clamp(8rem, 16vw, 12.5rem);
     }
+
     .home__intro {
-        font-size: clamp(1rem, 1.5vw, 1.25rem);
-        line-height: 1.35;
+        color: var(--color-muted);
+        font-size: clamp(1rem, 1.4vw, 1.3rem);
+        line-height: 1.45;
         margin: 0;
+        max-width: 26ch;
     }
+
     .hero__button {
         align-items: center;
-        border-bottom: 1px solid var(--color-black);
+        border-bottom: 1px solid var(--color-divider);
+        color: var(--main-color);
         display: flex;
         font: 0.7rem var(--font-mono);
         justify-content: space-between;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.12em;
         padding: 0.75rem 0;
         text-decoration: none;
         text-transform: uppercase;
+        width: 100%;
     }
+
     .hero__button b {
-        background: var(--color-accent);
+        background: transparent;
+        border: 1px solid var(--main-color);
         border-radius: 50%;
         display: grid;
         font-size: 1.1rem;
@@ -129,64 +193,125 @@ import me from "../assets/profilepic.png";
         place-items: center;
         width: 2.2rem;
     }
+
     .hero__line {
-        border-top: 1px solid var(--color-black);
+        border-top: 1px solid var(--color-divider);
+        color: var(--color-muted);
         padding-top: 0.75rem;
     }
+
     .specialties {
         background: var(--color-black);
         color: var(--main-color);
-        padding: clamp(3rem, 7vw, 7rem) clamp(1.25rem, 6vw, 6rem);
+        padding: clamp(2.5rem, 7vw, 6rem) clamp(1.25rem, 4vw, 4rem);
     }
+
     .section-label {
-        color: var(--color-accent);
+        color: var(--color-muted);
+        display: flex;
+        justify-content: space-between;
     }
+
     .specialties__list {
-        margin-top: clamp(3rem, 7vw, 7rem);
+        margin-top: clamp(2.5rem, 6vw, 4.5rem);
     }
+
     .specialty {
         align-items: center;
-        border-top: 1px solid rgba(244, 243, 238, 0.35);
+        border-top: 1px solid var(--color-divider);
         color: var(--main-color);
         display: grid;
         gap: 1rem;
         grid-template-columns: 4rem 1fr auto;
         padding: 1.5rem 0;
         text-decoration: none;
-        transition:
-            color 0.25s ease,
-            padding 0.25s ease;
+        transition: opacity 0.25s ease, transform 0.25s ease;
     }
+
     .specialty:last-child {
-        border-bottom: 1px solid rgba(244, 243, 238, 0.35);
+        border-bottom: 1px solid var(--color-divider);
     }
+
     .specialty span,
     .specialty b {
-        color: var(--color-accent);
+        color: var(--color-muted);
         font: 0.68rem var(--font-mono);
     }
+
     .specialty strong {
-        font: 400 clamp(2.4rem, 6vw, 6rem)/0.82 var(--font-display);
-        letter-spacing: -0.025em;
+        font: 300 clamp(2.4rem, 6vw, 6rem)/0.9 var(--font-display);
+        letter-spacing: -0.07em;
         text-transform: uppercase;
     }
+
     .specialty:hover {
-        color: var(--color-accent);
-        padding-left: 1rem;
+        transform: translateX(0.5rem);
     }
+
     @media (max-width: 46rem) {
         .hero__grid {
             grid-template-columns: 1fr;
         }
+
         .hero__aside {
+            margin-left: 0;
             max-width: 100%;
         }
+
         .profilepic {
             width: 8rem;
         }
+
         .hero__meta span:last-child,
         .hero__line span:last-child {
             text-align: right;
         }
+
+        .specialty {
+            gap: 0.75rem;
+            grid-template-columns: 3rem 1fr auto;
+        }
     }
 </style>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from(".home__title", {
+        opacity: 0,
+        y: 36,
+        filter: "blur(8px)",
+        duration: 1.1,
+        ease: "power3.out",
+    });
+
+    gsap.from(".hero__aside > *", {
+        opacity: 0,
+        y: 26,
+        duration: 0.8,
+        stagger: 0.12,
+        ease: "power2.out",
+        delay: 0.15,
+    });
+
+    gsap.utils.toArray(".specialty, .works__item").forEach((item, index) => {
+        gsap.fromTo(
+            item,
+            { opacity: 0, y: 28 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                delay: index * 0.08,
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 85%",
+                },
+            },
+        );
+    });
+</script>

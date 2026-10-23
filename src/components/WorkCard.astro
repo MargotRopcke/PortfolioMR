@@ -24,7 +24,7 @@ const { work } = Astro.props;
     position: relative;
     display: block;
     width: 100%;
-    background: var(--main-color);
+    background: var(--color-black);
     overflow: hidden;
   }
 
@@ -34,31 +34,28 @@ const { work } = Astro.props;
     aspect-ratio: 4 / 3;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(1);
-    transition:
-      filter 0.35s ease,
-      transform 0.35s ease;
+    filter: grayscale(1) contrast(1.05);
+    transition: filter 0.35s ease, transform 0.35s ease;
   }
 
   .overlay {
     align-items: flex-end;
     display: flex;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(transparent 45%, rgba(23, 23, 23, 0.8));
+    inset: 0;
+    background: linear-gradient(transparent 42%, rgba(0, 0, 0, 0.76));
     color: var(--main-color);
     font: 0.65rem var(--font-mono);
     justify-content: flex-end;
+    letter-spacing: 0.12em;
     padding: 1rem;
+    text-transform: uppercase;
     transition: opacity 0.3s ease;
     z-index: 2;
   }
 
   .image-wrapper:hover .work__images {
-    filter: grayscale(0);
+    filter: grayscale(0.25) contrast(1.08);
     transform: scale(1.03);
   }
 </style>
