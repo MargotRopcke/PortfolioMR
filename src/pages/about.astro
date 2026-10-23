@@ -91,7 +91,7 @@ const skills = await getEntry("about", "skills");
     }
 
     .intro__text {
-        color: rgba(255, 255, 255, 0.8);
+        color: var(--color-muted);
         font: 400 clamp(0.95rem, 1.5vw, 1.3rem)/1.6 var(--font-display);
         margin: 0;
         max-width: 60rem;
@@ -127,7 +127,7 @@ const skills = await getEntry("about", "skills");
     .skills__text-one,
     .skills__text-two,
     .skills__text-three {
-        color: rgba(255, 255, 255, 0.8);
+        color: var(--color-muted);
         flex: 2 1 16rem;
         font: 400 clamp(1rem, 1.2vw, 1.3rem)/1.6 var(--font-display);
         list-style: disc;

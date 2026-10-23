@@ -1,31 +1,61 @@
 ---
-import linkedin from "../assets/linkedinlogo.png";
-import gmail from "../assets/gmaillogo.png";
-
 import Social from "./Social.astro";
 ---
 
 <div class="footer__container">
-    <footer>
+    <footer class="footer">
         <div class="footer__label">03 / Contact</div>
-        <h2 class="footer__title">Let's make<br /><em>something good.</em></h2>
-        <p class="footer__cta">Always ready to help you take the next step.</p>
-        <div class="footer__list">
-            <Social />
+
+        <div class="footer__header">
+            <h2 class="footer__title">Let's<br /><em>connect.</em></h2>
+
+            <div class="footer__meta">
+                <div class="footer__rule" aria-hidden="true"></div>
+                <div class="footer__list">
+                    <Social />
+                </div>
+            </div>
         </div>
+
+        <p class="footer__cta">Always ready to help you take the next step.</p>
     </footer>
 </div>
 
 <style>
-    /* FOOTER */
+    .footer {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .footer__header {
+        align-items: end;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: minmax(0, 1fr) minmax(12rem, 17rem);
+        margin-top: 2rem;
+    }
+
+    .footer__meta {
+        display: grid;
+        gap: 0.75rem;
+        justify-self: end;
+        width: 100%;
+    }
+
+    .footer__rule {
+        border-top: 1px solid var(--color-divider);
+        display: block;
+        min-height: 1px;
+        width: 100%;
+    }
 
     .footer__cta {
-        color: rgba(255, 255, 255, 0.78);
+        color: var(--color-muted);
         font-family: var(--font-display);
         font-size: clamp(1rem, 1.4vw, 1.4rem);
         line-height: 1.6;
-        margin-bottom: var(--sp-xs);
-        padding-left: 0;
+        margin: 0;
+        max-width: 32rem;
     }
 
     .footer__container {
@@ -38,26 +68,37 @@ import Social from "./Social.astro";
 
     .footer__list {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
+        justify-content: flex-end;
     }
 
     .footer__title {
         color: var(--main-color);
         font: 300 clamp(3.5rem, 10vw, 9rem)/0.85 var(--font-display);
         letter-spacing: -0.08em;
-        margin: 3rem 0 1.5rem;
+        margin: 0;
         padding: 0;
         text-transform: uppercase;
     }
+
     .footer__title em {
         color: var(--color-muted);
         font-style: normal;
     }
+
     .footer__label {
         color: var(--color-muted);
         font: 0.65rem var(--font-mono);
         letter-spacing: 0.12em;
         text-transform: uppercase;
+    }
+
+    @media (max-width: 46rem) {
+        .footer__header {
+            grid-template-columns: 1fr;
+        }
+
+        .footer__list {
+            justify-content: flex-start;
+        }
     }
 </style>
