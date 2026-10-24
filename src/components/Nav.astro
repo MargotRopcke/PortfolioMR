@@ -67,9 +67,31 @@
         background: transparent;
         border: 1px solid var(--main-color);
         border-radius: 50%;
+        cursor: pointer;
         height: 1.5rem;
         padding: 0;
+        position: relative;
         width: 1.5rem;
+    }
+    .theme-toggle::after {
+        color: var(--color-muted);
+        content: attr(data-mode-label);
+        font: 0.62rem var(--font-mono);
+        letter-spacing: 0.1em;
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        right: calc(100% + 0.55rem);
+        text-transform: uppercase;
+        top: 50%;
+        transform: translateY(-50%) translateX(0.2rem);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        white-space: nowrap;
+    }
+    .theme-toggle:hover::after,
+    .theme-toggle:focus-visible::after {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
     }
     .theme-toggle span {
         background: var(--main-color);
@@ -223,11 +245,13 @@
     function syncThemeButton() {
         const isDark = root.classList.contains("dark");
         if (!toggleBtn) return;
+        const currentThemeLabel = isDark ? "dark mode" : "light mode";
         toggleBtn.setAttribute(
             "aria-label",
             isDark ? "Switch to light mode" : "Switch to dark mode",
         );
-        toggleBtn.title = isDark ? "Switch to light mode" : "Switch to dark mode";
+        toggleBtn.title = currentThemeLabel;
+        toggleBtn.setAttribute("data-mode-label", currentThemeLabel);
     }
 
     function initTheme() {
