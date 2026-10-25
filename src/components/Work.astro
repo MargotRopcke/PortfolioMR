@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-const workCollections = await getCollection("work");
+const workCollections = (await getCollection("work")).slice(0, 4);
 import { Image } from "astro:assets";
 
 import WorkCard from "./WorkCard.astro";

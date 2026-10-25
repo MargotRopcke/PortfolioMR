@@ -5,6 +5,9 @@ import { render } from "astro:content";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
+import blinkVideo from "../../assets/2DEV_surnameName_MO1_FOURBYFOUR_render.mp4";
+import nmbsVideo from "../../assets/2DEV_Motion1_MargotRopcke_NMBS.mp4";
+
 export async function getStaticPaths() {
     const workCollections = await getCollection("work");
     return workCollections.map((work) => ({
@@ -33,14 +36,25 @@ const categories = work.data.categories ?? [];
                 )}
             </div>
 
-            <div class="work__image"> 
-                <Image
-                    src={work.data.image}
-                    alt="workpic"
-                    width="200"
-                    class="work__images"
+            {work.id === "work1" || work.id === "work4" ? (
+                <video
+                    class="work__video"
+                    controls
+                    playsinline
+                    muted
+                    preload="metadata"
+                    src={work.id === "work1" ? blinkVideo : nmbsVideo}
                 />
-            </div>
+            ) : (
+                <div class="work__image"> 
+                    <Image
+                        src={work.data.image}
+                        alt="workpic"
+                        width="200"
+                        class="work__images"
+                    />
+                </div>
+            )}
             <a href="https://margotropcke.be/integration1/" class="more-button">See Work Online</a>
             <div class="work__content">
                 <Content />
@@ -92,6 +106,16 @@ const categories = work.data.categories ?? [];
 .work__image {
    border: 1px solid var(--color-divider);
    overflow: hidden;
+}
+
+.work__video {
+   aspect-ratio: 16 / 9;
+   background: #000;
+   border: 1px solid var(--color-divider);
+   display: block;
+   height: auto;
+   object-fit: contain;
+   width: 100%;
 }
 
 .work__images {

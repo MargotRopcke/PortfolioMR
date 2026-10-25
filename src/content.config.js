@@ -7,6 +7,7 @@ const workCollections = defineCollection({
         z.object({
             name: z.string(),
             image: image(),
+            video: z.string().optional(),
             categories: z.array(z.enum([
                 "UX Research",
                 "Visual Design",

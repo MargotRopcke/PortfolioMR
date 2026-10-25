@@ -1,6 +1,7 @@
 ---
 name: Blink And It's Over
 image: img/motion.png
+video: "/portfolioMR/videos/blink-and-its-over.mp4"
 categories: ["Motion Design"]
 ---
 
