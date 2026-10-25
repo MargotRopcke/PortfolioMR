@@ -5,6 +5,6 @@ video: "/portfolioMR/videos/blink-and-its-over.mp4"
 categories: ["Motion Design"]
 ---
 
-Opdracht Motion Design
+Motion Design project
 
-Maak een originele, visueel aantrekkelijke animatie van 10 seconden met een groep vierkanten van verschillende groottes, kleuren en patronen. De vierkanten moeten dynamisch bewegen en transformeren (rotatie, schaal, vloeiende overgangen) en samen een bepaalde sfeer en ritme uitstralen. Experimenteer met timing, transities en interacties om creativiteit en technische vaardigheden te tonen, terwijl je een balans vindt tussen uniformiteit en diversiteit in de animatie.
+Create an original, visually engaging 10-second animation featuring a group of squares in different sizes, colors, and patterns. The squares should move and transform dynamically (rotation, scale, smooth transitions) and, together, create a particular mood and rhythm. Experiment with timing, transitions, and interactions to showcase creativity and technical skill while balancing uniformity and diversity in the animation.

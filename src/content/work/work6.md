@@ -4,10 +4,10 @@ image: img/giet.png
 categories: ["UX Research", "Visual Design", "Development"]
 ---
 
-Opdracht Integration
+Integration project
 
 This assignment contained: Development, Design, UX/UI
 
-Voor het herexamen kies je een alledaags object (bijv. gieter, theepot, bezem) en bedenk je 3 alternatieve manieren om het te gebruiken, binnen één samenhangend concept. Je vertelt dit via storytelling op een website, waarbij tekst en beeld elkaar versterken. De site bevat je concept, de 3 alternatieve toepassingen, een promotie/event met inschrijfformulier en reviews/getuigenissen.
+For the resit, you choose an everyday object (for example, a watering can, teapot, or broom) and come up with 3 alternative ways to use it within one cohesive concept. You communicate this through storytelling on a website, where text and visuals support each other. The site includes your concept, the 3 alternative uses, a promotion/event with a registration form, and reviews/testimonials.
 
-Het proces omvat brainstormen, wireframes, design en development, inclusief interactieve elementen, een formulier dat records naar een database schrijft en gebruik van JavaScript/DOM. Documenteer het hele proces in Figjam en lever milestones op tijd in. De website komt online op je persoonlijke hosting en presenteert jouw creatieve concept op een visueel aantrekkelijke manier.
+The process includes brainstorming, wireframes, design, and development, including interactive elements, a form that writes records to a database, and the use of JavaScript/DOM. Document the entire process in Figjam and deliver milestones on time. The website goes live on your personal hosting and presents your creative concept in a visually appealing way.

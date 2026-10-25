@@ -4,6 +4,6 @@ image: img/cc.png
 categories: ["Development"]
 ---
 
-Opdracht Creative Code 
+Creative Code project
 
-In deze opdracht maak je een p5.js sketch waarin je je persoonlijke interpretatie laat zien van de vier woorden Chaos, Order, Dark en Light. Voor elk woord maak je een andere geanimeerde scène, zonder tekst, die visueel interessant blijft over tijd. De knoppen op het keyboard zijn: x,c,v,b.
+In this assignment, you create a p5.js sketch in which you express your personal interpretation of the four words Chaos, Order, Dark, and Light. For each word, create a different animated scene without text that remains visually interesting over time. The keyboard buttons are: x, c, v, b.
