@@ -4,6 +4,13 @@ import { getCollection } from "astro:content";
 import WorkCard from "../../components/WorkCard.astro";
 
 const workCollections = await getCollection("work");
+const filterCategories = [
+    { value: "all", label: "All my projects" },
+    { value: "UX Research", label: "UX Research" },
+    { value: "Visual Design", label: "Visual Design" },
+    { value: "Motion Design", label: "Motion Design" },
+    { value: "Development", label: "Development" },
+];
 ---
 
 <Base pageTitle=" / Work">
@@ -16,10 +23,28 @@ const workCollections = await getCollection("work");
             <p>Explore the full collection of my projects and experiments.</p>
         </header>
 
+        <div class="filter-bar" aria-label="Work filters">
+            {
+                filterCategories.map((category) => (
+                    <button
+                        type="button"
+                        class={`filter__button${category.value === "all" ? " active" : ""}`}
+                        data-category={category.value}
+                        aria-pressed={category.value === "all" ? "true" : "false"}
+                    >
+                        {category.label}
+                    </button>
+                ))
+            }
+        </div>
+
         <ul class="work-page__list">
             {
                 workCollections.map((work) => (
-                    <li class="work-page__item">
+                    <li
+                        class="work-page__item"
+                        data-categories={work.data.categories?.join(",") ?? ""}
+                    >
                         <WorkCard {work} />
                     </li>
                 ))
@@ -62,6 +87,36 @@ const workCollections = await getCollection("work");
         max-width: 48ch;
     }
 
+    .filter-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin: 1.5rem 0 0;
+    }
+
+    .filter__button {
+        background: transparent;
+        border: 1px solid var(--color-divider);
+        color: var(--main-color);
+        cursor: pointer;
+        font: 0.68rem var(--font-mono);
+        letter-spacing: 0.12em;
+        padding: 0.55rem 0.8rem;
+        text-transform: uppercase;
+        transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+    }
+
+    .filter__button.active {
+        background: var(--main-color);
+        border-color: var(--main-color);
+        color: var(--color-black);
+    }
+
+    .filter__button:hover,
+    .filter__button:focus-visible {
+        border-color: var(--main-color);
+    }
+
     .work-page__list {
         display: grid;
         gap: 1rem;
@@ -74,6 +129,10 @@ const workCollections = await getCollection("work");
     .work-page__item {
         border: 1px solid var(--color-divider);
         overflow: hidden;
+    }
+
+    .work-page__item[hidden] {
+        display: none;
     }
 
     .back-link {
@@ -90,3 +149,55 @@ const workCollections = await getCollection("work");
         border-color: var(--main-color);
     }
 </style>
+
+<script>
+    const filterButtons = Array.from(document.querySelectorAll<HTMLButtonElement>(".filter__button"));
+    const items = Array.from(document.querySelectorAll<HTMLElement>(".work-page__item"));
+    const allButton = filterButtons.find((button) => button.dataset.category === "all");
+
+    const updateFilterState = () => {
+        const activeCategories = new Set(
+            filterButtons
+                .filter((button) => button.classList.contains("active") && button.dataset.category !== "all")
+                .map((button) => button.dataset.category as string),
+        );
+
+        const showAll = allButton ? allButton.classList.contains("active") : false;
+
+        items.forEach((item) => {
+            const categories = (item.dataset.categories || "").split(",").filter(Boolean);
+            const matches = showAll || categories.some((category: string) => activeCategories.has(category));
+            item.hidden = !matches;
+        });
+    };
+
+    filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const category = button.dataset.category;
+
+            if (category === "all") {
+                filterButtons.forEach((btn) => {
+                    const isAll = btn === button;
+                    btn.classList.toggle("active", isAll);
+                    btn.setAttribute("aria-pressed", String(isAll));
+                });
+            } else {
+                const wasActive = button.classList.toggle("active");
+                button.setAttribute("aria-pressed", String(wasActive));
+
+                const hasAnyActive = filterButtons.some(
+                    (btn) => btn.dataset.category !== "all" && btn.classList.contains("active"),
+                );
+
+                if (allButton) {
+                    allButton.classList.toggle("active", !hasAnyActive);
+                    allButton.setAttribute("aria-pressed", String(!hasAnyActive));
+                }
+            }
+
+            updateFilterState();
+        });
+    });
+
+    updateFilterState();
+</script>

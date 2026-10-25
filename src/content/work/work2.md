@@ -1,6 +1,7 @@
 ---
 name: Cocoa.
 image: img/coffee1.png
+categories: ["Visual Design"]
 ---
 
 Opdracht Visual Design

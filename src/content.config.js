@@ -7,6 +7,12 @@ const workCollections = defineCollection({
         z.object({
             name: z.string(),
             image: image(),
+            categories: z.array(z.enum([
+                "UX Research",
+                "Visual Design",
+                "Motion Design",
+                "Development",
+            ])).optional(),
         }),
 });
 

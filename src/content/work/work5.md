@@ -1,6 +1,7 @@
 ---
 name: Couture Off The Grid
 image: img/couture.png
+categories: ["UX Research", "Visual Design", "Development"]
 ---
 
 Opdracht Integration

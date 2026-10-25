@@ -1,6 +1,7 @@
 ---
 name: Chaos
 image: img/cc.png
+categories: ["Development"]
 ---
 
 Opdracht Creative Code 

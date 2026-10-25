@@ -1,6 +1,7 @@
 ---
 name: NMBS Calling
 image: img/nmbs.png
+categories: ["Motion Design"]
 ---
 
 Opdracht Motion Design

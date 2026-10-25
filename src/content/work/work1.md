@@ -1,6 +1,7 @@
 ---
 name: Blink And It's Over
 image: img/motion.png
+categories: ["Motion Design"]
 ---
 
 Opdracht Motion Design

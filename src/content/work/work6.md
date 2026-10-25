@@ -1,6 +1,7 @@
 ---
 name: Watering Can Supremacy
 image: img/giet.png
+categories: ["UX Research", "Visual Design", "Development"]
 ---
 
 Opdracht Integration
