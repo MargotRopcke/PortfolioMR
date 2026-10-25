@@ -15,12 +15,23 @@ export async function getStaticPaths() {
 
 const { work } = Astro.props;
 const { Content } = await render(work);
+const categories = work.data.categories ?? [];
 ---
 
 <Detail>
     <section class="work">
         <div class="work__card">
             <h1 class="work__title">{work.data.name}</h1>
+
+            <div class="work__meta" aria-label="Project categories">
+                {categories.length > 0 ? (
+                    categories.map((category) => (
+                        <span class="work__tag">{category}</span>
+                    ))
+                ) : (
+                    <span class="work__tag">Project</span>
+                )}
+            </div>
 
             <div class="work__image"> 
                 <Image
@@ -58,6 +69,23 @@ const { Content } = await render(work);
    font: 300 clamp(3rem, 8vw, 7rem)/0.9 var(--font-display);
    letter-spacing: -0.08em;
    margin: 0;
+   text-transform: uppercase;
+}
+
+.work__meta {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 0.55rem;
+   margin-top: -0.25rem;
+}
+
+.work__tag {
+   border: 1px solid var(--color-divider);
+   color: var(--color-muted);
+   display: inline-flex;
+   font: 0.64rem var(--font-mono);
+   letter-spacing: 0.12em;
+   padding: 0.5rem 0.7rem;
    text-transform: uppercase;
 }
 
