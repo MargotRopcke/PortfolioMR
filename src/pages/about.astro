@@ -8,68 +8,100 @@ import lightbulb from "../assets/lightbulb.png";
 import palette from "../assets/palette.png";
 
 const skills = await getEntry("about", "skills");
+const tools = [
+    "Figma",
+    "Illustrator",
+    "Photoshop",
+    "After Effects",
+    "VS Code",
+    "Github",
+    "Astro",
+    "HTML",
+    "CSS",
+    "JavaScript",
+];
 ---
 
 <Base title="Home Page">
     <section class="intro">
-        <h1 class="intro__title">Who am I?</h1>
-        <p class="intro__text">
-            I’m passionate about turning ideas into intuitive, visually
-            compelling digital experiences that people actually enjoy using.<br> I’m
-            a fast learner, a reliable teammate, and a professional who gets
-            things done — all while keeping a dash of wit and creativity in my
-            work. <br>Whether it’s crafting clean, user-friendly interfaces or
-            diving into code to bring designs to life, I tackle challenges with
-            curiosity and precision.<br> When I’m not designing or programming, you
-            might catch me trying out new trends, experimenting with my own
-            creative projects, or finding inspiration in the world around me.
-        </p>
+        <div class="section-label intro__label">
+            <span>02</span><span>About me</span>
+        </div>
+        <div class="intro__grid">
+            <div>
+                <h1 class="intro__title">Who am I?</h1>
+                <p class="intro__text">
+                    I’m passionate about turning ideas into intuitive, visually
+                    compelling digital experiences that people actually enjoy
+                    using. I’m a fast learner, a reliable teammate, and a
+                    professional who gets things done while keeping creativity
+                    and clarity at the center of every project.
+                </p>
+            </div>
+            <aside class="intro__panel">
+                <p class="intro__eyebrow">Based in Belgium</p>
+                <p class="intro__statement">
+                    Designer + developer for thoughtful interfaces, brand
+                    systems, and digital products that feel clear and human.
+                </p>
+            </aside>
+        </div>
+    </section>
+
+    <section class="tools" aria-label="Tools I use">
+        <div class="section-label">
+            <span>Tools</span><span>That I work with</span>
+        </div>
+        <div class="tools__list">
+            {tools.map((tool) => <span class="tool-badge">{tool}</span>)}
+        </div>
     </section>
 
     <section class="skills">
-        <h2 class="skills__one">Development Skills</h2>
-        <div class="skills__development">
-        <ul class="skills__text-one">
-            {skills.data.development.map((item) => (
-                <li>{item}</li>
-            ))}
-        </ul>
-        <img
-        src={comp.src}
-        alt="Picture of Computer"
-        width="200"
-        class="comp skill-image"
-      />
-    </div>
+        <div class="section-label skills__label">
+            <span>03</span><span>Skills</span>
+        </div>
 
-        <h2 class="skills__two">Visual Design Skills</h2>
-          <div class="skills__design">
-        <ul class="skills__text-two">
-            {skills.data.visual.map((item) => (
-                <li>{item}</li>
-            ))}
-        </ul>
-          <img
-        src={palette.src}
-        alt="Picture of Palette"
-        width="200"
-        class="palette skill-image"
-      />
+        <div class="skills__block">
+            <h2 class="skills__one">Development</h2>
+            <div class="skills__content">
+                <ul class="skills__text-one">
+                    {skills.data.development.map((item) => <li>{item}</li>)}
+                </ul>
+                <img
+                    src={comp.src}
+                    alt="Picture of Computer"
+                    class="skill-image"
+                />
             </div>
+        </div>
 
-        <h2 class="skills__three">UX/UI Skills</h2>
-         <div class="skills__ux">
-        <ul class="skills__text-three">
-            {skills.data.ux.map((item) => (
-                <li>{item}</li>
-            ))}
-        </ul>
-          <img
-        src={lightbulb.src}
-        alt="Picture of Lightbulb"
-        width="200"
-        class="lightbulb skill-image"
-      />
+        <div class="skills__block">
+            <h2 class="skills__two">Visual design</h2>
+            <div class="skills__content">
+                <ul class="skills__text-two">
+                    {skills.data.visual.map((item) => <li>{item}</li>)}
+                </ul>
+                <img
+                    src={palette.src}
+                    alt="Picture of Palette"
+                    class="skill-image"
+                />
+            </div>
+        </div>
+
+        <div class="skills__block">
+            <h2 class="skills__three">UX / UI</h2>
+            <div class="skills__content">
+                <ul class="skills__text-three">
+                    {skills.data.ux.map((item) => <li>{item}</li>)}
+                </ul>
+                <img
+                    src={lightbulb.src}
+                    alt="Picture of Lightbulb"
+                    class="skill-image"
+                />
+            </div>
         </div>
     </section>
 </Base>
@@ -82,6 +114,17 @@ const skills = await getEntry("about", "skills");
         padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 5vw, 4rem);
     }
 
+    .intro__label {
+        margin-bottom: 2rem;
+    }
+
+    .intro__grid {
+        align-items: end;
+        display: grid;
+        gap: clamp(1.5rem, 4vw, 3rem);
+        grid-template-columns: minmax(0, 1.3fr) minmax(16rem, 0.7fr);
+    }
+
     .intro__title {
         color: var(--main-color);
         font: 300 clamp(3rem, 8vw, 7rem)/0.9 var(--font-display);
@@ -92,9 +135,53 @@ const skills = await getEntry("about", "skills");
 
     .intro__text {
         color: var(--color-muted);
-        font: 400 clamp(0.95rem, 1.5vw, 1.3rem)/1.6 var(--font-display);
+        font: 400 clamp(0.98rem, 1.45vw, 1.35rem)/1.6 var(--font-display);
         margin: 0;
-        max-width: 60rem;
+        max-width: 58rem;
+    }
+
+    .intro__panel {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--color-divider);
+        padding: 1.25rem;
+    }
+
+    .intro__eyebrow {
+        color: var(--color-muted);
+        font: 0.65rem var(--font-mono);
+        letter-spacing: 0.12em;
+        margin: 0 0 0.9rem;
+        text-transform: uppercase;
+    }
+
+    .intro__statement {
+        color: var(--main-color);
+        font: 300 clamp(1.2rem, 2vw, 1.8rem)/1.1 var(--font-display);
+        letter-spacing: -0.05em;
+        margin: 0;
+    }
+
+    .tools {
+        background: var(--color-black);
+        padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 5vw, 4rem) 0;
+    }
+
+    .tools__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+    }
+
+    .tool-badge {
+        background: var(--main-color);
+        border: 1px solid var(--main-color);
+        color: var(--color-black);
+        display: inline-flex;
+        font: 0.62rem var(--font-mono);
+        letter-spacing: 0.12em;
+        padding: 0.7rem 0.9rem;
+        text-transform: uppercase;
     }
 
     .skills {
@@ -102,25 +189,31 @@ const skills = await getEntry("about", "skills");
         padding: clamp(2rem, 5vw, 5rem) clamp(1.25rem, 5vw, 4rem) 4rem;
     }
 
+    .skills__label {
+        margin-bottom: 2rem;
+    }
+
+    .skills__block + .skills__block {
+        margin-top: 2.25rem;
+    }
+
     .skills__one,
     .skills__two,
     .skills__three {
         color: var(--main-color);
-        font: 300 clamp(2.2rem, 5vw, 4.5rem)/0.9 var(--font-display);
+        font: 300 clamp(2rem, 5vw, 4rem)/0.9 var(--font-display);
         letter-spacing: -0.07em;
-        margin: 0 0 1.25rem;
+        margin: 0 0 1rem;
         text-transform: uppercase;
     }
 
-    .skills__development,
-    .skills__design,
-    .skills__ux {
+    .skills__content {
         align-items: center;
         border-top: 1px solid var(--color-divider);
         display: flex;
         gap: 1.5rem;
         justify-content: space-between;
-        padding: 1.5rem 0;
+        padding: 1.5rem 0 0;
         flex-wrap: wrap;
     }
 
@@ -144,20 +237,35 @@ const skills = await getEntry("about", "skills");
     .skill-image {
         filter: grayscale(1);
         height: auto;
-        max-width: 11rem;
+        max-width: 10rem;
         object-fit: contain;
         width: 100%;
     }
 
     @media (max-width: 46rem) {
-        .skills__development,
-        .skills__design,
-        .skills__ux {
+        .intro__grid {
+            grid-template-columns: 1fr;
+        }
+
+        .intro__panel {
+            max-width: 20rem;
+        }
+
+        .tools__list {
+            gap: 0.5rem;
+        }
+
+        .tool-badge {
+            font-size: 0.56rem;
+            padding: 0.6rem 0.7rem;
+        }
+
+        .skills__content {
             align-items: flex-start;
         }
 
         .skill-image {
-            max-width: 7rem;
+            max-width: 6.5rem;
         }
     }
 </style>
