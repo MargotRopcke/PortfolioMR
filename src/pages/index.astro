@@ -14,7 +14,7 @@ import me from "../assets/profilepic.png";
             <h1 class="home__title">
                 <span class="name-word">
                     <span class="name-letter" style="--i: 0;">M</span><span class="name-letter" style="--i: 1;">a</span><span class="name-letter" style="--i: 2;">r</span><span class="name-letter" style="--i: 3;">g</span><span class="name-letter" style="--i: 4;">o</span><span class="name-letter" style="--i: 5;">t</span>
-                </span><br /><em class="name-word"><span class="name-letter" style="--i: 6;">R</span><span class="name-letter" style="--i: 7;">ö</span><span class="name-letter" style="--i: 8;">p</span><span class="name-letter" style="--i: 9;">c</span><span class="name-letter" style="--i: 10;">k</span><span class="name-letter" style="--i: 11;">e</span></em><span>.</span>
+                </span><br /><em class="name-word"><span class="name-letter" style="--i: 6;">R</span><span class="name-letter" style="--i: 7;">ö</span><span class="name-letter" style="--i: 8;">p</span><span class="name-letter" style="--i: 9;">c</span><span class="name-letter" style="--i: 10;">k</span><span class="name-letter" style="--i: 11;">e</span></em><span></span>
             </h1>
             <div class="hero__aside">
                 <img src={me.src} alt="Picture of Margot" class="profilepic" />
@@ -28,10 +28,11 @@ import me from "../assets/profilepic.png";
             </div>
         </div>
         <div class="hero__line">
-            <span>Based in Belgium</span><span
-                >Available for select projects</span>
+            <span>Based in Belgium</span>
         </div>
     </section>
+
+    <section id="creations" class="creations"><Work /></section>
 
     <section class="specialties" aria-labelledby="skills-title">
         <div class="section-label">
@@ -51,8 +52,6 @@ import me from "../assets/profilepic.png";
             >
         </div>
     </section>
-
-    <section id="creations" class="creations"><Work /></section>
 </Base>
 
 <style>
@@ -235,6 +234,8 @@ import me from "../assets/profilepic.png";
     }
 
     .specialties__list {
+        display: grid;
+        gap: 0.9rem;
         margin-top: clamp(2.5rem, 6vw, 4.5rem);
     }
 
@@ -245,7 +246,7 @@ import me from "../assets/profilepic.png";
         display: grid;
         gap: 1rem;
         grid-template-columns: 4rem 1fr auto;
-        padding: 1.5rem 0;
+        padding: 1.25rem 0;
         text-decoration: none;
         transition: opacity 0.25s ease, transform 0.25s ease;
     }
@@ -258,16 +259,18 @@ import me from "../assets/profilepic.png";
     .specialty b {
         color: var(--color-muted);
         font: 0.68rem var(--font-mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
     }
 
     .specialty strong {
-        font: 300 clamp(2.4rem, 6vw, 6rem)/0.9 var(--font-display);
+        font: 300 clamp(2rem, 5vw, 3.2rem)/0.9 var(--font-display);
         letter-spacing: -0.07em;
         text-transform: uppercase;
     }
 
     .specialty:hover {
-        transform: translateX(0.5rem);
+        transform: translateX(0.4rem);
     }
 
     @media (max-width: 46rem) {
@@ -292,6 +295,7 @@ import me from "../assets/profilepic.png";
         .specialty {
             gap: 0.75rem;
             grid-template-columns: 3rem 1fr auto;
+            padding: 1rem 0;
         }
     }
 </style>
