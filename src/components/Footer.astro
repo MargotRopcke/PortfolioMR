@@ -4,7 +4,9 @@ import Social from "./Social.astro";
 
 <div class="footer__container">
     <footer class="footer">
-        <div class="footer__label">03 / Contact</div>
+        <div class="footer__label">
+            <span>03</span><span>Contact</span>
+        </div>
 
         <div class="footer__header">
             <h2 class="footer__title">Let's<br /><em>connect.</em></h2>
@@ -87,7 +89,9 @@ import Social from "./Social.astro";
 
     .footer__label {
         color: var(--color-muted);
+        display: flex;
         font: 0.65rem var(--font-mono);
+        justify-content: space-between;
         letter-spacing: 0.12em;
         text-transform: uppercase;
     }

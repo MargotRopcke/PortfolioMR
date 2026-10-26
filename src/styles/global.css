@@ -125,6 +125,15 @@ select {
     border-color: var(--color-divider);
 }
 
+.section-label {
+    color: var(--color-muted);
+    display: flex;
+    font: 0.65rem var(--font-mono);
+    justify-content: space-between;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
 strong,
 b,
 span,
