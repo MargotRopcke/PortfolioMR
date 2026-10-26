@@ -155,6 +155,18 @@ const filterCategories = [
     const items = Array.from(document.querySelectorAll<HTMLElement>(".work-page__item"));
     const allButton = filterButtons.find((button) => button.dataset.category === "all");
 
+    const syncUrlFilter = (category: string | null) => {
+        const url = new URL(window.location.href);
+
+        if (!category || category === "all") {
+            url.searchParams.delete("category");
+        } else {
+            url.searchParams.set("category", category);
+        }
+
+        window.history.replaceState({}, "", url);
+    };
+
     const updateFilterState = () => {
         const activeCategories = new Set(
             filterButtons
@@ -171,6 +183,40 @@ const filterCategories = [
         });
     };
 
+    const applyCategoryFromUrl = () => {
+        const requestedCategory = new URLSearchParams(window.location.search).get("category");
+
+        if (!requestedCategory) {
+            if (allButton) {
+                allButton.classList.add("active");
+                allButton.setAttribute("aria-pressed", "true");
+            }
+            filterButtons.forEach((btn) => {
+                if (btn !== allButton) {
+                    btn.classList.remove("active");
+                    btn.setAttribute("aria-pressed", "false");
+                }
+            });
+            updateFilterState();
+            return;
+        }
+
+        const matchingButton = filterButtons.find((button) => button.dataset.category === requestedCategory);
+
+        filterButtons.forEach((btn) => {
+            const isSelected = btn === matchingButton;
+            btn.classList.toggle("active", isSelected);
+            btn.setAttribute("aria-pressed", String(isSelected));
+        });
+
+        if (allButton && !matchingButton) {
+            allButton.classList.add("active");
+            allButton.setAttribute("aria-pressed", "true");
+        }
+
+        updateFilterState();
+    };
+
     filterButtons.forEach((button) => {
         button.addEventListener("click", () => {
             const category = button.dataset.category;
@@ -181,6 +227,7 @@ const filterCategories = [
                     btn.classList.toggle("active", isAll);
                     btn.setAttribute("aria-pressed", String(isAll));
                 });
+                syncUrlFilter("all");
             } else {
                 const wasActive = button.classList.toggle("active");
                 button.setAttribute("aria-pressed", String(wasActive));
@@ -193,11 +240,13 @@ const filterCategories = [
                     allButton.classList.toggle("active", !hasAnyActive);
                     allButton.setAttribute("aria-pressed", String(!hasAnyActive));
                 }
+
+                syncUrlFilter(wasActive ? category ?? null : "all");
             }
 
             updateFilterState();
         });
     });
 
-    updateFilterState();
+    applyCategoryFromUrl();
 </script>

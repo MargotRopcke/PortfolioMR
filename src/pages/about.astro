@@ -8,6 +8,11 @@ import lightbulb from "../assets/lightbulb.png";
 import palette from "../assets/palette.png";
 
 const skills = await getEntry("about", "skills");
+const skillGroups = {
+    development: skills?.data?.development ?? [],
+    visual: skills?.data?.visual ?? [],
+    ux: skills?.data?.ux ?? [],
+};
 const tools = [
     "Figma",
     "Illustrator",
@@ -66,13 +71,18 @@ const tools = [
             <h2 class="skills__one">Development</h2>
             <div class="skills__content">
                 <ul class="skills__text-one">
-                    {skills.data.development.map((item) => <li>{item}</li>)}
+                    {skillGroups.development.map((item) => <li>{item}</li>)}
                 </ul>
-                <img
-                    src={comp.src}
-                    alt="Picture of Computer"
-                    class="skill-image"
-                />
+                <div class="skill__meta">
+                    <img
+                        src={comp.src}
+                        alt="Picture of Computer"
+                        class="skill-image"
+                    />
+                    <a href="/portfolioMR/work/?category=Development" class="skill-link">
+                        <span>View development work</span><b>↗</b>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -80,13 +90,18 @@ const tools = [
             <h2 class="skills__two">Visual design</h2>
             <div class="skills__content">
                 <ul class="skills__text-two">
-                    {skills.data.visual.map((item) => <li>{item}</li>)}
+                    {skillGroups.visual.map((item) => <li>{item}</li>)}
                 </ul>
-                <img
-                    src={palette.src}
-                    alt="Picture of Palette"
-                    class="skill-image"
-                />
+                <div class="skill__meta">
+                    <img
+                        src={palette.src}
+                        alt="Picture of Palette"
+                        class="skill-image"
+                    />
+                    <a href="/portfolioMR/work/?category=Visual%20Design" class="skill-link">
+                        <span>View visual work</span><b>↗</b>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -94,13 +109,18 @@ const tools = [
             <h2 class="skills__three">UX / UI</h2>
             <div class="skills__content">
                 <ul class="skills__text-three">
-                    {skills.data.ux.map((item) => <li>{item}</li>)}
+                    {skillGroups.ux.map((item) => <li>{item}</li>)}
                 </ul>
-                <img
-                    src={lightbulb.src}
-                    alt="Picture of Lightbulb"
-                    class="skill-image"
-                />
+                <div class="skill__meta">
+                    <img
+                        src={lightbulb.src}
+                        alt="Picture of Lightbulb"
+                        class="skill-image"
+                    />
+                    <a href="/portfolioMR/work/?category=UX%20Research" class="skill-link">
+                        <span>View UX work</span><b>↗</b>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -234,12 +254,40 @@ const tools = [
         margin-bottom: 0.35rem;
     }
 
+    .skill__meta {
+        display: grid;
+        gap: 0.85rem;
+        justify-items: start;
+        min-width: 9rem;
+    }
+
     .skill-image {
         filter: grayscale(1);
         height: auto;
         max-width: 10rem;
         object-fit: contain;
         width: 100%;
+    }
+
+    .skill-link {
+        align-items: center;
+        color: var(--main-color);
+        display: inline-flex;
+        font: 0.62rem var(--font-mono);
+        gap: 0.45rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+
+    .skill-link b {
+        display: inline-flex;
+        font-size: 0.9rem;
+    }
+
+    .skill-link:hover,
+    .skill-link:focus-visible {
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
     }
 
     @media (max-width: 46rem) {
