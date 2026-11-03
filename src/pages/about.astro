@@ -5,6 +5,7 @@ import "../styles/global.css";
 import { getEntry } from "astro:content";
 import comp from "../assets/comp.png";
 import lightbulb from "../assets/lightbulb.png";
+import margot from "../assets/margot.jpg";
 import palette from "../assets/palette.png";
 
 const skills = await getEntry("about", "skills");
@@ -15,6 +16,7 @@ const skillGroups = {
 };
 const tools = [
     "Figma",
+    "Miro",
     "Illustrator",
     "Photoshop",
     "After Effects",
@@ -44,10 +46,17 @@ const tools = [
                 </p>
             </div>
             <aside class="intro__panel">
+                <div class="intro__portrait-wrap">
+                    <img
+                        src={margot.src}
+                        alt="Portrait of Margot Tropcke"
+                        class="intro__portrait"
+                    />
+                </div>
                 <p class="intro__eyebrow">Based in Belgium</p>
                 <p class="intro__statement">
-                    Designer + developer for thoughtful interfaces, brand
-                    systems, and digital products that feel clear and human.
+                    Designer + developer creating clear, human-centered digital
+                    experiences.
                 </p>
             </aside>
         </div>
@@ -163,14 +172,33 @@ const tools = [
     .intro__panel {
         background: rgba(255, 255, 255, 0.02);
         border: 1px solid var(--color-divider);
-        padding: 1.25rem;
+        display: grid;
+        gap: 0.8rem;
+        padding: 0.8rem;
+        max-width: 18rem;
+        justify-self: end;
+    }
+
+    .intro__portrait-wrap {
+        aspect-ratio: 4 / 5;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--color-divider);
+        overflow: hidden;
+        max-height: 22rem;
+    }
+
+    .intro__portrait {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
     }
 
     .intro__eyebrow {
         color: var(--color-muted);
         font: 0.65rem var(--font-mono);
         letter-spacing: 0.12em;
-        margin: 0 0 0.9rem;
+        margin: 0;
         text-transform: uppercase;
     }
 
@@ -179,6 +207,18 @@ const tools = [
         font: 300 clamp(1.2rem, 2vw, 1.8rem)/1.1 var(--font-display);
         letter-spacing: -0.05em;
         margin: 0;
+    }
+
+    @media (max-width: 700px) {
+        .intro__grid {
+            grid-template-columns: 1fr;
+        }
+
+        .intro__panel {
+            max-width: 24rem;
+            order: -1;
+            width: 100%;
+        }
     }
 
     .tools {
@@ -194,13 +234,13 @@ const tools = [
     }
 
     .tool-badge {
-        background: var(--main-color);
-        border: 1px solid var(--main-color);
-        color: var(--color-black);
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--color-divider);
+        color: var(--main-color);
         display: inline-flex;
         font: 0.62rem var(--font-mono);
         letter-spacing: 0.12em;
-        padding: 0.7rem 0.9rem;
+        padding: 0.55rem 0.75rem;
         text-transform: uppercase;
     }
 
