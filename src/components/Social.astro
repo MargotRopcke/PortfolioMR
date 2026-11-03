@@ -37,9 +37,15 @@
 
     .social__link span {
         color: var(--color-muted);
+        transition: color 0.2s ease;
     }
 
     .social__link:hover {
-        opacity: 0.8;
+        color: var(--color-accent);
+        opacity: 1;
+    }
+
+    .social__link:hover span {
+        color: var(--color-accent);
     }
 </style>

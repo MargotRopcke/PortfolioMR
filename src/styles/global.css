@@ -3,7 +3,7 @@
     --color-black: #ffffff;
     --color-muted: #6f6f6f;
     --color-divider: #d9d9d9;
-    --color-accent: #111111;
+    --color-accent: #d74d12; 
     --font-display: "Helvetica Neue", "Arial", sans-serif;
     --font-mono: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
     --font-primary: var(--font-display);
@@ -46,7 +46,7 @@ html.dark {
     --color-black: #000000;
     --color-muted: #a0a0a0;
     --color-divider: #333333;
-    --color-accent: #d9d9d9;
+    --color-accent: #d32511;
 }
 
 body {
@@ -77,6 +77,12 @@ img {
 a {
     color: inherit;
     text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover,
+a:focus-visible {
+    color: var(--color-accent);
 }
 
 p,

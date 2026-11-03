@@ -102,9 +102,7 @@ import me from "../assets/profilepic.png";
         font-style: normal;
         display: inline-block;
         animation: nameAccent 1.2s ease both;
-    }
-
-    .name-word {
+    }    .name-word {
         white-space: nowrap;
     }
 
@@ -124,7 +122,6 @@ import me from "../assets/profilepic.png";
     }
 
     .home__title em {
-        animation: accentFloat 4.5s ease-in-out infinite alternate;
         margin-top: 0.16em;
     }
 
@@ -149,21 +146,6 @@ import me from "../assets/profilepic.png";
         100% {
             opacity: 1;
             transform: translateY(0);
-        }
-    }
-
-    @keyframes accentFloat {
-        0% {
-            transform: translateY(0);
-            opacity: 0.92;
-        }
-        50% {
-            transform: translateY(-4px);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(0);
-            opacity: 0.92;
         }
     }
 
@@ -201,17 +183,30 @@ import me from "../assets/profilepic.png";
         padding: 0.75rem 0;
         text-decoration: none;
         text-transform: uppercase;
+        transition: color 0.2s ease;
         width: 100%;
+    }
+
+    .hero__button:hover {
+        color: var(--color-accent);
+    }
+
+    .hero__button:hover b {
+        background: var(--color-accent);
+        border-color: var(--color-accent);
+        color: var(--color-black);
     }
 
     .hero__button b {
         background: transparent;
-        border: 1px solid var(--main-color);
+        border: 1px solid var(--color-accent);
         border-radius: 50%;
+        color: var(--color-accent);
         display: grid;
         font-size: 1.1rem;
         height: 2.2rem;
         place-items: center;
+        transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
         width: 2.2rem;
     }
 
@@ -264,7 +259,14 @@ import me from "../assets/profilepic.png";
     }
 
     .specialty:hover {
+        color: var(--color-accent);
         transform: translateX(0.4rem);
+    }
+
+    .specialty:hover strong,
+    .specialty:hover span,
+    .specialty:hover b {
+        color: var(--color-accent);
     }
 
     @media (max-width: 46rem) {

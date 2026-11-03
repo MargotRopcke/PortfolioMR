@@ -29,19 +29,12 @@ import "../styles/global.css";
 
     .coming-soon__card {
         background: rgba(255, 255, 255, 0.02);
-        border: 1px solid var(--color-divider);
+        border: 0;
         max-width: 52rem;
         padding: clamp(1.5rem, 4vw, 3rem);
         position: relative;
+        text-align: center;
         width: 100%;
-    }
-
-    .coming-soon__card::before {
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        content: "";
-        inset: 0.8rem;
-        position: absolute;
-        pointer-events: none;
     }
 
     .coming-soon__eyebrow {
@@ -60,6 +53,7 @@ import "../styles/global.css";
         letter-spacing: -0.08em;
         margin: 0;
         position: relative;
+        text-align: center;
         text-transform: uppercase;
         z-index: 1;
     }
@@ -67,9 +61,10 @@ import "../styles/global.css";
     .coming-soon__text {
         color: var(--color-muted);
         font: 400 clamp(1rem, 1.5vw, 1.4rem)/1.6 var(--font-display);
-        margin: 1rem 0 0;
+        margin: 1rem auto 0;
         max-width: 32rem;
         position: relative;
+        text-align: center;
         z-index: 1;
     }
 </style>

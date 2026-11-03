@@ -109,8 +109,14 @@ import WorkCard from "./WorkCard.astro";
 
     .work__button:hover,
     .work__button:focus-visible {
+        color: var(--color-accent);
         text-decoration: underline;
         text-underline-offset: 0.2em;
+    }
+
+    .work__button:hover b,
+    .work__button:focus-visible b {
+        color: var(--color-accent);
     }
 
     @media (max-width: 46rem) {

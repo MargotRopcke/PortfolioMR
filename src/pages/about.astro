@@ -32,17 +32,25 @@ const tools = [
 <Base title="Home Page">
     <section class="intro">
         <div class="section-label intro__label">
-            <span>02</span><span>About me</span>
+            <span>01</span><span>About me</span>
         </div>
         <div class="intro__grid">
             <div>
                 <h1 class="intro__title">Who am I?</h1>
                 <p class="intro__text">
-                    I’m passionate about turning ideas into intuitive, visually
-                    compelling digital experiences that people actually enjoy
-                    using. I’m a fast learner, a reliable teammate, and a
-                    professional who gets things done while keeping creativity
-                    and clarity at the center of every project.
+                    Hi, I’m Margot.<br /><br />
+                    I’m a Digital Design &amp; Development student who loves creating
+                    digital experiences that are both useful and beautiful. I move
+                    between UX/UI, visual design and code, and I like how each one
+                    strengthens the others.<br /><br />
+                    UX/UI is where I feel most at home. I’m fascinated by how
+                    people interact with digital products, and I enjoy making them
+                    more intuitive, accessible and enjoyable to use.<br /><br />
+                    I learn best by doing: trying new tools, testing ideas and
+                    drawing inspiration from the world around me. I also love
+                    exchanging perspectives with others, because better ideas often
+                    come from a different point of view.<br /><br />
+                    <strong>Always curious. Always learning.</strong>
                 </p>
             </div>
             <aside class="intro__panel">
@@ -55,8 +63,7 @@ const tools = [
                 </div>
                 <p class="intro__eyebrow">Based in Belgium</p>
                 <p class="intro__statement">
-                    Designer + developer creating clear, human-centered digital
-                    experiences.
+                 UX Researcher, Designer & Developer
                 </p>
             </aside>
         </div>
@@ -73,7 +80,7 @@ const tools = [
 
     <section class="skills">
         <div class="section-label skills__label">
-            <span>03</span><span>Skills</span>
+            <span>02</span><span>Skills</span>
         </div>
 
         <div class="skills__block">
@@ -164,7 +171,7 @@ const tools = [
 
     .intro__text {
         color: var(--color-muted);
-        font: 400 clamp(0.98rem, 1.45vw, 1.35rem)/1.6 var(--font-display);
+        font: 400 clamp(0.92rem, 1.25vw, 1.2rem)/1.6 var(--font-display);
         margin: 0;
         max-width: 58rem;
     }
@@ -250,11 +257,11 @@ const tools = [
     }
 
     .skills__label {
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
 
     .skills__block + .skills__block {
-        margin-top: 2.25rem;
+        margin-top: 1.5rem;
     }
 
     .skills__one,
@@ -263,17 +270,17 @@ const tools = [
         color: var(--main-color);
         font: 300 clamp(2rem, 5vw, 4rem)/0.9 var(--font-display);
         letter-spacing: -0.07em;
-        margin: 0 0 1rem;
+        margin: 0 0 0.5rem;
         text-transform: uppercase;
     }
 
     .skills__content {
-        align-items: center;
+        align-items: end;
         border-top: 1px solid var(--color-divider);
         display: flex;
-        gap: 1.5rem;
+        gap: 1rem;
         justify-content: space-between;
-        padding: 1.5rem 0 0;
+        padding-top: 1rem;
         flex-wrap: wrap;
     }
 
@@ -297,7 +304,8 @@ const tools = [
     .skill__meta {
         display: grid;
         gap: 0.85rem;
-        justify-items: start;
+        justify-items: end;
+        margin-left: auto;
         min-width: 9rem;
     }
 
@@ -315,6 +323,7 @@ const tools = [
         display: inline-flex;
         font: 0.62rem var(--font-mono);
         gap: 0.45rem;
+        justify-self: end;
         letter-spacing: 0.12em;
         text-transform: uppercase;
     }
@@ -326,8 +335,14 @@ const tools = [
 
     .skill-link:hover,
     .skill-link:focus-visible {
+        color: var(--color-accent);
         text-decoration: underline;
         text-underline-offset: 0.2em;
+    }
+
+    .skill-link:hover b,
+    .skill-link:focus-visible b {
+        color: var(--color-accent);
     }
 
     @media (max-width: 46rem) {
