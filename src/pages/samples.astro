@@ -1,84 +1,75 @@
 ---
 import Base from "../layouts/Base.astro";
-import { getCollection } from "astro:content";
-
-import Extras from "../components/Extras.astro";
-import Photo from "../components/Photo.astro";
-import Quotes from "../components/Quotes.astro";
 import "../styles/global.css";
 ---
 
 <Base title="Samples Page">
-    <section class="header">
-        <h1 class="samples__title">My Samples</h1>
-        <p class="samples__intro">
-            Welcome to my personal collection of creativity. Here, I share my
-            own work, photography that captures moments and perspectives, and a
-            selection of quotes that inspire me. Each piece reflects a part of
-            my vision and the ideas that move me. I hope these glimpses into my
-            world resonate with you.
-        </p>
-    </section>
-
-    <div class="samples__content">
-        <section class="work__samples card">
-            <Extras />
-        </section>
-
-        <section class="quotes__samples card">
-            <Quotes />
-        </section>
-
-        <section id="picsamples" class="pic__samples card">
-            <Photo /> 
-        </section>
-    </div>
+    <main class="coming-soon">
+        <div class="coming-soon__card">
+            <p class="coming-soon__eyebrow">My samples</p>
+            <h1 class="coming-soon__title">Coming soon</h1>
+            <p class="coming-soon__text">
+                I’m putting together a fresh collection of work and inspiration.
+            </p>
+        </div>
+    </main>
 </Base>
 
 <style>
-.header {
-    background: var(--color-black);
-    border-bottom: 1px solid var(--color-divider);
-    padding: clamp(2.5rem, 6vw, 5rem) clamp(1.25rem, 4vw, 4rem) 2rem;
-}
+    .coming-soon {
+        align-items: center;
+        background: var(--color-black);
+        border-top: 1px solid var(--color-divider);
+        border-bottom: 1px solid var(--color-divider);
+        display: flex;
+        justify-content: center;
+        min-height: 70vh;
+        padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3rem);
+    }
 
-.samples__title {
-    color: var(--main-color);
-    font: 300 clamp(3.1rem, 8vw, 7.5rem)/0.9 var(--font-display);
-    letter-spacing: -0.08em;
-    margin: 0 0 1.25rem;
-    text-transform: uppercase;
-}
+    .coming-soon__card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--color-divider);
+        max-width: 52rem;
+        padding: clamp(1.5rem, 4vw, 3rem);
+        position: relative;
+        width: 100%;
+    }
 
-.samples__intro {
-    color: var(--color-muted);
-    font: 400 clamp(1rem, 1.5vw, 1.4rem)/1.6 var(--font-display);
-    margin: 0;
-    max-width: 52rem;
-}
+    .coming-soon__card::before {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        content: "";
+        inset: 0.8rem;
+        position: absolute;
+        pointer-events: none;
+    }
 
-.samples__content {
-    display: grid;
-    gap: 1.25rem;
-    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
-    padding: clamp(1.5rem, 4vw, 3rem) clamp(1.25rem, 4vw, 4rem) 4rem;
-}
+    .coming-soon__eyebrow {
+        color: var(--color-muted);
+        font: 0.7rem var(--font-mono);
+        letter-spacing: 0.12em;
+        margin: 0 0 1rem;
+        position: relative;
+        text-transform: uppercase;
+        z-index: 1;
+    }
 
-.card {
-    background: var(--color-black);
-    border: 1px solid var(--color-divider);
-    color: var(--main-color);
-    display: flex;
-    flex-direction: column;
-    min-height: 12rem;
-    padding: 1.25rem;
-    text-align: left;
-}
+    .coming-soon__title {
+        color: var(--main-color);
+        font: 300 clamp(2.8rem, 7vw, 6.8rem)/0.9 var(--font-display);
+        letter-spacing: -0.08em;
+        margin: 0;
+        position: relative;
+        text-transform: uppercase;
+        z-index: 1;
+    }
 
-.work__samples,
-.quotes__samples,
-.pic__samples {
-    font-family: var(--font-display);
-}
-
+    .coming-soon__text {
+        color: var(--color-muted);
+        font: 400 clamp(1rem, 1.5vw, 1.4rem)/1.6 var(--font-display);
+        margin: 1rem 0 0;
+        max-width: 32rem;
+        position: relative;
+        z-index: 1;
+    }
 </style>
