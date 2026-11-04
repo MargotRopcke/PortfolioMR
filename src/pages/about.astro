@@ -3,10 +3,7 @@ import Base from "../layouts/Base.astro";
 import "../styles/global.css";
 
 import { getEntry } from "astro:content";
-import comp from "../assets/comp.png";
-import lightbulb from "../assets/lightbulb.png";
 import margot from "../assets/margot.jpg";
-import palette from "../assets/palette.png";
 
 const skills = await getEntry("about", "skills");
 const skillGroups = {
@@ -71,7 +68,7 @@ const tools = [
 
     <section class="tools" aria-label="Tools I use">
         <div class="section-label">
-            <span>Tools</span><span>That I work with</span>
+            <span>Tools</span>
         </div>
         <div class="tools__list">
             {tools.map((tool) => <span class="tool-badge">{tool}</span>)}
@@ -90,13 +87,6 @@ const tools = [
                     {skillGroups.development.map((item) => <li>{item}</li>)}
                 </ul>
                 <div class="skill__meta">
-                    <a href="/portfolioMR/work/?category=Development" class="skill-image-link">
-                        <img
-                            src={comp.src}
-                            alt="Picture of Computer"
-                            class="skill-image"
-                        />
-                    </a>
                     <a href="/portfolioMR/work/?category=Development" class="skill-link">
                         <span>View development work</span><b>↗</b>
                     </a>
@@ -111,13 +101,6 @@ const tools = [
                     {skillGroups.visual.map((item) => <li>{item}</li>)}
                 </ul>
                 <div class="skill__meta">
-                    <a href="/portfolioMR/work/?category=Visual%20Design" class="skill-image-link">
-                        <img
-                            src={palette.src}
-                            alt="Picture of Palette"
-                            class="skill-image"
-                        />
-                    </a>
                     <a href="/portfolioMR/work/?category=Visual%20Design" class="skill-link">
                         <span>View visual work</span><b>↗</b>
                     </a>
@@ -132,18 +115,17 @@ const tools = [
                     {skillGroups.ux.map((item) => <li>{item}</li>)}
                 </ul>
                 <div class="skill__meta">
-                    <a href="/portfolioMR/work/?category=UX%20Research" class="skill-image-link">
-                        <img
-                            src={lightbulb.src}
-                            alt="Picture of Lightbulb"
-                            class="skill-image"
-                        />
-                    </a>
                     <a href="/portfolioMR/work/?category=UX%20Research" class="skill-link">
                         <span>View UX work</span><b>↗</b>
                     </a>
                 </div>
             </div>
+        </div>
+
+        <div class="skills__footer">
+            <a href="/portfolioMR/work/" class="skill-link skills__all-link">
+                <span>View all work</span><b>↗</b>
+            </a>
         </div>
     </section>
 </Base>
@@ -308,50 +290,27 @@ const tools = [
     }
 
     .skill__meta {
-        display: grid;
-        gap: 0.85rem;
-        justify-items: center;
+        display: flex;
+        justify-content: flex-end;
         margin-left: auto;
         min-width: 9rem;
     }
 
-    .skill-image-link {
-        display: block;
-    }
-
-    .skill-image {
-        display: block;
-        filter: grayscale(1) brightness(0.9) contrast(1.05);
-        height: auto;
-        max-width: 10rem;
-        object-fit: contain;
-        transition: filter 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
-        width: 100%;
-    }
-
-   .skills__block:nth-child(2) .skill-image {
-       max-width: 10rem;
-    }
-
-    .skills__block:nth-child(3) .skill-image {
-       max-width: 10rem;
-    }
-
-    .skill-image-link:hover .skill-image,
-    .skill-image-link:focus-visible .skill-image {
-        filter: grayscale(1) brightness(0.65) contrast(1.1);
-        transform: translateY(-1px);
-    }
-
     .skill-link {
         align-items: center;
-        color: var(--main-color);
+        background: transparent;
+        border: 1px solid var(--color-accent);
+        color: var(--color-accent);
         display: inline-flex;
-        font: 0.62rem var(--font-mono);
+        font: 0.66rem var(--font-mono);
         gap: 0.45rem;
         justify-content: center;
         letter-spacing: 0.12em;
+        padding: 0.7rem 1rem;
+        text-decoration: none;
         text-transform: uppercase;
+        transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+            transform 0.2s ease;
     }
 
     .skill-link b {
@@ -359,17 +318,31 @@ const tools = [
         font-size: 0.9rem;
     }
 
-    .skill__meta:hover .skill-link,
-    .skill__meta:focus-visible .skill-link,
-    .skill__meta:hover .skill-link b,
-    .skill__meta:focus-visible .skill-link b {
-        color: var(--color-accent);
+    .skill-link:hover,
+    .skill-link:focus-visible {
+        background: var(--color-accent);
+        border-color: var(--color-accent);
+        color: #ffffff;
+        transform: translateY(-1px);
     }
 
-    .skill__meta:hover .skill-link,
-    .skill__meta:focus-visible .skill-link {
-        text-decoration: underline;
-        text-underline-offset: 0.2em;
+    .skills__footer {
+        display: flex;
+        justify-content: center;
+        margin-top: 4rem;
+        padding-top: 1rem;
+    }
+
+    .skills__all-link {
+        background: var(--color-accent);
+        color: #ffffff;
+        min-width: 12.5rem;
+    }
+
+    .skills__all-link:hover,
+    .skills__all-link:focus-visible {
+        background: transparent;
+        color: var(--color-accent);
     }
 
     @media (max-width: 46rem) {
@@ -394,8 +367,12 @@ const tools = [
             align-items: flex-start;
         }
 
-        .skill-image {
-            max-width: 6.5rem;
+        .skill__meta {
+            width: 100%;
+        }
+
+        .skill-link {
+            width: 100%;
         }
     }
 </style>
