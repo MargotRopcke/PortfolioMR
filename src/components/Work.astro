@@ -19,6 +19,7 @@ import WorkCard from "./WorkCard.astro";
                             <a
                                 href={`/portfolioMR/work/${work.id}/`}
                                 class="work__link"
+                                data-work-link
                             />
                             <WorkCard {work} />
                         </li>
@@ -34,6 +35,29 @@ import WorkCard from "./WorkCard.astro";
         </a>
     </div>
 </section>
+
+<script>
+  const registerWorkLinks = () => {
+      document.querySelectorAll("[data-work-link]").forEach((link) => {
+          if (link instanceof HTMLElement && link.dataset.bound === "true") return;
+          if (link instanceof HTMLElement) {
+              link.dataset.bound = "true";
+          }
+
+          link.addEventListener("click", () => {
+              try {
+                  const currentPath = `${window.location.pathname}${window.location.search}`;
+                  sessionStorage.setItem("portfolioReturnPath", currentPath);
+              } catch {
+                  // Ignore storage access issues.
+              }
+          });
+      });
+  };
+
+  registerWorkLinks();
+  document.addEventListener("astro:page-load", registerWorkLinks);
+</script>
 
 <style>
     .exploration {

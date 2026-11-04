@@ -6,7 +6,7 @@ const { work } = Astro.props;
 ---
 
 <article>
-  <a href={`/portfolioMR/work/${work.id}/`} class="work-link">
+  <a href={`/portfolioMR/work/${work.id}/`} class="work-link" data-work-link>
     <div class="image-wrapper">
       <Image
         src={work.data.image}
@@ -22,6 +22,29 @@ const { work } = Astro.props;
     </div>
   </a>
 </article>
+
+<script>
+  const registerWorkLinks = () => {
+      document.querySelectorAll("[data-work-link]").forEach((link) => {
+          if (link instanceof HTMLElement && link.dataset.bound === "true") return;
+          if (link instanceof HTMLElement) {
+              link.dataset.bound = "true";
+          }
+
+          link.addEventListener("click", () => {
+              try {
+                  const currentPath = `${window.location.pathname}${window.location.search}`;
+                  sessionStorage.setItem("portfolioReturnPath", currentPath);
+              } catch {
+                  // Ignore storage access issues.
+              }
+          });
+      });
+  };
+
+  registerWorkLinks();
+  document.addEventListener("astro:page-load", registerWorkLinks);
+</script>
 
 <style>
   .image-wrapper {
