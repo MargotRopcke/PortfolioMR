@@ -2,8 +2,8 @@
 name: Chaos
 image: img/cc.png
 categories: ["Development"]
+madeWith: ["p5.js", "Processing", "Photoshop"]
+assignment: "Build a p5.js sketch that interprets Chaos, Order, Dark, and Light as four distinct animated scenes."
 ---
 
-Creative Code project
-
-In this assignment, you create a p5.js sketch in which you express your personal interpretation of the four words Chaos, Order, Dark, and Light. For each word, create a different animated scene without text that remains visually interesting over time. The keyboard buttons are: x, c, v, b.
+I created an interactive visual study where each scene responds to a different emotional and spatial language. The motion loops, transitions, and color shifts let the compositions evolve over time without relying on text.

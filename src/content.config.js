@@ -14,6 +14,8 @@ const workCollections = defineCollection({
                 "Motion Design",
                 "Development",
             ])).optional(),
+            madeWith: z.array(z.string()).optional(),
+            assignment: z.string().optional(),
         }),
 });
 

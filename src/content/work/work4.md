@@ -2,10 +2,8 @@
 name: NMBS Calling
 image: img/nmbs.png
 categories: ["Motion Design"]
+madeWith: ["After Effects", "Premiere Pro", "Illustrator"]
+assignment: "Create a motion graphic for NMBS's 100th anniversary that reflects the future of rail travel."
 ---
 
-Motion Design project
-
-The NMBS celebrates its 100th anniversary and invites students to interpret this in their own creative way. Within the Motion Design program, students create a short animation (motion graphic) based on the theme “NMBS. 100 years. The journey continues.” The work can pay tribute to the past, offer a view of the present, or imagine the future of train travel, while expressing the emotions and experiences associated with travelling by train.
-
-
+I imagined a modern, travel-forward identity that blends heritage, movement, and optimism. The animation uses pacing, typography, and cinematic transitions to evoke the emotional side of train journeys while looking ahead.

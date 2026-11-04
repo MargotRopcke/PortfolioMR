@@ -2,8 +2,8 @@
 name: Cocktail Shaker
 image: img/cocktailshake.png
 categories: ["Development"]
+madeWith: ["Figma", "Illustrator", "Photoshop"]
+assignment: "Create a three-step visual concept that turns a wish into a clear, engaging story using typography and imagery."
 ---
 
-Visual Design project
-
-This short creative challenge tests your graphic design skills. You create a visually appealing three-step plan showing how to make a wish come true (“3 steps to… make your wish come true”). Text and image should reinforce each other, and you can choose from techniques such as illustration, collage, typography, or paint. Pay attention to composition and visual associations, enjoy the process, and complete it within 4 hours.
+I developed a playful cocktail-inspired three-step journey that pairs visual rhythm with concise messaging. The piece combines illustration, composition, and editorial styling to make the concept feel light, memorable, and visually cohesive.

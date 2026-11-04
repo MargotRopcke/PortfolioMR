@@ -2,11 +2,8 @@
 name: Couture Off The Grid
 image: img/couture.png
 categories: ["UX Research", "Visual Design", "Development"]
+madeWith: ["Figma", "Miro", "HTML", "CSS"]
+assignment: "Design and build a website that inspires people to live off-grid with practical, creative tips."
 ---
 
-Integration project
-
-This assignment contained: Development, Design, UX/UI
-
-Design and build a **website** that inspires people to go “off the grid,” with practical and creative **tips & tricks**. Define a specific target audience, gather information, come up with at least 5 tips, and develop an attractive visual style. Then turn this into a **working website** in HTML and CSS, including a homepage, concept image, and tips section. Document the entire process in Miro or Figjam.
-
+I created a concept-driven website focused on lifestyle, utility, and atmosphere. It combines editorial visuals, structured content, and a clear browsing flow to make off-grid living feel both inspiring and approachable.
