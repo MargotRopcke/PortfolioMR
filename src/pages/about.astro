@@ -59,8 +59,8 @@ const tools = [
                     />
                 </div>
                 <p class="intro__eyebrow">Based in Belgium</p>
-                <p class="intro__statement">
-                 UX Researcher, Designer & Developer
+                <p class="intro__statement" data-rotating-role>
+                    UX/UI Research
                 </p>
             </aside>
         </div>
@@ -129,6 +129,26 @@ const tools = [
         </div>
     </section>
 </Base>
+
+<script>
+    const roles = ["UX/UI Research", "Visual Design", "Motion Design", "Development"];
+    const statement = document.querySelector("[data-rotating-role]");
+    const transitionDurationMs = 350;
+
+    if (statement instanceof HTMLElement) {
+        let roleIndex = 0;
+
+        window.setInterval(() => {
+            statement.classList.add("is-fading");
+
+            window.setTimeout(() => {
+                roleIndex = (roleIndex + 1) % roles.length;
+                statement.textContent = roles[roleIndex];
+                statement.classList.remove("is-fading");
+            }, transitionDurationMs);
+        }, 3000);
+    }
+</script>
 
 <style>
     .intro {
@@ -202,6 +222,20 @@ const tools = [
         font: 300 clamp(1.2rem, 2vw, 1.8rem)/1.1 var(--font-display);
         letter-spacing: -0.05em;
         margin: 0;
+        min-height: 1.2em;
+        text-align: center;
+        transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .intro__statement.is-fading {
+        opacity: 0;
+        transform: translateY(0.25rem);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .intro__statement {
+            transition: none;
+        }
     }
 
     @media (max-width: 700px) {
