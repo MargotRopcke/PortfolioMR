@@ -9,6 +9,7 @@ import blinkVideo from "../../assets/2DEV_surnameName_MO1_FOURBYFOUR_render.mp4"
 import nmbsVideo from "../../assets/2DEV_Motion1_MargotRopcke_NMBS.mp4";
 import modicaVideo from "../../assets/ 2DEV_RopckeMargot_MO2_Kickstart.mp4";
 import portalVideo from "../../assets/portal.mp4";
+import onboardingImage from "../../assets/mmonboarding.png";
 
 export async function getStaticPaths() {
     const workCollections = await getCollection("work");
@@ -33,6 +34,8 @@ const workVideoSrc =
                 : work.id === "work10"
                     ? resolveMediaSrc(portalVideo)
                     : null;
+const milesMealsPrototypeUrl =
+    "https://www.figma.com/proto/pJRPdk7CThYpJExMckyJyi/Miles---Meals-Resit-MR?node-id=61854-33458&p=f&viewport=292%2C-1933%2C0.27&t=ctjUWn6xpH2e3nyH-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=61854%3A33825&show-proto-sidebar=1&page-id=6817%3A1887";
 const behanceUrl = "https://www.behance.net/margotropcke1";
 ---
 
@@ -54,19 +57,7 @@ const behanceUrl = "https://www.behance.net/margotropcke1";
             <div class="work__content">
                 <Content />
             </div>
-            
-                 {work.id === "work10" ? (
-                <a
-                    href={behanceUrl}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    class="behance-button"
-                >
-                    See all work on Behance
-                </a>
-            ) : null}
-
-            {workVideoSrc ? (
+             {workVideoSrc ? (
                 <div class="work__media">
                     <video
                         class="work__video"
@@ -97,6 +88,48 @@ const behanceUrl = "https://www.behance.net/margotropcke1";
                     />
                 </div>
             )}
+
+            {work.id === "work8" ? (
+                <div class="work__showcase">
+                    <div class="work__prototype-intro">
+                        <p class="work__prototype-label">Prototype preview</p>
+                        <a
+                            href={milesMealsPrototypeUrl}
+                            target="_blank"
+                            rel="noreferrer noopener"
+                            class="prototype-button"
+                        >
+                            Open Figma prototype
+                        </a>
+                    </div>
+                    <div class="work__showcase-content">
+                        <div class="work__showcase-image">
+                            <Image
+                                src={onboardingImage}
+                                alt="Miles & Meals onboarding screens"
+                                width={900}
+                                quality={90}
+                                class="work__showcase-image-file"
+                            />
+                        </div>
+                        <p class="work__showcase-copy">
+                            A warm onboarding flow designed to make the app feel personal,
+                            effortless and easy to return to.
+                        </p>
+                    </div>
+                </div>
+            ) : null}
+
+            {work.id === "work10" ? (
+                <a
+                    href={behanceUrl}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="behance-button"
+                >
+                    See all work on Behance
+                </a>
+            ) : null}
             <a href="/portfolioMR/work/" class="back-button" data-back-link>← Go Back</a>
         </div>
     </section>
@@ -176,6 +209,54 @@ const behanceUrl = "https://www.behance.net/margotropcke1";
    line-height: 1.7;
 }
 
+.work__showcase {
+   display: grid;
+   gap: 1rem;
+   margin-top: 0.5rem;
+}
+
+.work__prototype-intro {
+   display: flex;
+   align-items: end;
+   justify-content: space-between;
+   gap: 1rem;
+   flex-wrap: wrap;
+}
+
+.work__prototype-label {
+   color: var(--color-muted);
+   font: 0.64rem var(--font-mono);
+   letter-spacing: 0.12em;
+   margin: 0;
+   text-transform: uppercase;
+}
+
+.work__showcase-content {
+   align-items: center;
+   display: grid;
+   gap: 1rem;
+   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+}
+
+.work__showcase-image {
+   border: 1px solid var(--color-divider);
+   max-width: 28rem;
+   overflow: hidden;
+}
+
+.work__showcase-image-file {
+   display: block;
+   height: auto;
+   width: 100%;
+}
+
+.work__showcase-copy {
+   color: var(--color-muted);
+   font: 400 clamp(0.95rem, 1.2vw, 1.1rem)/1.6 var(--font-display);
+   margin: 0;
+}
+
+.prototype-button,
 .behance-button,
 .back-button {
    align-items: center;
@@ -188,6 +269,8 @@ const behanceUrl = "https://www.behance.net/margotropcke1";
    width: fit-content;
 }
 
+.prototype-button:hover,
+.prototype-button:focus-visible,
 .behance-button:hover,
 .behance-button:focus-visible,
 .back-button:hover,
@@ -195,6 +278,17 @@ const behanceUrl = "https://www.behance.net/margotropcke1";
    color: var(--color-accent);
    text-decoration: underline;
    text-underline-offset: 0.2em;
+}
+
+@media (max-width: 700px) {
+   .work__prototype-intro {
+       align-items: flex-start;
+       flex-direction: column;
+   }
+
+   .work__showcase-content {
+       grid-template-columns: 1fr;
+   }
 }
 
 </style>

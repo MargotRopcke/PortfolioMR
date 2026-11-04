@@ -1,6 +1,6 @@
 ---
 name: Miles & Meals
-image: img/coffee1.png
+image: img/mm.png
 categories: ["Visual Design"]
 ---
 
