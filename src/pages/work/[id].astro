@@ -7,7 +7,7 @@ import { Image } from "astro:assets";
 
 import blinkVideo from "../../assets/2DEV_surnameName_MO1_FOURBYFOUR_render.mp4";
 import nmbsVideo from "../../assets/2DEV_Motion1_MargotRopcke_NMBS.mp4";
-import modicaVideo from "../../assets/2DEV_RopckeMargot_MO2_Kickstart.mp4";
+import modicaVideo from "../../assets/ 2DEV_RopckeMargot_MO2_Kickstart.mp4";
 
 export async function getStaticPaths() {
     const workCollections = await getCollection("work");
@@ -20,6 +20,16 @@ export async function getStaticPaths() {
 const { work } = Astro.props;
 const { Content } = await render(work);
 const categories = work.data.categories ?? [];
+const resolveMediaSrc = (src: string) =>
+    src.startsWith("/") ? `${import.meta.env.BASE_URL}${src.slice(1)}` : src;
+const workVideoSrc =
+    work.id === "work1"
+        ? resolveMediaSrc(blinkVideo)
+        : work.id === "work4"
+            ? resolveMediaSrc(nmbsVideo)
+            : work.id === "work7"
+                ? resolveMediaSrc(modicaVideo)
+                : null;
 ---
 
 <Detail>
@@ -41,21 +51,26 @@ const categories = work.data.categories ?? [];
                 <Content />
             </div>
 
-            {work.id === "work1" || work.id === "work4" || work.id === "work7" ? (
-                <video
-                    class="work__video"
-                    controls
-                    playsinline
-                    muted
-                    preload="metadata"
-                    src={
-                        work.id === "work1"
-                            ? blinkVideo
-                            : work.id === "work4"
-                                ? nmbsVideo
-                                : modicaVideo
-                    }
-                />
+            {workVideoSrc ? (
+                <div class="work__media">
+                    <video
+                        class="work__video"
+                        controls
+                        playsinline
+                        muted
+                        preload="metadata"
+                        src={workVideoSrc}
+                    />
+                    <div class="work__image work__image--fallback" hidden>
+                        <Image
+                            src={work.data.image}
+                            alt="workpic"
+                            width={1600}
+                            quality={90}
+                            class="work__images"
+                        />
+                    </div>
+                </div>
             ) : (
                 <div class="work__image"> 
                     <Image
@@ -118,6 +133,10 @@ const categories = work.data.categories ?? [];
    overflow: hidden;
 }
 
+.work__media {
+   display: grid;
+}
+
 .work__video {
    aspect-ratio: 16 / 9;
    background: #000;
@@ -161,3 +180,24 @@ const categories = work.data.categories ?? [];
 }
 
 </style>
+
+<script>
+    const initWorkVideo = () => {
+        const video = document.querySelector(".work__video");
+        if (!(video instanceof HTMLVideoElement)) return;
+        const fallback = document.querySelector(".work__image--fallback");
+        if (!(fallback instanceof HTMLElement)) return;
+
+        const showFallback = () => {
+            video.hidden = true;
+            fallback.hidden = false;
+        };
+
+        video.load();
+        video.addEventListener("error", showFallback, { once: true });
+        if (video.error) showFallback();
+    };
+
+    initWorkVideo();
+    document.addEventListener("astro:page-load", initWorkVideo);
+</script>
