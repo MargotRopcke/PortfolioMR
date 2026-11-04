@@ -1,6 +1,6 @@
 ---
 name: Family Routines
-image: img/cc.png
+image: img/family.png
 categories: ["UX Research"]
 ---
 

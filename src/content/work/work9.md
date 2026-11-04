@@ -1,6 +1,6 @@
 ---
 name: Mara
-image: img/cc.png
+image: img/mara.png
 categories: ["UX Research"]
 ---
 

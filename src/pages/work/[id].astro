@@ -8,6 +8,7 @@ import { Image } from "astro:assets";
 import blinkVideo from "../../assets/2DEV_surnameName_MO1_FOURBYFOUR_render.mp4";
 import nmbsVideo from "../../assets/2DEV_Motion1_MargotRopcke_NMBS.mp4";
 import modicaVideo from "../../assets/ 2DEV_RopckeMargot_MO2_Kickstart.mp4";
+import portalVideo from "../../assets/portal.mp4";
 
 export async function getStaticPaths() {
     const workCollections = await getCollection("work");
@@ -29,7 +30,10 @@ const workVideoSrc =
             ? resolveMediaSrc(nmbsVideo)
             : work.id === "work7"
                 ? resolveMediaSrc(modicaVideo)
-                : null;
+                : work.id === "work10"
+                    ? resolveMediaSrc(portalVideo)
+                    : null;
+const behanceUrl = "https://www.behance.net/margotropcke1";
 ---
 
 <Detail>
@@ -50,6 +54,17 @@ const workVideoSrc =
             <div class="work__content">
                 <Content />
             </div>
+            
+                 {work.id === "work10" ? (
+                <a
+                    href={behanceUrl}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="behance-button"
+                >
+                    See all work on Behance
+                </a>
+            ) : null}
 
             {workVideoSrc ? (
                 <div class="work__media">
@@ -161,6 +176,7 @@ const workVideoSrc =
    line-height: 1.7;
 }
 
+.behance-button,
 .back-button {
    align-items: center;
    color: var(--main-color);
@@ -172,6 +188,8 @@ const workVideoSrc =
    width: fit-content;
 }
 
+.behance-button:hover,
+.behance-button:focus-visible,
 .back-button:hover,
 .back-button:focus-visible {
    color: var(--color-accent);

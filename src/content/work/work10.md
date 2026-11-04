@@ -1,6 +1,6 @@
 ---
 name: The Portal
-image: img/cc.png
+image: img/portal.png
 categories: ["UX Research", "Visual Design", "Development"]
 ---
 

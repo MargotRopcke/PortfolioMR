@@ -1,6 +1,6 @@
 ---
 name: Interlaced
-image: img/giet.png
+image: img/interlaced.png
 categories: ["UX Research", "Visual Design", "Development"]
 ---
 
