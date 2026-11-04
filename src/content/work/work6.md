@@ -1,5 +1,5 @@
 ---
-name: Watering Can Supremacy
+name: Interlaced
 image: img/giet.png
 categories: ["UX Research", "Visual Design", "Development"]
 ---

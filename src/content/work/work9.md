@@ -1,7 +1,7 @@
 ---
-name: Interlaced
+name: Mara
 image: img/cc.png
-categories: ["UX Research", "Visual Design", "Development"]
+categories: ["UX Research"]
 ---
 
 UX Research, Visual Design, and Development project
