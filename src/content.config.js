@@ -19,24 +19,6 @@ const workCollections = defineCollection({
         }),
 });
 
-const photoCollections = defineCollection({
-    loader: glob({ pattern: "**/*.md", base: "./src/content/photo" }),
-    schema: ({ image }) => z.object({
-        title: z.string(),
-        date: z.date(),
-        image: image(),
-    }),
-});
-
-const QuotesCard = defineCollection({
-    loader: glob({ pattern: "**/*.md", base: "./src/content/quotes" }),
-    schema: ({ image }) => z.object({
-        title: z.string(),
-        description: z.string(),
-        author: z.string(),
-    }),
-});
-
 const ExtrasCard = defineCollection({
     loader: glob({ pattern: "**/*.md", base: "./src/content/extras" }),
     schema: ({ image }) => z.object({
@@ -55,8 +37,6 @@ const aboutCollection = defineCollection({
 
 export const collections = {
     work: workCollections,
-    photo: photoCollections,
-    quotes: QuotesCard,
     extras: ExtrasCard,
     about: aboutCollection,
 };
