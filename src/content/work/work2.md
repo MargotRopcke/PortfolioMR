@@ -1,7 +1,7 @@
 ---
-name: Cocoa.
-image: img/coffee1.png
-categories: ["Visual Design"]
+name: Cocktail Shaker
+image: img/cocktailshake.png
+categories: ["Development"]
 ---
 
 Visual Design project

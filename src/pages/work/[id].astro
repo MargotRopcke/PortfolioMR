@@ -10,6 +10,8 @@ import nmbsVideo from "../../assets/2DEV_Motion1_MargotRopcke_NMBS.mp4";
 import modicaVideo from "../../assets/ 2DEV_RopckeMargot_MO2_Kickstart.mp4";
 import portalVideo from "../../assets/portal.mp4";
 import onboardingImage from "../../assets/mmonboarding.png";
+import laptopWebrtcImage from "../../assets/laptopwebrtc.png";
+import phoneWebrtcImage from "../../assets/phonewebrtc.png";
 
 export async function getStaticPaths() {
     const workCollections = await getCollection("work");
@@ -116,6 +118,34 @@ const behanceUrl = "https://www.behance.net/margotropcke1";
                             A warm onboarding flow designed to make the app feel personal,
                             effortless and easy to return to.
                         </p>
+                    </div>
+                </div>
+            ) : null}
+
+            {work.id === "work2" ? (
+                <div class="work__showcase">
+                    <div class="work__prototype-intro">
+                        <p class="work__prototype-label">WebRTC concept</p>
+                    </div>
+                    <div class="work__showcase-content work__showcase-content--dual">
+                        <div class="work__showcase-image work__showcase-image--stacked">
+                            <Image
+                                src={laptopWebrtcImage}
+                                alt="Laptop view of the Cocktail Shake WebRTC concept"
+                                width={900}
+                                quality={90}
+                                class="work__showcase-image-file"
+                            />
+                        </div>
+                        <div class="work__showcase-image work__showcase-image--stacked">
+                            <Image
+                                src={phoneWebrtcImage}
+                                alt="Phone view of the Cocktail Shake WebRTC concept"
+                                width={600}
+                                quality={90}
+                                class="work__showcase-image-file"
+                            />
+                        </div>
                     </div>
                 </div>
             ) : null}
@@ -238,10 +268,18 @@ const behanceUrl = "https://www.behance.net/margotropcke1";
    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
 }
 
+.work__showcase-content--dual {
+   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .work__showcase-image {
    border: 1px solid var(--color-divider);
    max-width: 28rem;
    overflow: hidden;
+}
+
+.work__showcase-image--stacked {
+   max-width: 100%;
 }
 
 .work__showcase-image-file {
@@ -287,6 +325,10 @@ const behanceUrl = "https://www.behance.net/margotropcke1";
    }
 
    .work__showcase-content {
+       grid-template-columns: 1fr;
+   }
+
+   .work__showcase-content--dual {
        grid-template-columns: 1fr;
    }
 }
