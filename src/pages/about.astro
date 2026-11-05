@@ -407,8 +407,34 @@ const tools = [
     }
 
     .skills__all-link {
-        color: var(--main-color);
+        align-items: center;
+        background: var(--color-accent);
+        border: 1px solid var(--color-accent);
+        color: #ffffff;
+        display: inline-flex;
+        font: 0.7rem var(--font-mono);
+        gap: 0.45rem;
+        justify-content: center;
+        letter-spacing: 0.12em;
         min-width: 12.5rem;
+        padding: 0.7rem 1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .skills__all-link b {
+        display: inline-flex;
+        font-size: 0.9rem;
+    }
+
+    .skills__all-link:hover,
+    .skills__all-link:focus-visible {
+        background: transparent;
+        border-color: var(--color-accent);
+        color: var(--color-accent);
+        transform: translateY(-1px);
     }
 
     @media (max-width: 46rem) {
