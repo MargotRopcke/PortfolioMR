@@ -32,7 +32,7 @@ const tools = [
             <span>01</span><span>About me</span>
         </div>
         <div class="intro__grid">
-            <div>
+            <div class="intro__copy">
                 <h1 class="intro__title">Who am I?</h1>
                 <p class="intro__text">
                     Hi, I’m Margot.<br /><br />
@@ -153,7 +153,6 @@ const tools = [
 <style>
     .intro {
         background: var(--color-black);
-        border-top: 1px solid var(--color-divider);
         border-bottom: 1px solid var(--color-divider);
         padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 5vw, 4rem);
     }
@@ -163,10 +162,14 @@ const tools = [
     }
 
     .intro__grid {
-        align-items: end;
+        align-items: start;
         display: grid;
         gap: clamp(1.5rem, 4vw, 3rem);
         grid-template-columns: minmax(0, 1.3fr) minmax(16rem, 0.7fr);
+    }
+
+    .intro__copy {
+        padding-top: clamp(0rem, 2vw, 1.5rem);
     }
 
     .intro__title {
@@ -192,6 +195,17 @@ const tools = [
         padding: 0.8rem;
         max-width: 18rem;
         justify-self: end;
+        position: relative;
+    }
+
+    .intro__panel::before {
+        background: var(--color-accent);
+        content: "";
+        height: 3rem;
+        left: -1px;
+        position: absolute;
+        top: -1px;
+        width: 3px;
     }
 
     .intro__portrait-wrap {
@@ -252,14 +266,15 @@ const tools = [
 
     .tools {
         background: var(--color-black);
-        padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 5vw, 4rem) 0;
+        padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 5vw, 4rem);
     }
 
     .tools__list {
         display: flex;
         flex-wrap: wrap;
         gap: 0.75rem;
-        margin-top: 1.5rem;
+        margin-top: 1rem;
+        padding-top: 0.5rem;
     }
 
     .tool-badge {
@@ -275,7 +290,7 @@ const tools = [
 
     .skills {
         background: var(--color-black);
-        padding: clamp(2rem, 5vw, 5rem) clamp(1.25rem, 5vw, 4rem) 4rem;
+        padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem) 4rem;
     }
 
     .skills__label {
@@ -283,7 +298,8 @@ const tools = [
     }
 
     .skills__block + .skills__block {
-        margin-top: 3rem;
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
     }
 
     .skills__one,
