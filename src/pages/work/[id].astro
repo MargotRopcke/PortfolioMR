@@ -35,17 +35,15 @@ const { Content } = await render(work);
 const categories = work.data.categories ?? [];
 const madeWith = work.data.madeWith ?? [];
 const assignment = work.data.assignment ?? "Project overview";
-const resolveMediaSrc = (src: string) =>
-    src.startsWith("/") ? `${import.meta.env.BASE_URL}${src.slice(1)}` : src;
 const workVideoSrc =
     work.id === "work1"
-        ? resolveMediaSrc(blinkVideo)
+        ? blinkVideo
         : work.id === "work4"
-            ? resolveMediaSrc(nmbsVideo)
+            ? nmbsVideo
             : work.id === "work7"
-                ? resolveMediaSrc(modicaVideo)
+                ? modicaVideo
                 : work.id === "work10"
-                    ? resolveMediaSrc(portalVideo)
+                    ? portalVideo
                     : null;
 const milesMealsPrototypeUrl =
     "https://www.figma.com/proto/pJRPdk7CThYpJExMckyJyi/Miles---Meals-Resit-MR?node-id=61854-33458&p=f&viewport=292%2C-1933%2C0.27&t=ctjUWn6xpH2e3nyH-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=61854%3A33825&show-proto-sidebar=1&page-id=6817%3A1887";
