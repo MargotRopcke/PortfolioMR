@@ -15,13 +15,22 @@ import phoneWebrtcImage from "../../assets/phonewebrtc.png";
 
 export async function getStaticPaths() {
     const workCollections = await getCollection("work");
-    return workCollections.map((work) => ({
+    const sortedWorks = [...workCollections].sort((a, b) => {
+        const workNumber = (id: string) => Number(id.replace("work", ""));
+        return workNumber(a.id) - workNumber(b.id);
+    });
+
+    return sortedWorks.map((work, index) => ({
         params: { id: work.id },
-        props: { work },
+        props: {
+            work,
+            previousWork: sortedWorks[index - 1] ?? null,
+            nextWork: sortedWorks[index + 1] ?? null,
+        },
     }));
 }
 
-const { work } = Astro.props;
+const { work, previousWork, nextWork } = Astro.props;
 const { Content } = await render(work);
 const categories = work.data.categories ?? [];
 const madeWith = work.data.madeWith ?? [];
@@ -40,13 +49,22 @@ const workVideoSrc =
                     : null;
 const milesMealsPrototypeUrl =
     "https://www.figma.com/proto/pJRPdk7CThYpJExMckyJyi/Miles---Meals-Resit-MR?node-id=61854-33458&p=f&viewport=292%2C-1933%2C0.27&t=ctjUWn6xpH2e3nyH-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=61854%3A33825&show-proto-sidebar=1&page-id=6817%3A1887";
+const maraPrototypeUrl =
+    "https://www.figma.com/proto/i3ceQRSLRrVbXXBGC7YjQ9/UX4---DESIGN?node-id=863-2557&viewport=338%2C172%2C0.05&t=TA8Ic17eIgAMYfua-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=863%3A2557&page-id=863%3A1774";
+const maraBehanceUrl = "https://www.behance.net/gallery/249094065/MARA";
 const portalBehanceUrl = "https://www.behance.net/gallery/251194535/The-Portal";
 const portalGithubUrl = "https://github.com/MargotRopcke/integration4";
+const familyBehanceUrl = "https://www.behance.net/gallery/240442997/Assignment-ux";
+const interlacedUrl = "https://margotropcke.github.io/integration3/";
+const coutureUrl = "https://margotropcke.be/integration1/";
 ---
 
 <Detail>
     <section class="work">
         <div class="work__card">
+            <a href="/portfolioMR/work/" class="back-button" data-back-link>
+                ← Go Back
+            </a>
             <h1 class="work__title">{work.data.name}</h1>
 
             <div class="work__meta" aria-label="Project categories">
@@ -171,25 +189,65 @@ const portalGithubUrl = "https://github.com/MargotRopcke/integration4";
 
             {work.id === "work10" ? (
                 <div class="work__links">
-                    <a
-                        href={portalBehanceUrl}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        class="behance-button"
-                    >
+                    <a href={portalBehanceUrl} target="_blank" rel="noreferrer noopener" class="behance-button">
                         <span>Visit UX research on Behance</span><b>↗</b>
                     </a>
-                    <a
-                        href={portalGithubUrl}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        class="github-button"
-                    >
+                    <a href={portalGithubUrl} target="_blank" rel="noreferrer noopener" class="github-button">
                         <span>Visit project on GitHub</span><b>↗</b>
                     </a>
                 </div>
             ) : null}
-            <a href="/portfolioMR/work/" class="back-button" data-back-link>← Go Back</a>
+            {work.id === "work9" ? (
+                <div class="work__links">
+                    <a href={maraPrototypeUrl} target="_blank" rel="noreferrer noopener" class="behance-button">
+                        <span>Visit MARA prototype</span><b>↗</b>
+                    </a>
+                    <a href={maraBehanceUrl} target="_blank" rel="noreferrer noopener" class="behance-button">
+                        <span>View UX website on Behance</span><b>↗</b>
+                    </a>
+                </div>
+            ) : null}
+            {work.id === "work11" ? (
+                <div class="work__links">
+                    <a href={familyBehanceUrl} target="_blank" rel="noreferrer noopener" class="behance-button">
+                        <span>View UX website on Behance</span><b>↗</b>
+                    </a>
+                </div>
+            ) : null}
+            {work.id === "work6" ? (
+                <div class="work__links">
+                    <a href={interlacedUrl} target="_blank" rel="noreferrer noopener" class="behance-button">
+                        <span>View work online</span><b>↗</b>
+                    </a>
+                </div>
+            ) : null}
+            {work.id === "work5" ? (
+                <div class="work__links work__links--stacked">
+                    <a href={coutureUrl} target="_blank" rel="noreferrer noopener" class="behance-button">
+                        <span>View work online</span><b>↗</b>
+                    </a>
+                    <p class="work__links-disclaimer">
+                        This project is not responsive, so it is best viewed on a laptop.
+                    </p>
+                </div>
+            ) : null}
+            <nav class="work__navigation" aria-label="Browse work">
+                {previousWork ? (
+                    <a href={`/portfolioMR/work/${previousWork.id}/`} class="work__navigation-link">
+                        <span>← Previous</span>
+                        <b>{previousWork.data.name}</b>
+                    </a>
+                ) : <span />}
+                {nextWork ? (
+                    <a
+                        href={`/portfolioMR/work/${nextWork.id}/`}
+                        class="work__navigation-link work__navigation-link--next"
+                    >
+                        <span>Next →</span>
+                        <b>{nextWork.data.name}</b>
+                    </a>
+                ) : <span />}
+            </nav>
         </div>
     </section>
 </Detail>
@@ -371,6 +429,18 @@ const portalGithubUrl = "https://github.com/MargotRopcke/integration4";
    margin: 0;
 }
 
+.prototype-button,
+.back-button {
+   align-items: center;
+   color: var(--main-color);
+   display: inline-flex;
+   font: 0.68rem var(--font-mono);
+   gap: 0.45rem;
+   letter-spacing: 0.12em;
+   text-transform: uppercase;
+   width: fit-content;
+}
+
 .behance-button,
 .github-button {
    align-items: center;
@@ -385,26 +455,16 @@ const portalGithubUrl = "https://github.com/MargotRopcke/integration4";
    padding: 0.7rem 1rem;
    text-decoration: none;
    text-transform: uppercase;
-   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
-      transform 0.2s ease;
+   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
    width: fit-content;
 }
 
-.prototype-button,
 .back-button {
-   align-items: center;
-   color: var(--main-color);
-   display: inline-flex;
-   font: 0.68rem var(--font-mono);
-   gap: 0.45rem;
-   letter-spacing: 0.12em;
-   text-transform: uppercase;
-   width: fit-content;
+   margin-bottom: 0.5rem;
 }
 
 .behance-button b,
 .github-button b {
-   display: inline-flex;
    font-size: 0.9rem;
 }
 
@@ -414,14 +474,54 @@ const portalGithubUrl = "https://github.com/MargotRopcke/integration4";
    gap: 1rem 1.5rem;
 }
 
-.behance-button:hover,
-.behance-button:focus-visible,
-.github-button:hover,
-.github-button:focus-visible {
-   background: var(--color-accent);
-   border-color: var(--color-accent);
-   color: #ffffff;
-   transform: translateY(-1px);
+.work__links--stacked {
+   align-items: flex-start;
+   flex-direction: column;
+   gap: 0.75rem;
+}
+
+.work__links-disclaimer {
+   color: var(--color-muted);
+   font: 0.68rem/1.5 var(--font-mono);
+   margin: 0;
+}
+
+.work__navigation {
+   border-top: 1px solid var(--color-divider);
+   display: grid;
+   gap: 1rem;
+   grid-template-columns: repeat(2, minmax(0, 1fr));
+   margin-top: 1rem;
+   padding-top: 1rem;
+}
+
+.work__navigation-link {
+   color: var(--main-color);
+   display: grid;
+   gap: 0.35rem;
+   justify-self: start;
+   text-decoration: none;
+}
+
+.work__navigation-link--next {
+   justify-self: end;
+   text-align: right;
+}
+
+.work__navigation-link span {
+   color: var(--color-accent);
+   font: 0.66rem var(--font-mono);
+   letter-spacing: 0.12em;
+   text-transform: uppercase;
+}
+
+.work__navigation-link b {
+   font: 500 clamp(0.95rem, 1.4vw, 1.1rem) var(--font-display);
+}
+
+.work__navigation-link:hover b,
+.work__navigation-link:focus-visible b {
+   color: var(--color-accent);
 }
 
 .prototype-button:hover,
@@ -431,6 +531,15 @@ const portalGithubUrl = "https://github.com/MargotRopcke/integration4";
    color: var(--color-accent);
    text-decoration: underline;
    text-underline-offset: 0.2em;
+}
+
+.behance-button:hover,
+.behance-button:focus-visible,
+.github-button:hover,
+.github-button:focus-visible {
+   background: var(--color-accent);
+   color: #ffffff;
+   transform: translateY(-1px);
 }
 
 @media (max-width: 700px) {
