@@ -8,19 +8,41 @@ import me from "../assets/profilepic.png";
 <Base pageTitle=" / Home">
     <section class="hero">
         <div class="hero__meta">
-            <span>Portfolio / 2026</span><span>Designer / Developer / UX Researcher</span>
+            <span>Portfolio / 2026</span><span
+                >Designer / Developer / UX Researcher</span
+            >
         </div>
         <div class="hero__grid">
             <h1 class="home__title">
                 <span class="name-word">
-                    <span class="name-letter" style="--i: 0;">M</span><span class="name-letter" style="--i: 1;">a</span><span class="name-letter" style="--i: 2;">r</span><span class="name-letter" style="--i: 3;">g</span><span class="name-letter" style="--i: 4;">o</span><span class="name-letter" style="--i: 5;">t</span>
-                </span><br /><em class="name-word"><span class="name-letter" style="--i: 6;">R</span><span class="name-letter" style="--i: 7;">ö</span><span class="name-letter" style="--i: 8;">p</span><span class="name-letter" style="--i: 9;">c</span><span class="name-letter" style="--i: 10;">k</span><span class="name-letter" style="--i: 11;">e</span></em><span></span>
+                    <span class="name-letter" style="--i: 0;">M</span><span
+                        class="name-letter"
+                        style="--i: 1;">a</span
+                    ><span class="name-letter" style="--i: 2;">r</span><span
+                        class="name-letter"
+                        style="--i: 3;">g</span
+                    ><span class="name-letter" style="--i: 4;">o</span><span
+                        class="name-letter"
+                        style="--i: 5;">t</span
+                    >
+                </span><br /><em class="name-word"
+                    ><span class="name-letter" style="--i: 6;">R</span><span
+                        class="name-letter"
+                        style="--i: 7;">ö</span
+                    ><span class="name-letter" style="--i: 8;">p</span><span
+                        class="name-letter"
+                        style="--i: 9;">c</span
+                    ><span class="name-letter" style="--i: 10;">k</span><span
+                        class="name-letter"
+                        style="--i: 11;">e</span
+                    ></em
+                ><span></span>
             </h1>
             <div class="hero__aside">
                 <img src={me.src} alt="Picture of Margot" class="profilepic" />
                 <p class="home__intro">
-                    I design clear, expressive digital experiences where visual
-                    craft meets thoughtful technology.
+                    I love creating new things, exploring ideas and bringing
+                    concepts to life.
                 </p>
                 <a href="#creations" class="hero__button"
                     ><span>Scroll to explore</span><b>↓</b></a
@@ -43,12 +65,11 @@ import me from "../assets/profilepic.png";
                 ><span>01</span><strong>Visual<br />design</strong><b>↗</b></a
             >
             <a href="/portfolioMR/about" class="specialty"
-                ><span>02</span><strong>UX / UI<br />researcher</strong><b>↗</b></a
+                ><span>02</span><strong>UX / UI<br />researcher</strong><b>↗</b
+                ></a
             >
             <a href="/portfolioMR/about" class="specialty"
-                ><span>03</span><strong>Development</strong><b
-                    >↗</b
-                ></a
+                ><span>03</span><strong>Development</strong><b>↗</b></a
             >
         </div>
     </section>
@@ -58,7 +79,8 @@ import me from "../assets/profilepic.png";
     .hero {
         background: var(--color-black);
         color: var(--main-color);
-        padding: clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 4vw, 4rem) clamp(2rem, 6vw, 4rem);
+        padding: clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 4vw, 4rem)
+            clamp(2rem, 6vw, 4rem);
     }
 
     .hero__meta,
@@ -102,7 +124,8 @@ import me from "../assets/profilepic.png";
         font-style: normal;
         display: inline-block;
         animation: nameAccent 1.2s ease both;
-    }    .name-word {
+    }
+    .name-word {
         white-space: nowrap;
     }
 
@@ -206,7 +229,10 @@ import me from "../assets/profilepic.png";
         font-size: 1.1rem;
         height: 2.2rem;
         place-items: center;
-        transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        transition:
+            background 0.2s ease,
+            border-color 0.2s ease,
+            color 0.2s ease;
         width: 2.2rem;
     }
 
@@ -237,7 +263,9 @@ import me from "../assets/profilepic.png";
         grid-template-columns: 4rem 1fr auto;
         padding: 1.25rem 0;
         text-decoration: none;
-        transition: opacity 0.25s ease, transform 0.25s ease;
+        transition:
+            opacity 0.25s ease,
+            transform 0.25s ease;
     }
 
     .specialty:last-child {
