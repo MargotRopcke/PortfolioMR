@@ -2,7 +2,7 @@
 name: Interlaced
 image: img/interlaced.png
 categories: ["UX Research", "Visual Design", "Development"]
-madeWith: ["Figma", "Miro", "JavaScript", "HTML", "CSS", "Photoshop"]
+madeWith: ["Figma", "Miro", "JavaScript", "HTML", "CSS", "Photoshop", "Github"]
 assignment: "An interactive online story and digital experience commissioned for MoMu (Fashion Museum Antwerp) as part of their new digital marketing campaign. The brief required transforming a static narrative about a legendary fashion designer into an immersive, sensory 9:16 responsive longread. Leveraging advanced front-end techniques (Vite, GSAP, ScrollTrigger), the project combines rich storytelling, interactive learning moments, and custom visual design to connect fashion history with modern web audiences."
 ---
 

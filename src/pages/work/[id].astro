@@ -50,8 +50,10 @@ const workVideoSrc =
                 : work.id === "work10"
                     ? portalVideo
                     : null;
-const milesMealsPrototypeUrl =
-    "https://www.figma.com/proto/pJRPdk7CThYpJExMckyJyi/Miles---Meals-Resit-MR?node-id=61854-33458&p=f&viewport=292%2C-1933%2C0.27&t=ctjUWn6xpH2e3nyH-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=61854%3A33825&show-proto-sidebar=1&page-id=6817%3A1887";
+const milesMealsMobileUrl =
+    "https://www.figma.com/proto/pJRPdk7CThYpJExMckyJyi/Miles---Meals-Resit-MR?node-id=61854-34549&viewport=234%2C-2253%2C0.27&t=yNZceHueSOpo7dD9-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=61854%3A34549&show-proto-sidebar=1&page-id=6817%3A1887";
+const milesMealsBrandboardUrl =
+    "https://www.figma.com/proto/pJRPdk7CThYpJExMckyJyi/Miles---Meals-Resit-MR?node-id=62116-38802&viewport=-7192%2C142%2C0.13&t=Pa8il8GaMj4bIbTj-1&scaling=min-zoom&content-scaling=fixed&page-id=6817%3A1886";
 const maraPrototypeUrl =
     "https://www.figma.com/proto/i3ceQRSLRrVbXXBGC7YjQ9/UX4---DESIGN?node-id=863-2557&viewport=338%2C172%2C0.05&t=TA8Ic17eIgAMYfua-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=863%3A2557&page-id=863%3A1774";
 const maraBehanceUrl = "https://www.behance.net/gallery/249094065/MARA";
@@ -141,14 +143,24 @@ const coutureUrl = "https://margotropcke.be/integration1/";
                 <div class="work__showcase">
                     <div class="work__prototype-intro">
                         <p class="work__prototype-label">Prototype preview</p>
-                        <a
-                            href={milesMealsPrototypeUrl}
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            class="prototype-button"
-                        >
-                            Open Figma prototype
-                        </a>
+                        <div class="work__links">
+                            <a
+                                href={milesMealsMobileUrl}
+                                target="_blank"
+                                rel="noreferrer noopener"
+                                class="behance-button"
+                            >
+                                <span>View mobile prototype</span><b>↗</b>
+                            </a>
+                            <a
+                                href={milesMealsBrandboardUrl}
+                                target="_blank"
+                                rel="noreferrer noopener"
+                                class="behance-button"
+                            >
+                                <span>View brandboard</span><b>↗</b>
+                            </a>
+                        </div>
                     </div>
                     <div class="work__showcase-content">
                         <div class="work__showcase-image">
