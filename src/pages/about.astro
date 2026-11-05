@@ -32,7 +32,7 @@ const tools = [
             <span>01</span><span>About me</span>
         </div>
         <div class="intro__grid">
-            <div>
+            <div class="intro__copy">
                 <h1 class="intro__title">Who am I?</h1>
                 <p class="intro__text">
                     Hi, I’m Margot.<br /><br />
@@ -83,6 +83,9 @@ const tools = [
         <div class="skills__block">
             <h2 class="skills__one">Development</h2>
             <div class="skills__content">
+                <p class="skill__description">
+                    Turning ideas into clear, functional digital experiences.
+                </p>
                 <ul class="skills__text-one">
                     {skillGroups.development.map((item) => <li>{item}</li>)}
                 </ul>
@@ -97,6 +100,9 @@ const tools = [
         <div class="skills__block">
             <h2 class="skills__two">Visual design</h2>
             <div class="skills__content">
+                <p class="skill__description">
+                    Creating expressive visuals with purpose and personality.
+                </p>
                 <ul class="skills__text-two">
                     {skillGroups.visual.map((item) => <li>{item}</li>)}
                 </ul>
@@ -111,6 +117,9 @@ const tools = [
         <div class="skills__block">
             <h2 class="skills__three">UX / UI</h2>
             <div class="skills__content">
+                <p class="skill__description">
+                    Making digital products intuitive, accessible and enjoyable.
+                </p>
                 <ul class="skills__text-three">
                     {skillGroups.ux.map((item) => <li>{item}</li>)}
                 </ul>
@@ -153,7 +162,6 @@ const tools = [
 <style>
     .intro {
         background: var(--color-black);
-        border-top: 1px solid var(--color-divider);
         border-bottom: 1px solid var(--color-divider);
         padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 5vw, 4rem);
     }
@@ -163,10 +171,14 @@ const tools = [
     }
 
     .intro__grid {
-        align-items: end;
+        align-items: start;
         display: grid;
         gap: clamp(1.5rem, 4vw, 3rem);
         grid-template-columns: minmax(0, 1.3fr) minmax(16rem, 0.7fr);
+    }
+
+    .intro__copy {
+        padding-top: clamp(0rem, 2vw, 1.5rem);
     }
 
     .intro__title {
@@ -192,6 +204,17 @@ const tools = [
         padding: 0.8rem;
         max-width: 18rem;
         justify-self: end;
+        position: relative;
+    }
+
+    .intro__panel::before {
+        background: var(--color-accent);
+        content: "";
+        height: 3rem;
+        left: -1px;
+        position: absolute;
+        top: -1px;
+        width: 3px;
     }
 
     .intro__portrait-wrap {
@@ -252,14 +275,15 @@ const tools = [
 
     .tools {
         background: var(--color-black);
-        padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 5vw, 4rem) 0;
+        padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 5vw, 4rem);
     }
 
     .tools__list {
         display: flex;
         flex-wrap: wrap;
         gap: 0.75rem;
-        margin-top: 1.5rem;
+        margin-top: 1rem;
+        padding-top: 0.5rem;
     }
 
     .tool-badge {
@@ -275,7 +299,7 @@ const tools = [
 
     .skills {
         background: var(--color-black);
-        padding: clamp(2rem, 5vw, 5rem) clamp(1.25rem, 5vw, 4rem) 4rem;
+        padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem) 4rem;
     }
 
     .skills__label {
@@ -283,7 +307,8 @@ const tools = [
     }
 
     .skills__block + .skills__block {
-        margin-top: 3rem;
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
     }
 
     .skills__one,
@@ -297,13 +322,20 @@ const tools = [
     }
 
     .skills__content {
-        align-items: end;
         border-top: 1px solid var(--color-divider);
-        display: flex;
-        gap: 1rem;
+        display: grid;
+        gap: 1.35rem;
+        grid-template-columns: minmax(0, 1fr) auto;
         justify-content: space-between;
-        padding-top: 1rem;
-        flex-wrap: wrap;
+        padding: 1.2rem 0 0.4rem;
+    }
+
+    .skill__description {
+        color: var(--color-muted);
+        font: 400 clamp(1rem, 1.25vw, 1.2rem)/1.45 var(--font-display);
+        grid-column: 1 / -1;
+        margin: 0;
+        max-width: 32rem;
     }
 
     .skills__text-one,
@@ -315,6 +347,18 @@ const tools = [
         list-style: disc;
         margin: 0;
         padding-left: 1.5rem;
+    }
+
+    .skills__text-one::before,
+    .skills__text-two::before,
+    .skills__text-three::before {
+        color: var(--main-color);
+        content: "Skills";
+        display: block;
+        font: 0.62rem var(--font-mono);
+        letter-spacing: 0.12em;
+        margin: 0 0 0.65rem -1.5rem;
+        text-transform: uppercase;
     }
 
     .skills__text-one li,
@@ -332,19 +376,17 @@ const tools = [
 
     .skill-link {
         align-items: center;
-        background: transparent;
-        border: 1px solid var(--color-accent);
-        color: var(--color-accent);
+        color: var(--main-color);
         display: inline-flex;
         font: 0.66rem var(--font-mono);
         gap: 0.45rem;
         justify-content: center;
         letter-spacing: 0.12em;
-        padding: 0.7rem 1rem;
-        text-decoration: none;
+        padding: 0;
+        text-decoration: underline;
+        text-underline-offset: 0.25em;
         text-transform: uppercase;
-        transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
-            transform 0.2s ease;
+        transition: opacity 0.2s ease;
     }
 
     .skill-link b {
@@ -354,10 +396,7 @@ const tools = [
 
     .skill-link:hover,
     .skill-link:focus-visible {
-        background: var(--color-accent);
-        border-color: var(--color-accent);
-        color: #ffffff;
-        transform: translateY(-1px);
+        opacity: 0.65;
     }
 
     .skills__footer {
@@ -368,15 +407,34 @@ const tools = [
     }
 
     .skills__all-link {
+        align-items: center;
         background: var(--color-accent);
+        border: 1px solid var(--color-accent);
         color: #ffffff;
+        display: inline-flex;
+        font: 0.7rem var(--font-mono);
+        gap: 0.45rem;
+        justify-content: center;
+        letter-spacing: 0.12em;
         min-width: 12.5rem;
+        padding: 0.7rem 1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .skills__all-link b {
+        display: inline-flex;
+        font-size: 0.9rem;
     }
 
     .skills__all-link:hover,
     .skills__all-link:focus-visible {
         background: transparent;
+        border-color: var(--color-accent);
         color: var(--color-accent);
+        transform: translateY(-1px);
     }
 
     @media (max-width: 46rem) {
@@ -399,14 +457,18 @@ const tools = [
 
         .skills__content {
             align-items: flex-start;
+            grid-template-columns: 1fr;
         }
 
         .skill__meta {
-            width: 100%;
+            grid-column: 1;
+            justify-content: flex-start;
+            min-width: 0;
+            width: auto;
         }
 
         .skill-link {
-            width: 100%;
+            width: fit-content;
         }
     }
 </style>

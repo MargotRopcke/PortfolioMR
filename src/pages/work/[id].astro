@@ -12,6 +12,10 @@ import portalVideo from "../../assets/portal.mp4";
 import onboardingImage from "../../assets/mmonboarding.png";
 import laptopWebrtcImage from "../../assets/laptopwebrtc.png";
 import phoneWebrtcImage from "../../assets/phonewebrtc.png";
+import chaosGif from "../../assets/c.gif";
+import orderGif from "../../assets/v.gif";
+import darkGif from "../../assets/b.gif";
+import lightGif from "../../assets/n.gif";
 
 export async function getStaticPaths() {
     const workCollections = await getCollection("work");
@@ -35,6 +39,7 @@ const { Content } = await render(work);
 const categories = work.data.categories ?? [];
 const madeWith = work.data.madeWith ?? [];
 const assignment = work.data.assignment ?? "Project overview";
+const projectNumber = work.id.replace("work", "").padStart(2, "0");
 const workVideoSrc =
     work.id === "work1"
         ? blinkVideo
@@ -45,8 +50,10 @@ const workVideoSrc =
                 : work.id === "work10"
                     ? portalVideo
                     : null;
-const milesMealsPrototypeUrl =
-    "https://www.figma.com/proto/pJRPdk7CThYpJExMckyJyi/Miles---Meals-Resit-MR?node-id=61854-33458&p=f&viewport=292%2C-1933%2C0.27&t=ctjUWn6xpH2e3nyH-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=61854%3A33825&show-proto-sidebar=1&page-id=6817%3A1887";
+const milesMealsMobileUrl =
+    "https://www.figma.com/proto/pJRPdk7CThYpJExMckyJyi/Miles---Meals-Resit-MR?node-id=61854-34549&viewport=234%2C-2253%2C0.27&t=yNZceHueSOpo7dD9-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=61854%3A34549&show-proto-sidebar=1&page-id=6817%3A1887";
+const milesMealsBrandboardUrl =
+    "https://www.figma.com/proto/pJRPdk7CThYpJExMckyJyi/Miles---Meals-Resit-MR?node-id=62116-38802&viewport=-7192%2C142%2C0.13&t=Pa8il8GaMj4bIbTj-1&scaling=min-zoom&content-scaling=fixed&page-id=6817%3A1886";
 const maraPrototypeUrl =
     "https://www.figma.com/proto/i3ceQRSLRrVbXXBGC7YjQ9/UX4---DESIGN?node-id=863-2557&viewport=338%2C172%2C0.05&t=TA8Ic17eIgAMYfua-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=863%3A2557&page-id=863%3A1774";
 const maraBehanceUrl = "https://www.behance.net/gallery/249094065/MARA";
@@ -60,20 +67,26 @@ const coutureUrl = "https://margotropcke.be/integration1/";
 <Detail>
     <section class="work">
         <div class="work__card">
-            <a href="/portfolioMR/work/" class="back-button" data-back-link>
-                ← Go Back
-            </a>
-            <h1 class="work__title">{work.data.name}</h1>
-
-            <div class="work__meta" aria-label="Project categories">
-                {categories.length > 0 ? (
-                    categories.map((category) => (
-                        <span class="work__tag">{category}</span>
-                    ))
-                ) : (
-                    <span class="work__tag">Project</span>
-                )}
+            <div class="work__topbar">
+                <a href="/portfolioMR/work/" class="back-button" data-back-link>
+                    ← Back to all work
+                </a>
+                <span class="work__index">Project {projectNumber}</span>
             </div>
+
+            <header class="work__hero">
+                <p class="work__eyebrow">Selected work / {projectNumber}</p>
+                <h1 class="work__title">{work.data.name}</h1>
+                <div class="work__meta" aria-label="Project categories">
+                    {categories.length > 0 ? (
+                        categories.map((category) => (
+                            <span class="work__tag">{category}</span>
+                        ))
+                    ) : (
+                        <span class="work__tag">Project</span>
+                    )}
+                </div>
+            </header>
 
             <div class="work__details">
                <div class="work__made-with">
@@ -130,14 +143,24 @@ const coutureUrl = "https://margotropcke.be/integration1/";
                 <div class="work__showcase">
                     <div class="work__prototype-intro">
                         <p class="work__prototype-label">Prototype preview</p>
-                        <a
-                            href={milesMealsPrototypeUrl}
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            class="prototype-button"
-                        >
-                            Open Figma prototype
-                        </a>
+                        <div class="work__links">
+                            <a
+                                href={milesMealsMobileUrl}
+                                target="_blank"
+                                rel="noreferrer noopener"
+                                class="behance-button"
+                            >
+                                <span>View mobile prototype</span><b>↗</b>
+                            </a>
+                            <a
+                                href={milesMealsBrandboardUrl}
+                                target="_blank"
+                                rel="noreferrer noopener"
+                                class="behance-button"
+                            >
+                                <span>View brandboard</span><b>↗</b>
+                            </a>
+                        </div>
                     </div>
                     <div class="work__showcase-content">
                         <div class="work__showcase-image">
@@ -181,6 +204,31 @@ const coutureUrl = "https://margotropcke.be/integration1/";
                                 class="work__showcase-image-file"
                             />
                         </div>
+                    </div>
+                </div>
+            ) : null}
+
+            {work.id === "work3" ? (
+                <div class="work__opposites">
+                    <div class="work__opposites-header">
+                        <p class="work__prototype-label">Interactive scenes</p>
+                        <p class="work__opposites-hint">Press C / V / B / N in the original project</p>
+                    </div>
+                    <div class="work__opposites-grid">
+                        {[
+                            { key: "C", name: "Chaos", image: chaosGif },
+                            { key: "V", name: "Order", image: orderGif },
+                            { key: "B", name: "Dark", image: darkGif },
+                            { key: "N", name: "Light", image: lightGif },
+                        ].map((scene) => (
+                            <figure class="work__opposites-card">
+                                <div class="work__opposites-label">
+                                    <span>{scene.name}</span>
+                                    <b>{scene.key}</b>
+                                </div>
+                                <img src={scene.image.src} alt={`${scene.name} scene`} loading="lazy" />
+                            </figure>
+                        ))}
                     </div>
                 </div>
             ) : null}
@@ -258,10 +306,40 @@ const coutureUrl = "https://margotropcke.be/integration1/";
 
 .work__card {
    display: grid;
-   gap: 1.5rem;
+   gap: 2rem;
    margin: 0 auto;
    max-width: 48rem;
    width: 100%;
+}
+
+.work__topbar {
+   align-items: center;
+   border-bottom: 1px solid var(--color-divider);
+   display: flex;
+   justify-content: space-between;
+   padding-bottom: 0.9rem;
+}
+
+.work__index,
+.work__eyebrow {
+   color: var(--color-muted);
+   font: 0.62rem var(--font-mono);
+   letter-spacing: 0.14em;
+   text-transform: uppercase;
+}
+
+.work__index {
+   color: var(--color-accent);
+}
+
+.work__hero {
+   display: grid;
+   gap: 0.9rem;
+   padding: clamp(0.5rem, 2vw, 1.5rem) 0 0;
+}
+
+.work__eyebrow {
+   margin: 0;
 }
 
 .work__title {
@@ -276,7 +354,7 @@ const coutureUrl = "https://margotropcke.be/integration1/";
    display: flex;
    flex-wrap: wrap;
    gap: 0.55rem;
-   margin-top: -0.25rem;
+   margin-top: 0.35rem;
 }
 
 .work__tag {
@@ -319,12 +397,12 @@ const coutureUrl = "https://margotropcke.be/integration1/";
 }
 
 .work__details {
-   border-top: 1px solid var(--color-divider);
+   background: rgba(255, 255, 255, 0.025);
+   border: 1px solid var(--color-divider);
    display: grid;
    gap: 1rem 2rem;
    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr);
-   margin-top: 0.75rem;
-   padding-top: 1rem;
+   padding: 1.25rem;
 }
 
 .work__made-with,
@@ -363,7 +441,7 @@ const coutureUrl = "https://margotropcke.be/integration1/";
    border-top: 1px solid var(--color-divider);
    display: grid;
    gap: 0.8rem;
-   padding-top: 1.1rem;
+   padding-top: 1.5rem;
 }
 
 .work__content {
@@ -425,6 +503,65 @@ const coutureUrl = "https://margotropcke.be/integration1/";
    color: var(--color-muted);
    font: 400 clamp(0.95rem, 1.2vw, 1.1rem)/1.6 var(--font-display);
    margin: 0;
+}
+
+.work__opposites {
+   border-top: 1px solid var(--color-divider);
+   display: grid;
+   gap: 1rem;
+   padding-top: 1.5rem;
+}
+
+.work__opposites-header {
+   align-items: baseline;
+   display: flex;
+   gap: 1rem;
+   justify-content: space-between;
+}
+
+.work__opposites-hint {
+   color: var(--color-muted);
+   font: 0.62rem/1.5 var(--font-mono);
+   margin: 0;
+   text-align: right;
+}
+
+.work__opposites-grid {
+   display: grid;
+   gap: 1rem;
+   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.work__opposites-card {
+   border: 1px solid var(--color-divider);
+   margin: 0;
+   overflow: hidden;
+}
+
+.work__opposites-label {
+   align-items: center;
+   background: var(--color-black);
+   border-bottom: 1px solid var(--color-divider);
+   color: var(--main-color);
+   display: flex;
+   font: 0.65rem var(--font-mono);
+   justify-content: space-between;
+   letter-spacing: 0.12em;
+   padding: 0.7rem 0.8rem;
+   text-transform: uppercase;
+}
+
+.work__opposites-label b {
+   color: var(--color-accent);
+   font-size: 0.9rem;
+}
+
+.work__opposites-card img {
+   aspect-ratio: 1;
+   display: block;
+   height: auto;
+   object-fit: cover;
+   width: 100%;
 }
 
 .prototype-button,
@@ -489,8 +626,8 @@ const coutureUrl = "https://margotropcke.be/integration1/";
    display: grid;
    gap: 1rem;
    grid-template-columns: repeat(2, minmax(0, 1fr));
-   margin-top: 1rem;
-   padding-top: 1rem;
+   margin-top: 2rem;
+   padding-top: 1.25rem;
 }
 
 .work__navigation-link {
@@ -541,8 +678,18 @@ const coutureUrl = "https://margotropcke.be/integration1/";
 }
 
 @media (max-width: 700px) {
+   .work__topbar {
+       align-items: flex-start;
+       flex-direction: column;
+       gap: 0.6rem;
+   }
+
    .work__details {
        grid-template-columns: 1fr;
+   }
+
+   .work__details {
+       padding: 1rem;
    }
 
    .work__prototype-intro {
@@ -555,6 +702,20 @@ const coutureUrl = "https://margotropcke.be/integration1/";
    }
 
    .work__showcase-content--dual {
+       grid-template-columns: 1fr;
+   }
+
+   .work__opposites-header {
+       align-items: flex-start;
+       flex-direction: column;
+       gap: 0.4rem;
+   }
+
+   .work__opposites-hint {
+       text-align: left;
+   }
+
+   .work__opposites-grid {
        grid-template-columns: 1fr;
    }
 }

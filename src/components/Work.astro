@@ -27,12 +27,14 @@ import WorkCard from "./WorkCard.astro";
                 }
             </ul>
         </div>
-        <p class="work-note">
-            A selection of recent experiments, interfaces and visual stories.
-        </p>
-        <a href="/portfolioMR/work/" class="work__button">
-            <span>View all my work</span><b>↗</b>
-        </a>
+        <div class="works__footer">
+            <p class="work-note">
+                A selection of recent experiments, interfaces and visual stories.
+            </p>
+            <a href="/portfolioMR/work/" class="work__button">
+                <span>View all my work</span><b>↗</b>
+            </a>
+        </div>
     </div>
 </section>
 
@@ -111,19 +113,33 @@ import WorkCard from "./WorkCard.astro";
         color: var(--color-muted);
         font-size: 0.9rem;
         line-height: 1.5;
-        margin: 1.25rem 0 0;
+        margin: 0;
         max-width: 30ch;
+    }
+
+    .works__footer {
+        align-items: end;
+        display: flex;
+        gap: 1.5rem;
+        justify-content: space-between;
+        margin-top: 1.25rem;
     }
 
     .work__button {
         align-items: center;
-        color: var(--main-color);
+        background: transparent;
+        border: 1px solid var(--color-accent);
+        color: var(--color-accent);
         display: inline-flex;
         font: 0.68rem var(--font-mono);
         gap: 0.45rem;
+        justify-content: center;
         letter-spacing: 0.12em;
-        margin-top: 0.85rem;
+        padding: 0.7rem 1rem;
+        text-decoration: none;
         text-transform: uppercase;
+        transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+            transform 0.2s ease;
         width: fit-content;
     }
 
@@ -133,17 +149,22 @@ import WorkCard from "./WorkCard.astro";
 
     .work__button:hover,
     .work__button:focus-visible {
-        color: var(--color-accent);
-        text-decoration: underline;
-        text-underline-offset: 0.2em;
-    }
-
-    .work__button:hover b,
-    .work__button:focus-visible b {
-        color: var(--color-accent);
+        background: var(--color-accent);
+        border-color: var(--color-accent);
+        color: #ffffff;
+        transform: translateY(-1px);
     }
 
     @media (max-width: 46rem) {
+        .works__footer {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .work__button {
+            width: 100%;
+        }
+
         .works__item {
             flex-basis: min(80vw, 24rem);
         }
