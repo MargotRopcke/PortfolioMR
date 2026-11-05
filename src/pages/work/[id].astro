@@ -600,6 +600,8 @@ const coutureUrl = "https://margotropcke.be/integration1/";
         const fallback = document.querySelector(".work__image--fallback");
         if (!(fallback instanceof HTMLElement)) return;
 
+        video.hidden = false;
+        fallback.hidden = true;
         const showFallback = () => {
             video.hidden = true;
             fallback.hidden = false;
@@ -612,4 +614,7 @@ const coutureUrl = "https://margotropcke.be/integration1/";
 
     initWorkVideo();
     document.addEventListener("astro:page-load", initWorkVideo);
+    document.addEventListener("astro:after-swap", () => {
+        window.requestAnimationFrame(initWorkVideo);
+    });
 </script>
