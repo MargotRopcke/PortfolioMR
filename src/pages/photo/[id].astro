@@ -33,7 +33,7 @@ const { Content } = await render(photo);
         <div class="photo__content">
             <Content />
         </div>
-            <a href="/portfolio/samples" class="back-button">← Go Back</a>   
+            <a href="/portfolioMR/samples" class="back-button">← Go Back</a>   
            </div>
     </section>
 </Detail>
@@ -79,18 +79,21 @@ const { Content } = await render(photo);
 }
 
 .back-button {
-    border: 1px solid var(--color-divider);
+   align-items: center;
     color: var(--main-color);
     display: inline-flex;
-    font: 0.7rem var(--font-mono);
-    letter-spacing: 0.12em;
-    padding: 0.9rem 1.2rem;
+   font: 0.68rem var(--font-mono);
+   gap: 0.45rem;
+   letter-spacing: 0.12em;
     text-transform: uppercase;
     width: fit-content;
 }
 
-.back-button:hover {
-    border-color: var(--main-color);
+.back-button:hover,
+.back-button:focus-visible {
+   color: var(--color-accent);
+   text-decoration: underline;
+   text-underline-offset: 0.2em;
 }
 
 </style>

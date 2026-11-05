@@ -7,25 +7,16 @@ const workCollections = defineCollection({
         z.object({
             name: z.string(),
             image: image(),
+            video: z.string().optional(),
+            categories: z.array(z.enum([
+                "UX Research",
+                "Visual Design",
+                "Motion Design",
+                "Development",
+            ])).optional(),
+            madeWith: z.array(z.string()).optional(),
+            assignment: z.string().optional(),
         }),
-});
-
-const photoCollections = defineCollection({
-    loader: glob({ pattern: "**/*.md", base: "./src/content/photo" }),
-    schema: ({ image }) => z.object({
-        title: z.string(),
-        date: z.date(),
-        image: image(),
-    }),
-});
-
-const QuotesCard = defineCollection({
-    loader: glob({ pattern: "**/*.md", base: "./src/content/quotes" }),
-    schema: ({ image }) => z.object({
-        title: z.string(),
-        description: z.string(),
-        author: z.string(),
-    }),
 });
 
 const ExtrasCard = defineCollection({
@@ -46,8 +37,6 @@ const aboutCollection = defineCollection({
 
 export const collections = {
     work: workCollections,
-    photo: photoCollections,
-    quotes: QuotesCard,
     extras: ExtrasCard,
     about: aboutCollection,
 };

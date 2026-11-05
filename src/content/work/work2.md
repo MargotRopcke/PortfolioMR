@@ -1,8 +1,9 @@
 ---
-name: Cocoa.
-image: img/coffee1.png
+name: Cocktail Shaker
+image: img/cocktailshake.png
+categories: ["Development"]
+madeWith: ["VS code", "Photoshop"]
+assignment: "Create a real-time web application where a smartphone acts as a remote controller for a desktop browser experience. The setup uses WebSockets for initial signaling and QR-code pairing, establishing a peer-to-peer WebRTC data channel for low-latency control."
 ---
 
-Opdracht Visual Design
-
-Deze challenge is een korte creatieve oefening om je grafische vaardigheden te testen. Je maakt een visueel aantrekkelijk stappenplan in drie stappen dat laat zien hoe je een wens kunt laten uitkomen (“3 steps to… make your wish come true”). Tekst en beeld moeten elkaar versterken, en je mag kiezen uit verschillende technieken zoals illustratie, collage, typografie of verf. Let op compositie en visuele associaties, werk met plezier en je hebt 4 uur om het af te ronden.
+I created Cocktail Mixer, an interactive multi-device web app where a smartphone acts as a physical shaker and glass. Users pair their mobile device to a desktop display via QR code and a WebRTC data channel. Using Node.js and Socket.io for signaling, the mobile interface streams real-time sensor data—using the accelerometer for shake mixing (with spill detection for over-shaking) and the gyroscope to simulate drinking—triggering dynamic visuals, recipes, and audio feedback on the desktop screen.

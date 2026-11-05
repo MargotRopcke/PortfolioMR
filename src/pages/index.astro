@@ -8,11 +8,13 @@ import me from "../assets/profilepic.png";
 <Base pageTitle=" / Home">
     <section class="hero">
         <div class="hero__meta">
-            <span>Portfolio / 2026</span><span>Designer / Developer / Researcher</span>
+            <span>Portfolio / 2026</span><span>Designer / Developer / UX Researcher</span>
         </div>
         <div class="hero__grid">
             <h1 class="home__title">
-                Margot<br /><em>Ropcke</em><span>.</span>
+                <span class="name-word">
+                    <span class="name-letter" style="--i: 0;">M</span><span class="name-letter" style="--i: 1;">a</span><span class="name-letter" style="--i: 2;">r</span><span class="name-letter" style="--i: 3;">g</span><span class="name-letter" style="--i: 4;">o</span><span class="name-letter" style="--i: 5;">t</span>
+                </span><br /><em class="name-word"><span class="name-letter" style="--i: 6;">R</span><span class="name-letter" style="--i: 7;">ö</span><span class="name-letter" style="--i: 8;">p</span><span class="name-letter" style="--i: 9;">c</span><span class="name-letter" style="--i: 10;">k</span><span class="name-letter" style="--i: 11;">e</span></em><span></span>
             </h1>
             <div class="hero__aside">
                 <img src={me.src} alt="Picture of Margot" class="profilepic" />
@@ -26,14 +28,15 @@ import me from "../assets/profilepic.png";
             </div>
         </div>
         <div class="hero__line">
-            <span>Based in Belgium</span><span
-                >Available for select projects</span>
+            <span>Based in Belgium</span>
         </div>
     </section>
 
+    <section id="creations" class="creations"><Work /></section>
+
     <section class="specialties" aria-labelledby="skills-title">
         <div class="section-label">
-            <span>01</span><span id="skills-title">What I do</span>
+            <span>02</span><span id="skills-title">My 3 specialties</span>
         </div>
         <div class="specialties__list">
             <a href="/portfolioMR/about" class="specialty"
@@ -49,8 +52,6 @@ import me from "../assets/profilepic.png";
             >
         </div>
     </section>
-
-    <section id="creations" class="creations"><Work /></section>
 </Base>
 
 <style>
@@ -81,7 +82,7 @@ import me from "../assets/profilepic.png";
         display: grid;
         gap: clamp(2rem, 4vw, 4rem);
         grid-template-columns: minmax(0, 1.4fr) minmax(15rem, 0.7fr);
-        padding: clamp(3rem, 9vw, 7rem) 0 clamp(2rem, 5vw, 4rem);
+        padding: clamp(2.1rem, 6.5vw, 5.3rem) 0 clamp(2rem, 5vw, 4rem);
     }
 
     .home__title {
@@ -95,16 +96,33 @@ import me from "../assets/profilepic.png";
         animation: nameReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
 
-    .home__title em,
-    .home__title span {
+    .home__title > em,
+    .home__title > span {
         color: var(--main-color);
         font-style: normal;
         display: inline-block;
         animation: nameAccent 1.2s ease both;
+    }    .name-word {
+        white-space: nowrap;
+    }
+
+    .name-letter {
+        display: inline-block;
+        transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        transition-delay: calc(var(--i) * 24ms);
+        will-change: transform;
+    }
+
+    .home__title:hover .name-letter {
+        transform: translateY(-0.1em) rotate(-2deg);
+    }
+
+    .home__title:hover .name-letter:nth-child(even) {
+        transform: translateY(0.06em) rotate(1.5deg);
     }
 
     .home__title em {
-        animation: accentFloat 4.5s ease-in-out infinite alternate;
+        margin-top: 0.16em;
     }
 
     @keyframes nameReveal {
@@ -131,21 +149,6 @@ import me from "../assets/profilepic.png";
         }
     }
 
-    @keyframes accentFloat {
-        0% {
-            transform: translateY(0);
-            opacity: 0.92;
-        }
-        50% {
-            transform: translateY(-4px);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(0);
-            opacity: 0.92;
-        }
-    }
-
     .hero__aside {
         display: grid;
         gap: 1.5rem;
@@ -158,7 +161,7 @@ import me from "../assets/profilepic.png";
         aspect-ratio: 1;
         filter: grayscale(1);
         object-fit: cover;
-        width: clamp(8rem, 16vw, 12.5rem);
+        width: clamp(13rem, 26vw, 19rem);
     }
 
     .home__intro {
@@ -180,17 +183,30 @@ import me from "../assets/profilepic.png";
         padding: 0.75rem 0;
         text-decoration: none;
         text-transform: uppercase;
+        transition: color 0.2s ease;
         width: 100%;
+    }
+
+    .hero__button:hover {
+        color: var(--color-accent);
+    }
+
+    .hero__button:hover b {
+        background: var(--color-accent);
+        border-color: var(--color-accent);
+        color: var(--color-black);
     }
 
     .hero__button b {
         background: transparent;
-        border: 1px solid var(--main-color);
+        border: 1px solid var(--color-accent);
         border-radius: 50%;
+        color: var(--color-accent);
         display: grid;
         font-size: 1.1rem;
         height: 2.2rem;
         place-items: center;
+        transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
         width: 2.2rem;
     }
 
@@ -203,16 +219,12 @@ import me from "../assets/profilepic.png";
     .specialties {
         background: var(--color-black);
         color: var(--main-color);
-        padding: clamp(2.5rem, 7vw, 6rem) clamp(1.25rem, 4vw, 4rem);
-    }
-
-    .section-label {
-        color: var(--color-muted);
-        display: flex;
-        justify-content: space-between;
+        padding: 1rem clamp(1.25rem, 4vw, 4rem) clamp(2.5rem, 7vw, 6rem);
     }
 
     .specialties__list {
+        display: grid;
+        gap: 0.9rem;
         margin-top: clamp(2.5rem, 6vw, 4.5rem);
     }
 
@@ -223,7 +235,7 @@ import me from "../assets/profilepic.png";
         display: grid;
         gap: 1rem;
         grid-template-columns: 4rem 1fr auto;
-        padding: 1.5rem 0;
+        padding: 1.25rem 0;
         text-decoration: none;
         transition: opacity 0.25s ease, transform 0.25s ease;
     }
@@ -236,16 +248,25 @@ import me from "../assets/profilepic.png";
     .specialty b {
         color: var(--color-muted);
         font: 0.68rem var(--font-mono);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
     }
 
     .specialty strong {
-        font: 300 clamp(2.4rem, 6vw, 6rem)/0.9 var(--font-display);
+        font: 300 clamp(2rem, 5vw, 3.2rem)/0.9 var(--font-display);
         letter-spacing: -0.07em;
         text-transform: uppercase;
     }
 
     .specialty:hover {
-        transform: translateX(0.5rem);
+        color: var(--color-accent);
+        transform: translateX(0.4rem);
+    }
+
+    .specialty:hover strong,
+    .specialty:hover span,
+    .specialty:hover b {
+        color: var(--color-accent);
     }
 
     @media (max-width: 46rem) {
@@ -259,7 +280,7 @@ import me from "../assets/profilepic.png";
         }
 
         .profilepic {
-            width: 8rem;
+            width: 12rem;
         }
 
         .hero__meta span:last-child,
@@ -270,6 +291,7 @@ import me from "../assets/profilepic.png";
         .specialty {
             gap: 0.75rem;
             grid-template-columns: 3rem 1fr auto;
+            padding: 1rem 0;
         }
     }
 </style>

@@ -3,76 +3,152 @@ import Base from "../layouts/Base.astro";
 import "../styles/global.css";
 
 import { getEntry } from "astro:content";
-import comp from "../assets/comp.png";
-import lightbulb from "../assets/lightbulb.png";
-import palette from "../assets/palette.png";
+import margot from "../assets/margot.jpg";
 
 const skills = await getEntry("about", "skills");
+const skillGroups = {
+    development: skills?.data?.development ?? [],
+    visual: skills?.data?.visual ?? [],
+    ux: skills?.data?.ux ?? [],
+};
+const tools = [
+    "Figma",
+    "Miro",
+    "Illustrator",
+    "Photoshop",
+    "After Effects",
+    "VS Code",
+    "Github",
+    "Astro",
+    "HTML",
+    "CSS",
+    "JavaScript",
+];
 ---
 
 <Base title="Home Page">
     <section class="intro">
-        <h1 class="intro__title">Who am I?</h1>
-        <p class="intro__text">
-            I’m passionate about turning ideas into intuitive, visually
-            compelling digital experiences that people actually enjoy using.<br> I’m
-            a fast learner, a reliable teammate, and a professional who gets
-            things done — all while keeping a dash of wit and creativity in my
-            work. <br>Whether it’s crafting clean, user-friendly interfaces or
-            diving into code to bring designs to life, I tackle challenges with
-            curiosity and precision.<br> When I’m not designing or programming, you
-            might catch me trying out new trends, experimenting with my own
-            creative projects, or finding inspiration in the world around me.
-        </p>
+        <div class="section-label intro__label">
+            <span>01</span><span>About me</span>
+        </div>
+        <div class="intro__grid">
+            <div>
+                <h1 class="intro__title">Who am I?</h1>
+                <p class="intro__text">
+                    Hi, I’m Margot.<br /><br />
+                    I’m a Digital Design &amp; Development student who loves creating
+                    digital experiences that are both useful and beautiful. I move
+                    between UX/UI, visual design and code, and I like how each one
+                    strengthens the others.<br /><br />
+                    UX/UI is where I feel most at home. I’m fascinated by how
+                    people interact with digital products, and I enjoy making them
+                    more intuitive, accessible and enjoyable to use.<br /><br />
+                    I learn best by doing: trying new tools, testing ideas and
+                    drawing inspiration from the world around me. I also love
+                    exchanging perspectives with others, because better ideas often
+                    come from a different point of view.<br /><br />
+                    <strong>Always curious. Always learning.</strong>
+                </p>
+            </div>
+            <aside class="intro__panel">
+                <div class="intro__portrait-wrap">
+                    <img
+                        src={margot.src}
+                        alt="Portrait of Margot Tropcke"
+                        class="intro__portrait"
+                    />
+                </div>
+                <p class="intro__eyebrow">Based in Belgium</p>
+                <p class="intro__statement" data-rotating-role>
+                    UX/UI Research
+                </p>
+            </aside>
+        </div>
+    </section>
+
+    <section class="tools" aria-label="Tools I use">
+        <div class="section-label">
+            <span>Tools</span>
+        </div>
+        <div class="tools__list">
+            {tools.map((tool) => <span class="tool-badge">{tool}</span>)}
+        </div>
     </section>
 
     <section class="skills">
-        <h2 class="skills__one">Development Skills</h2>
-        <div class="skills__development">
-        <ul class="skills__text-one">
-            {skills.data.development.map((item) => (
-                <li>{item}</li>
-            ))}
-        </ul>
-        <img
-        src={comp.src}
-        alt="Picture of Computer"
-        width="200"
-        class="comp skill-image"
-      />
-    </div>
+        <div class="section-label skills__label">
+            <span>02</span><span>Skills</span>
+        </div>
 
-        <h2 class="skills__two">Visual Design Skills</h2>
-          <div class="skills__design">
-        <ul class="skills__text-two">
-            {skills.data.visual.map((item) => (
-                <li>{item}</li>
-            ))}
-        </ul>
-          <img
-        src={palette.src}
-        alt="Picture of Palette"
-        width="200"
-        class="palette skill-image"
-      />
+        <div class="skills__block">
+            <h2 class="skills__one">Development</h2>
+            <div class="skills__content">
+                <ul class="skills__text-one">
+                    {skillGroups.development.map((item) => <li>{item}</li>)}
+                </ul>
+                <div class="skill__meta">
+                    <a href="/portfolioMR/work/?category=Development" class="skill-link">
+                        <span>View development work</span><b>↗</b>
+                    </a>
+                </div>
             </div>
+        </div>
 
-        <h2 class="skills__three">UX/UI Skills</h2>
-         <div class="skills__ux">
-        <ul class="skills__text-three">
-            {skills.data.ux.map((item) => (
-                <li>{item}</li>
-            ))}
-        </ul>
-          <img
-        src={lightbulb.src}
-        alt="Picture of Lightbulb"
-        width="200"
-        class="lightbulb skill-image"
-      />
+        <div class="skills__block">
+            <h2 class="skills__two">Visual design</h2>
+            <div class="skills__content">
+                <ul class="skills__text-two">
+                    {skillGroups.visual.map((item) => <li>{item}</li>)}
+                </ul>
+                <div class="skill__meta">
+                    <a href="/portfolioMR/work/?category=Visual%20Design" class="skill-link">
+                        <span>View visual work</span><b>↗</b>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="skills__block">
+            <h2 class="skills__three">UX / UI</h2>
+            <div class="skills__content">
+                <ul class="skills__text-three">
+                    {skillGroups.ux.map((item) => <li>{item}</li>)}
+                </ul>
+                <div class="skill__meta">
+                    <a href="/portfolioMR/work/?category=UX%20Research" class="skill-link">
+                        <span>View UX work</span><b>↗</b>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="skills__footer">
+            <a href="/portfolioMR/work/" class="skill-link skills__all-link">
+                <span>View all work</span><b>↗</b>
+            </a>
         </div>
     </section>
 </Base>
+
+<script>
+    const roles = ["UX/UI Research", "Visual Design", "Motion Design", "Development"];
+    const statement = document.querySelector("[data-rotating-role]");
+    const transitionDurationMs = 350;
+
+    if (statement instanceof HTMLElement) {
+        let roleIndex = 0;
+
+        window.setInterval(() => {
+            statement.classList.add("is-fading");
+
+            window.setTimeout(() => {
+                roleIndex = (roleIndex + 1) % roles.length;
+                statement.textContent = roles[roleIndex];
+                statement.classList.remove("is-fading");
+            }, transitionDurationMs);
+        }, 3000);
+    }
+</script>
 
 <style>
     .intro {
@@ -80,6 +156,17 @@ const skills = await getEntry("about", "skills");
         border-top: 1px solid var(--color-divider);
         border-bottom: 1px solid var(--color-divider);
         padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 5vw, 4rem);
+    }
+
+    .intro__label {
+        margin-bottom: 2rem;
+    }
+
+    .intro__grid {
+        align-items: end;
+        display: grid;
+        gap: clamp(1.5rem, 4vw, 3rem);
+        grid-template-columns: minmax(0, 1.3fr) minmax(16rem, 0.7fr);
     }
 
     .intro__title {
@@ -92,9 +179,98 @@ const skills = await getEntry("about", "skills");
 
     .intro__text {
         color: var(--color-muted);
-        font: 400 clamp(0.95rem, 1.5vw, 1.3rem)/1.6 var(--font-display);
+        font: 400 clamp(0.92rem, 1.25vw, 1.2rem)/1.6 var(--font-display);
         margin: 0;
-        max-width: 60rem;
+        max-width: 58rem;
+    }
+
+    .intro__panel {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--color-divider);
+        display: grid;
+        gap: 0.8rem;
+        padding: 0.8rem;
+        max-width: 18rem;
+        justify-self: end;
+    }
+
+    .intro__portrait-wrap {
+        aspect-ratio: 4 / 5;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--color-divider);
+        overflow: hidden;
+        max-height: 22rem;
+    }
+
+    .intro__portrait {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .intro__eyebrow {
+        color: var(--color-muted);
+        font: 0.65rem var(--font-mono);
+        letter-spacing: 0.12em;
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    .intro__statement {
+        color: var(--main-color);
+        font: 300 clamp(1.2rem, 2vw, 1.8rem)/1.1 var(--font-display);
+        letter-spacing: -0.05em;
+        margin: 0;
+        min-height: 1.2em;
+        text-align: center;
+        transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .intro__statement.is-fading {
+        opacity: 0;
+        transform: translateY(0.25rem);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .intro__statement {
+            transition: none;
+        }
+    }
+
+    @media (max-width: 700px) {
+        .intro__grid {
+            grid-template-columns: 1fr;
+        }
+
+        .intro__panel {
+            max-width: 24rem;
+            order: -1;
+            width: 100%;
+        }
+    }
+
+    .tools {
+        background: var(--color-black);
+        padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 5vw, 4rem) 0;
+    }
+
+    .tools__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+    }
+
+    .tool-badge {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--color-divider);
+        color: var(--main-color);
+        display: inline-flex;
+        font: 0.62rem var(--font-mono);
+        letter-spacing: 0.12em;
+        padding: 0.55rem 0.75rem;
+        text-transform: uppercase;
     }
 
     .skills {
@@ -102,25 +278,31 @@ const skills = await getEntry("about", "skills");
         padding: clamp(2rem, 5vw, 5rem) clamp(1.25rem, 5vw, 4rem) 4rem;
     }
 
+    .skills__label {
+        margin-bottom: 1rem;
+    }
+
+    .skills__block + .skills__block {
+        margin-top: 3rem;
+    }
+
     .skills__one,
     .skills__two,
     .skills__three {
         color: var(--main-color);
-        font: 300 clamp(2.2rem, 5vw, 4.5rem)/0.9 var(--font-display);
+        font: 300 clamp(2rem, 5vw, 4rem)/0.9 var(--font-display);
         letter-spacing: -0.07em;
-        margin: 0 0 1.25rem;
+        margin: 0 0 0.5rem;
         text-transform: uppercase;
     }
 
-    .skills__development,
-    .skills__design,
-    .skills__ux {
-        align-items: center;
+    .skills__content {
+        align-items: end;
         border-top: 1px solid var(--color-divider);
         display: flex;
-        gap: 1.5rem;
+        gap: 1rem;
         justify-content: space-between;
-        padding: 1.5rem 0;
+        padding-top: 1rem;
         flex-wrap: wrap;
     }
 
@@ -141,23 +323,90 @@ const skills = await getEntry("about", "skills");
         margin-bottom: 0.35rem;
     }
 
-    .skill-image {
-        filter: grayscale(1);
-        height: auto;
-        max-width: 11rem;
-        object-fit: contain;
-        width: 100%;
+    .skill__meta {
+        display: flex;
+        justify-content: flex-end;
+        margin-left: auto;
+        min-width: 9rem;
+    }
+
+    .skill-link {
+        align-items: center;
+        background: transparent;
+        border: 1px solid var(--color-accent);
+        color: var(--color-accent);
+        display: inline-flex;
+        font: 0.66rem var(--font-mono);
+        gap: 0.45rem;
+        justify-content: center;
+        letter-spacing: 0.12em;
+        padding: 0.7rem 1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .skill-link b {
+        display: inline-flex;
+        font-size: 0.9rem;
+    }
+
+    .skill-link:hover,
+    .skill-link:focus-visible {
+        background: var(--color-accent);
+        border-color: var(--color-accent);
+        color: #ffffff;
+        transform: translateY(-1px);
+    }
+
+    .skills__footer {
+        display: flex;
+        justify-content: center;
+        margin-top: 4rem;
+        padding-top: 1rem;
+    }
+
+    .skills__all-link {
+        background: var(--color-accent);
+        color: #ffffff;
+        min-width: 12.5rem;
+    }
+
+    .skills__all-link:hover,
+    .skills__all-link:focus-visible {
+        background: transparent;
+        color: var(--color-accent);
     }
 
     @media (max-width: 46rem) {
-        .skills__development,
-        .skills__design,
-        .skills__ux {
+        .intro__grid {
+            grid-template-columns: 1fr;
+        }
+
+        .intro__panel {
+            max-width: 20rem;
+        }
+
+        .tools__list {
+            gap: 0.5rem;
+        }
+
+        .tool-badge {
+            font-size: 0.56rem;
+            padding: 0.6rem 0.7rem;
+        }
+
+        .skills__content {
             align-items: flex-start;
         }
 
-        .skill-image {
-            max-width: 7rem;
+        .skill__meta {
+            width: 100%;
+        }
+
+        .skill-link {
+            width: 100%;
         }
     }
 </style>

@@ -1,12 +1,9 @@
 ---
-name: Watering Can Supremacy
-image: img/giet.png
+name: Interlaced
+image: img/interlaced.png
+categories: ["UX Research", "Visual Design", "Development"]
+madeWith: ["Figma", "Miro", "JavaScript", "HTML", "CSS", "Photoshop"]
+assignment: "An interactive online story and digital experience commissioned for MoMu (Fashion Museum Antwerp) as part of their new digital marketing campaign. The brief required transforming a static narrative about a legendary fashion designer into an immersive, sensory 9:16 responsive longread. Leveraging advanced front-end techniques (Vite, GSAP, ScrollTrigger), the project combines rich storytelling, interactive learning moments, and custom visual design to connect fashion history with modern web audiences."
 ---
 
-Opdracht Integration
-
-This assignment contained: Development, Design, UX/UI
-
-Voor het herexamen kies je een alledaags object (bijv. gieter, theepot, bezem) en bedenk je 3 alternatieve manieren om het te gebruiken, binnen één samenhangend concept. Je vertelt dit via storytelling op een website, waarbij tekst en beeld elkaar versterken. De site bevat je concept, de 3 alternatieve toepassingen, een promotie/event met inschrijfformulier en reviews/getuigenissen.
-
-Het proces omvat brainstormen, wireframes, design en development, inclusief interactieve elementen, een formulier dat records naar een database schrijft en gebruik van JavaScript/DOM. Documenteer het hele proces in Figjam en lever milestones op tijd in. De website komt online op je persoonlijke hosting en presenteert jouw creatieve concept op een visueel aantrekkelijke manier.
+For MoMu's digital campaign, I created an interactive longread centered around an icon of 1990s Belgian fashion design: Dirk Bikkembergs’ Lace-Through Boots. Rather than writing a conventional biography, I used the shoelace itself as a narrative backbone to guide the user through Bikkembergs' core themes—construction, masculinity, military utility, sport, and fetishism. As visitors scroll down the responsive page, the lace physically weaves through the boot's eyelets using GSAP and ScrollTrigger, dynamically revealing historical context, interactive footwear mode toggles (sport vs. military), and archived collection insights.

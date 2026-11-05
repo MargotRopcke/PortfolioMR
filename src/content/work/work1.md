@@ -1,8 +1,10 @@
 ---
 name: Blink And It's Over
 image: img/motion.png
+video: "/portfolioMR/videos/blink-and-its-over.mp4"
+categories: ["Motion Design"]
+madeWith: ["After Effects", "Illustrator", "Photoshop"]
+assignment: "Create a 10-second motion graphic built from animated geometric squares that explores rhythm, direction, and mood."
 ---
 
-Opdracht Motion Design
-
-Maak een originele, visueel aantrekkelijke animatie van 10 seconden met een groep vierkanten van verschillende groottes, kleuren en patronen. De vierkanten moeten dynamisch bewegen en transformeren (rotatie, schaal, vloeiende overgangen) en samen een bepaalde sfeer en ritme uitstralen. Experimenteer met timing, transities en interacties om creativiteit en technische vaardigheden te tonen, terwijl je een balans vindt tussen uniformiteit en diversiteit in de animatie.
+To explore timing and rhythm, I used the assigned square elements to build an interactive eye. I paced the animation to draw focus as the eye follows surrounding shapes, building up to a crescendo of rapid transformations before closing to complete the cycle.

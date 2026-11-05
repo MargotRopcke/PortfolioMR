@@ -4,10 +4,12 @@ import Social from "./Social.astro";
 
 <div class="footer__container">
     <footer class="footer">
-        <div class="footer__label">03 / Contact</div>
+        <div class="footer__label">
+            <span>Contact</span>
+        </div>
 
         <div class="footer__header">
-            <h2 class="footer__title">Let's<br /><em>connect.</em></h2>
+            <h2 class="footer__title">Let's<br /><em>work together.</em></h2>
 
             <div class="footer__meta">
                 <div class="footer__rule" aria-hidden="true"></div>
@@ -17,7 +19,7 @@ import Social from "./Social.astro";
             </div>
         </div>
 
-        <p class="footer__cta">Always ready to help you take the next step.</p>
+        <p class="footer__cta">Ready to make something meaningful together.</p>
     </footer>
 </div>
 
@@ -73,7 +75,7 @@ import Social from "./Social.astro";
 
     .footer__title {
         color: var(--main-color);
-        font: 300 clamp(3.5rem, 10vw, 9rem)/0.85 var(--font-display);
+        font: 300 clamp(2.8rem, 8vw, 6.5rem)/0.9 var(--font-display);
         letter-spacing: -0.08em;
         margin: 0;
         padding: 0;
@@ -81,13 +83,15 @@ import Social from "./Social.astro";
     }
 
     .footer__title em {
-        color: var(--color-muted);
+        color: var(--color-accent);
         font-style: normal;
     }
 
     .footer__label {
         color: var(--color-muted);
+        display: flex;
         font: 0.65rem var(--font-mono);
+        justify-content: flex-end;
         letter-spacing: 0.12em;
         text-transform: uppercase;
     }

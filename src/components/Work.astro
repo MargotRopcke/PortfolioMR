@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-const workCollections = await getCollection("work");
+const workCollections = (await getCollection("work")).slice(0, 4);
 import { Image } from "astro:assets";
 
 import WorkCard from "./WorkCard.astro";
@@ -10,7 +10,7 @@ import WorkCard from "./WorkCard.astro";
     <div class="works__card">
         <div class="works">
             <div class="section-label">
-                <span>02</span><span id="work-title">Selected work</span>
+                <span>01</span><span id="work-title">Selected work</span>
             </div>
             <ul class="works__list">
                 {
@@ -19,6 +19,7 @@ import WorkCard from "./WorkCard.astro";
                             <a
                                 href={`/portfolioMR/work/${work.id}/`}
                                 class="work__link"
+                                data-work-link
                             />
                             <WorkCard {work} />
                         </li>
@@ -29,8 +30,34 @@ import WorkCard from "./WorkCard.astro";
         <p class="work-note">
             A selection of recent experiments, interfaces and visual stories.
         </p>
+        <a href="/portfolioMR/work/" class="work__button">
+            <span>View all my work</span><b>↗</b>
+        </a>
     </div>
 </section>
+
+<script>
+  const registerWorkLinks = () => {
+      document.querySelectorAll("[data-work-link]").forEach((link) => {
+          if (link instanceof HTMLElement && link.dataset.bound === "true") return;
+          if (link instanceof HTMLElement) {
+              link.dataset.bound = "true";
+          }
+
+          link.addEventListener("click", () => {
+              try {
+                  const currentPath = `${window.location.pathname}${window.location.search}`;
+                  sessionStorage.setItem("portfolioReturnPath", currentPath);
+              } catch {
+                  // Ignore storage access issues.
+              }
+          });
+      });
+  };
+
+  registerWorkLinks();
+  document.addEventListener("astro:page-load", registerWorkLinks);
+</script>
 
 <style>
     .exploration {
@@ -79,11 +106,6 @@ import WorkCard from "./WorkCard.astro";
         flex-grow: 1;
     }
 
-    .section-label {
-        color: var(--color-muted);
-        display: flex;
-        justify-content: space-between;
-    }
 
     .work-note {
         color: var(--color-muted);
@@ -91,6 +113,34 @@ import WorkCard from "./WorkCard.astro";
         line-height: 1.5;
         margin: 1.25rem 0 0;
         max-width: 30ch;
+    }
+
+    .work__button {
+        align-items: center;
+        color: var(--main-color);
+        display: inline-flex;
+        font: 0.68rem var(--font-mono);
+        gap: 0.45rem;
+        letter-spacing: 0.12em;
+        margin-top: 0.85rem;
+        text-transform: uppercase;
+        width: fit-content;
+    }
+
+    .work__button b {
+        font-size: 0.9rem;
+    }
+
+    .work__button:hover,
+    .work__button:focus-visible {
+        color: var(--color-accent);
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+    }
+
+    .work__button:hover b,
+    .work__button:focus-visible b {
+        color: var(--color-accent);
     }
 
     @media (max-width: 46rem) {

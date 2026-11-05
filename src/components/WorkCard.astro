@@ -6,18 +6,45 @@ const { work } = Astro.props;
 ---
 
 <article>
-  <a href={`/portfolioMR/work/${work.id}/`} class="work-link">
+  <a href={`/portfolioMR/work/${work.id}/`} class="work-link" data-work-link>
     <div class="image-wrapper">
       <Image
         src={work.data.image}
         alt="workpic"
-        width="200"
+        width={1200}
+        quality={90}
         class="work__images"
       />
-      <div class="overlay"><span>View project ↗</span></div>
+      <div class="overlay">
+        <span class="project-label">View project</span>
+        <span class="project-title">{work.data.name}</span>
+      </div>
     </div>
   </a>
 </article>
+
+<script>
+  const registerWorkLinks = () => {
+      document.querySelectorAll("[data-work-link]").forEach((link) => {
+          if (link instanceof HTMLElement && link.dataset.bound === "true") return;
+          if (link instanceof HTMLElement) {
+              link.dataset.bound = "true";
+          }
+
+          link.addEventListener("click", () => {
+              try {
+                  const currentPath = `${window.location.pathname}${window.location.search}`;
+                  sessionStorage.setItem("portfolioReturnPath", currentPath);
+              } catch {
+                  // Ignore storage access issues.
+              }
+          });
+      });
+  };
+
+  registerWorkLinks();
+  document.addEventListener("astro:page-load", registerWorkLinks);
+</script>
 
 <style>
   .image-wrapper {
@@ -39,19 +66,38 @@ const { work } = Astro.props;
   }
 
   .overlay {
-    align-items: flex-end;
-    display: flex;
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(transparent 42%, rgba(0, 0, 0, 0.76));
+    align-items: flex-start;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.7), transparent 60%);
     color: var(--main-color);
-    font: 0.65rem var(--font-mono);
+    display: flex;
+    flex-direction: column;
+    inset: 0;
     justify-content: flex-end;
     letter-spacing: 0.12em;
-    padding: 1rem;
+    opacity: 0;
+    padding: 1rem 1rem 1.1rem;
+    pointer-events: none;
+    position: absolute;
     text-transform: uppercase;
     transition: opacity 0.3s ease;
     z-index: 2;
+  }
+
+  .project-label {
+    color: #fff;
+    font: 0.58rem var(--font-mono);
+    opacity: 0.8;
+  }
+
+  .project-title {
+    color: #fff;
+    font: 300 clamp(1.1rem, 2vw, 1.8rem) / 1 var(--font-display);
+    letter-spacing: -0.06em;
+    text-transform: none;
+  }
+
+  .image-wrapper:hover .overlay {
+    opacity: 1;
   }
 
   .image-wrapper:hover .work__images {

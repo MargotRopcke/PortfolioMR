@@ -5,36 +5,249 @@ import { render } from "astro:content";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 
+import blinkVideo from "../../assets/2DEV_surnameName_MO1_FOURBYFOUR_render.mp4";
+import nmbsVideo from "../../assets/2DEV_Motion1_MargotRopcke_NMBS.mp4";
+import modicaVideo from "../../assets/ 2DEV_RopckeMargot_MO2_Kickstart.mp4";
+import portalVideo from "../../assets/portal.mp4";
+import onboardingImage from "../../assets/mmonboarding.png";
+import laptopWebrtcImage from "../../assets/laptopwebrtc.png";
+import phoneWebrtcImage from "../../assets/phonewebrtc.png";
+
 export async function getStaticPaths() {
     const workCollections = await getCollection("work");
-    return workCollections.map((work) => ({
+    const sortedWorks = [...workCollections].sort((a, b) => {
+        const workNumber = (id: string) => Number(id.replace("work", ""));
+        return workNumber(a.id) - workNumber(b.id);
+    });
+
+    return sortedWorks.map((work, index) => ({
         params: { id: work.id },
-        props: { work },
+        props: {
+            work,
+            previousWork: sortedWorks[index - 1] ?? null,
+            nextWork: sortedWorks[index + 1] ?? null,
+        },
     }));
 }
 
-const { work } = Astro.props;
+const { work, previousWork, nextWork } = Astro.props;
 const { Content } = await render(work);
+const categories = work.data.categories ?? [];
+const madeWith = work.data.madeWith ?? [];
+const assignment = work.data.assignment ?? "Project overview";
+const resolveMediaSrc = (src: string) =>
+    src.startsWith("/") ? `${import.meta.env.BASE_URL}${src.slice(1)}` : src;
+const workVideoSrc =
+    work.id === "work1"
+        ? resolveMediaSrc(blinkVideo)
+        : work.id === "work4"
+            ? resolveMediaSrc(nmbsVideo)
+            : work.id === "work7"
+                ? resolveMediaSrc(modicaVideo)
+                : work.id === "work10"
+                    ? resolveMediaSrc(portalVideo)
+                    : null;
+const milesMealsPrototypeUrl =
+    "https://www.figma.com/proto/pJRPdk7CThYpJExMckyJyi/Miles---Meals-Resit-MR?node-id=61854-33458&p=f&viewport=292%2C-1933%2C0.27&t=ctjUWn6xpH2e3nyH-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=61854%3A33825&show-proto-sidebar=1&page-id=6817%3A1887";
+const maraPrototypeUrl =
+    "https://www.figma.com/proto/i3ceQRSLRrVbXXBGC7YjQ9/UX4---DESIGN?node-id=863-2557&viewport=338%2C172%2C0.05&t=TA8Ic17eIgAMYfua-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=863%3A2557&page-id=863%3A1774";
+const maraBehanceUrl = "https://www.behance.net/gallery/249094065/MARA";
+const portalBehanceUrl = "https://www.behance.net/gallery/251194535/The-Portal";
+const portalGithubUrl = "https://github.com/MargotRopcke/integration4";
+const familyBehanceUrl = "https://www.behance.net/gallery/240442997/Assignment-ux";
+const interlacedUrl = "https://margotropcke.github.io/integration3/";
+const coutureUrl = "https://margotropcke.be/integration1/";
 ---
 
 <Detail>
     <section class="work">
         <div class="work__card">
+            <a href="/portfolioMR/work/" class="back-button" data-back-link>
+                ← Go Back
+            </a>
             <h1 class="work__title">{work.data.name}</h1>
 
-            <div class="work__image"> 
-                <Image
-                    src={work.data.image}
-                    alt="workpic"
-                    width="200"
-                    class="work__images"
-                />
+            <div class="work__meta" aria-label="Project categories">
+                {categories.length > 0 ? (
+                    categories.map((category) => (
+                        <span class="work__tag">{category}</span>
+                    ))
+                ) : (
+                    <span class="work__tag">Project</span>
+                )}
             </div>
-            <a href="https://margotropcke.be/integration1/" class="more-button">See Work Online</a>
-            <div class="work__content">
-                <Content />
+
+            <div class="work__details">
+               <div class="work__made-with">
+                   <p class="work__label">Made with</p>
+                   <p class="work__value">{madeWith.length > 0 ? madeWith.join(" / ") : "Creative tools"}</p>
+               </div>
+
+               <div class="work__summary">
+                   <p class="work__label">Assignment</p>
+                   <p>{assignment}</p>
+               </div>
             </div>
-            <a href="/portfolioMR/#photography" class="back-button">← Go Back</a>
+
+            {workVideoSrc ? (
+                <div class="work__media">
+                    <video
+                        class="work__video"
+                        controls
+                        playsinline
+                        muted
+                        preload="metadata"
+                        src={workVideoSrc}
+                    />
+                    <div class="work__image work__image--fallback" hidden>
+                        <Image
+                            src={work.data.image}
+                            alt="workpic"
+                            width={1600}
+                            quality={90}
+                            class="work__images"
+                        />
+                    </div>
+                </div>
+            ) : (
+                <div class="work__image"> 
+                    <Image
+                        src={work.data.image}
+                        alt="workpic"
+                        width={1600}
+                        quality={90}
+                        class="work__images"
+                    />
+                </div>
+            )}
+
+            <div class="work__content-block">
+                <p class="work__label">What I made</p>
+                <div class="work__content">
+                    <Content />
+                </div>
+            </div>
+
+            {work.id === "work8" ? (
+                <div class="work__showcase">
+                    <div class="work__prototype-intro">
+                        <p class="work__prototype-label">Prototype preview</p>
+                        <a
+                            href={milesMealsPrototypeUrl}
+                            target="_blank"
+                            rel="noreferrer noopener"
+                            class="prototype-button"
+                        >
+                            Open Figma prototype
+                        </a>
+                    </div>
+                    <div class="work__showcase-content">
+                        <div class="work__showcase-image">
+                            <Image
+                                src={onboardingImage}
+                                alt="Miles & Meals onboarding screens"
+                                width={900}
+                                quality={90}
+                                class="work__showcase-image-file"
+                            />
+                        </div>
+                        <p class="work__showcase-copy">
+                            A warm onboarding flow designed to make the app feel personal,
+                            effortless and easy to return to.
+                        </p>
+                    </div>
+                </div>
+            ) : null}
+
+            {work.id === "work2" ? (
+                <div class="work__showcase">
+                    <div class="work__prototype-intro">
+                        <p class="work__prototype-label">WebRTC concept</p>
+                    </div>
+                    <div class="work__showcase-content work__showcase-content--dual">
+                        <div class="work__showcase-image work__showcase-image--stacked">
+                            <Image
+                                src={laptopWebrtcImage}
+                                alt="Laptop view of the Cocktail Shake WebRTC concept"
+                                width={900}
+                                quality={90}
+                                class="work__showcase-image-file"
+                            />
+                        </div>
+                        <div class="work__showcase-image work__showcase-image--stacked">
+                            <Image
+                                src={phoneWebrtcImage}
+                                alt="Phone view of the Cocktail Shake WebRTC concept"
+                                width={600}
+                                quality={90}
+                                class="work__showcase-image-file"
+                            />
+                        </div>
+                    </div>
+                </div>
+            ) : null}
+
+            {work.id === "work10" ? (
+                <div class="work__links">
+                    <a href={portalBehanceUrl} target="_blank" rel="noreferrer noopener" class="behance-button">
+                        <span>Visit UX research on Behance</span><b>↗</b>
+                    </a>
+                    <a href={portalGithubUrl} target="_blank" rel="noreferrer noopener" class="github-button">
+                        <span>Visit project on GitHub</span><b>↗</b>
+                    </a>
+                </div>
+            ) : null}
+            {work.id === "work9" ? (
+                <div class="work__links">
+                    <a href={maraPrototypeUrl} target="_blank" rel="noreferrer noopener" class="behance-button">
+                        <span>Visit MARA prototype</span><b>↗</b>
+                    </a>
+                    <a href={maraBehanceUrl} target="_blank" rel="noreferrer noopener" class="behance-button">
+                        <span>View UX website on Behance</span><b>↗</b>
+                    </a>
+                </div>
+            ) : null}
+            {work.id === "work11" ? (
+                <div class="work__links">
+                    <a href={familyBehanceUrl} target="_blank" rel="noreferrer noopener" class="behance-button">
+                        <span>View UX website on Behance</span><b>↗</b>
+                    </a>
+                </div>
+            ) : null}
+            {work.id === "work6" ? (
+                <div class="work__links">
+                    <a href={interlacedUrl} target="_blank" rel="noreferrer noopener" class="behance-button">
+                        <span>View work online</span><b>↗</b>
+                    </a>
+                </div>
+            ) : null}
+            {work.id === "work5" ? (
+                <div class="work__links work__links--stacked">
+                    <a href={coutureUrl} target="_blank" rel="noreferrer noopener" class="behance-button">
+                        <span>View work online</span><b>↗</b>
+                    </a>
+                    <p class="work__links-disclaimer">
+                        This project is not responsive, so it is best viewed on a laptop.
+                    </p>
+                </div>
+            ) : null}
+            <nav class="work__navigation" aria-label="Browse work">
+                {previousWork ? (
+                    <a href={`/portfolioMR/work/${previousWork.id}/`} class="work__navigation-link">
+                        <span>← Previous</span>
+                        <b>{previousWork.data.name}</b>
+                    </a>
+                ) : <span />}
+                {nextWork ? (
+                    <a
+                        href={`/portfolioMR/work/${nextWork.id}/`}
+                        class="work__navigation-link work__navigation-link--next"
+                    >
+                        <span>Next →</span>
+                        <b>{nextWork.data.name}</b>
+                    </a>
+                ) : <span />}
+            </nav>
         </div>
     </section>
 </Detail>
@@ -49,7 +262,7 @@ const { Content } = await render(work);
    display: grid;
    gap: 1.5rem;
    margin: 0 auto;
-   max-width: 55rem;
+   max-width: 48rem;
    width: 100%;
 }
 
@@ -61,16 +274,98 @@ const { Content } = await render(work);
    text-transform: uppercase;
 }
 
+.work__meta {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 0.55rem;
+   margin-top: -0.25rem;
+}
+
+.work__tag {
+   border: 1px solid var(--color-divider);
+   color: var(--color-muted);
+   display: inline-flex;
+   font: 0.64rem var(--font-mono);
+   letter-spacing: 0.12em;
+   padding: 0.5rem 0.7rem;
+   text-transform: uppercase;
+}
+
 .work__image {
    border: 1px solid var(--color-divider);
+   max-height: 42rem;
    overflow: hidden;
+}
+
+.work__media {
+   display: grid;
+}
+
+.work__video {
+   aspect-ratio: 16 / 9;
+   background: #000;
+   border: 1px solid var(--color-divider);
+   display: block;
+   height: auto;
+   max-height: 42rem;
+   object-fit: contain;
+   width: 100%;
 }
 
 .work__images {
    display: block;
    height: auto;
-   width: 100%;
+   max-height: 42rem;
    object-fit: cover;
+   width: 100%;
+}
+
+.work__details {
+   border-top: 1px solid var(--color-divider);
+   display: grid;
+   gap: 1rem 2rem;
+   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr);
+   margin-top: 0.75rem;
+   padding-top: 1rem;
+}
+
+.work__made-with,
+.work__summary {
+   display: grid;
+   gap: 0.35rem;
+   margin: 0;
+}
+
+.work__value {
+   color: var(--main-color);
+   font: 500 clamp(1rem, 1.5vw, 1.2rem) / 1.4 var(--font-display);
+   letter-spacing: 0.04em;
+   margin: 0;
+}
+
+.work__summary p,
+.work__content {
+   margin: 0;
+}
+
+.work__label {
+   color: var(--color-muted);
+   font: 0.6rem var(--font-mono);
+   letter-spacing: 0.14em;
+   margin: 0;
+   text-transform: uppercase;
+}
+
+.work__summary p:last-child {
+   color: var(--color-muted);
+   font: 400 clamp(1rem, 1.5vw, 1.2rem) / 1.7 var(--font-display);
+}
+
+.work__content-block {
+   border-top: 1px solid var(--color-divider);
+   display: grid;
+   gap: 0.8rem;
+   padding-top: 1.1rem;
 }
 
 .work__content {
@@ -79,21 +374,244 @@ const { Content } = await render(work);
    line-height: 1.7;
 }
 
-.more-button,
-.back-button {
+.work__showcase {
+   display: grid;
+   gap: 1rem;
+   margin-top: 0.5rem;
+}
+
+.work__prototype-intro {
+   display: flex;
+   align-items: end;
+   justify-content: space-between;
+   gap: 1rem;
+   flex-wrap: wrap;
+}
+
+.work__prototype-label {
+   color: var(--color-muted);
+   font: 0.64rem var(--font-mono);
+   letter-spacing: 0.12em;
+   margin: 0;
+   text-transform: uppercase;
+}
+
+.work__showcase-content {
+   align-items: center;
+   display: grid;
+   gap: 1rem;
+   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+}
+
+.work__showcase-content--dual {
+   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.work__showcase-image {
    border: 1px solid var(--color-divider);
+   max-width: 28rem;
+   overflow: hidden;
+}
+
+.work__showcase-image--stacked {
+   max-width: 100%;
+}
+
+.work__showcase-image-file {
+   display: block;
+   height: auto;
+   width: 100%;
+}
+
+.work__showcase-copy {
+   color: var(--color-muted);
+   font: 400 clamp(0.95rem, 1.2vw, 1.1rem)/1.6 var(--font-display);
+   margin: 0;
+}
+
+.prototype-button,
+.back-button {
+   align-items: center;
    color: var(--main-color);
    display: inline-flex;
-   font: 0.7rem var(--font-mono);
+   font: 0.68rem var(--font-mono);
+   gap: 0.45rem;
    letter-spacing: 0.12em;
-   padding: 0.9rem 1.2rem;
    text-transform: uppercase;
    width: fit-content;
 }
 
-.more-button:hover,
-.back-button:hover {
-   border-color: var(--main-color);
+.behance-button,
+.github-button {
+   align-items: center;
+   background: transparent;
+   border: 1px solid var(--color-accent);
+   color: var(--color-accent);
+   display: inline-flex;
+   font: 0.68rem var(--font-mono);
+   gap: 0.45rem;
+   justify-content: center;
+   letter-spacing: 0.12em;
+   padding: 0.7rem 1rem;
+   text-decoration: none;
+   text-transform: uppercase;
+   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+   width: fit-content;
+}
+
+.back-button {
+   margin-bottom: 0.5rem;
+}
+
+.behance-button b,
+.github-button b {
+   font-size: 0.9rem;
+}
+
+.work__links {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1rem 1.5rem;
+}
+
+.work__links--stacked {
+   align-items: flex-start;
+   flex-direction: column;
+   gap: 0.75rem;
+}
+
+.work__links-disclaimer {
+   color: var(--color-muted);
+   font: 0.68rem/1.5 var(--font-mono);
+   margin: 0;
+}
+
+.work__navigation {
+   border-top: 1px solid var(--color-divider);
+   display: grid;
+   gap: 1rem;
+   grid-template-columns: repeat(2, minmax(0, 1fr));
+   margin-top: 1rem;
+   padding-top: 1rem;
+}
+
+.work__navigation-link {
+   color: var(--main-color);
+   display: grid;
+   gap: 0.35rem;
+   justify-self: start;
+   text-decoration: none;
+}
+
+.work__navigation-link--next {
+   justify-self: end;
+   text-align: right;
+}
+
+.work__navigation-link span {
+   color: var(--color-accent);
+   font: 0.66rem var(--font-mono);
+   letter-spacing: 0.12em;
+   text-transform: uppercase;
+}
+
+.work__navigation-link b {
+   font: 500 clamp(0.95rem, 1.4vw, 1.1rem) var(--font-display);
+}
+
+.work__navigation-link:hover b,
+.work__navigation-link:focus-visible b {
+   color: var(--color-accent);
+}
+
+.prototype-button:hover,
+.prototype-button:focus-visible,
+.back-button:hover,
+.back-button:focus-visible {
+   color: var(--color-accent);
+   text-decoration: underline;
+   text-underline-offset: 0.2em;
+}
+
+.behance-button:hover,
+.behance-button:focus-visible,
+.github-button:hover,
+.github-button:focus-visible {
+   background: var(--color-accent);
+   color: #ffffff;
+   transform: translateY(-1px);
+}
+
+@media (max-width: 700px) {
+   .work__details {
+       grid-template-columns: 1fr;
+   }
+
+   .work__prototype-intro {
+       align-items: flex-start;
+       flex-direction: column;
+   }
+
+   .work__showcase-content {
+       grid-template-columns: 1fr;
+   }
+
+   .work__showcase-content--dual {
+       grid-template-columns: 1fr;
+   }
 }
 
 </style>
+
+<script>
+    const getStoredReturnPath = () => {
+        try {
+            const storedPath = sessionStorage.getItem("portfolioReturnPath");
+            if (storedPath) {
+                return storedPath;
+            }
+        } catch {
+            // Ignore storage access issues.
+        }
+
+        if (document.referrer) {
+            try {
+                const referrerUrl = new URL(document.referrer);
+                if (referrerUrl.origin === window.location.origin) {
+                    return `${referrerUrl.pathname}${referrerUrl.search}`;
+                }
+            } catch {
+                // Ignore invalid referrers.
+            }
+        }
+
+        return "/portfolioMR/work/";
+    };
+
+    const backLink = document.querySelector("[data-back-link]");
+    if (backLink instanceof HTMLAnchorElement) {
+        backLink.addEventListener("click", (event) => {
+            event.preventDefault();
+            window.location.assign(getStoredReturnPath());
+        });
+    }
+
+    const initWorkVideo = () => {
+        const video = document.querySelector(".work__video");
+        if (!(video instanceof HTMLVideoElement)) return;
+        const fallback = document.querySelector(".work__image--fallback");
+        if (!(fallback instanceof HTMLElement)) return;
+
+        const showFallback = () => {
+            video.hidden = true;
+            fallback.hidden = false;
+        };
+
+        video.load();
+        video.addEventListener("error", showFallback, { once: true });
+        if (video.error) showFallback();
+    };
+
+    initWorkVideo();
+    document.addEventListener("astro:page-load", initWorkVideo);
+</script>
