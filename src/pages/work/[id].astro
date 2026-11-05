@@ -40,7 +40,8 @@ const workVideoSrc =
                     : null;
 const milesMealsPrototypeUrl =
     "https://www.figma.com/proto/pJRPdk7CThYpJExMckyJyi/Miles---Meals-Resit-MR?node-id=61854-33458&p=f&viewport=292%2C-1933%2C0.27&t=ctjUWn6xpH2e3nyH-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=61854%3A33825&show-proto-sidebar=1&page-id=6817%3A1887";
-const behanceUrl = "https://www.behance.net/margotropcke1";
+const portalBehanceUrl = "https://www.behance.net/gallery/251194535/The-Portal";
+const portalGithubUrl = "https://github.com/MargotRopcke/integration4";
 ---
 
 <Detail>
@@ -169,14 +170,24 @@ const behanceUrl = "https://www.behance.net/margotropcke1";
             ) : null}
 
             {work.id === "work10" ? (
-                <a
-                    href={behanceUrl}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    class="behance-button"
-                >
-                    See all work on Behance
-                </a>
+                <div class="work__links">
+                    <a
+                        href={portalBehanceUrl}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        class="behance-button"
+                    >
+                        <span>Visit UX research on Behance</span><b>↗</b>
+                    </a>
+                    <a
+                        href={portalGithubUrl}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        class="github-button"
+                    >
+                        <span>Visit project on GitHub</span><b>↗</b>
+                    </a>
+                </div>
             ) : null}
             <a href="/portfolioMR/work/" class="back-button" data-back-link>← Go Back</a>
         </div>
@@ -360,8 +371,26 @@ const behanceUrl = "https://www.behance.net/margotropcke1";
    margin: 0;
 }
 
-.prototype-button,
 .behance-button,
+.github-button {
+   align-items: center;
+   background: transparent;
+   border: 1px solid var(--color-accent);
+   color: var(--color-accent);
+   display: inline-flex;
+   font: 0.68rem var(--font-mono);
+   gap: 0.45rem;
+   justify-content: center;
+   letter-spacing: 0.12em;
+   padding: 0.7rem 1rem;
+   text-decoration: none;
+   text-transform: uppercase;
+   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+      transform 0.2s ease;
+   width: fit-content;
+}
+
+.prototype-button,
 .back-button {
    align-items: center;
    color: var(--main-color);
@@ -373,10 +402,30 @@ const behanceUrl = "https://www.behance.net/margotropcke1";
    width: fit-content;
 }
 
-.prototype-button:hover,
-.prototype-button:focus-visible,
+.behance-button b,
+.github-button b {
+   display: inline-flex;
+   font-size: 0.9rem;
+}
+
+.work__links {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1rem 1.5rem;
+}
+
 .behance-button:hover,
 .behance-button:focus-visible,
+.github-button:hover,
+.github-button:focus-visible {
+   background: var(--color-accent);
+   border-color: var(--color-accent);
+   color: #ffffff;
+   transform: translateY(-1px);
+}
+
+.prototype-button:hover,
+.prototype-button:focus-visible,
 .back-button:hover,
 .back-button:focus-visible {
    color: var(--color-accent);
