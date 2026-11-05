@@ -2,7 +2,7 @@
 name: Couture Off The Grid
 image: img/couture.png
 categories: ["UX Research", "Visual Design", "Development"]
-madeWith: ["Figma", "Miro", "HTML", "CSS"]
+madeWith: ["Figma", "Miro", "HTML", "CSS", "Photoshop"]
 assignment: 'An end-to-end web integration project exploring the transition to an "off-the-grid" lifestyle. The assignment tasked us with researching a niche target audience, identifying their specific hesitations, and designing an inspiring website around five creative, actionable tips. From initial audience research to custom UI design and semantic web development, the project culminated in a live, hosted website presented to a jury.'
 ---
 

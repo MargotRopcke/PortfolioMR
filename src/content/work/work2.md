@@ -2,7 +2,7 @@
 name: Cocktail Shaker
 image: img/cocktailshake.png
 categories: ["Development"]
-madeWith: ["Figma", "Illustrator", "Photoshop"]
+madeWith: ["VS code", "Photoshop"]
 assignment: "Create a real-time web application where a smartphone acts as a remote controller for a desktop browser experience. The setup uses WebSockets for initial signaling and QR-code pairing, establishing a peer-to-peer WebRTC data channel for low-latency control."
 ---
 

@@ -2,7 +2,7 @@
 name: Miles & Meals
 image: img/mm.png
 categories: ["Visual Design"]
-madeWith: ["Figma", "Illustrator", "InDesign"]
+madeWith: ["Figma", "Illustrator", "Photoshop"]
 assignment: "A comprehensive UI/UX app design and visual branding project for Miles & Meals, a food subscription service bringing authentic local dishes from world cities into home kitchens. Designed for a summer 2026 launch in Antwerp, the brief required crafting a complete visual identity and brand board from scratch, followed by designing a mobile app prototype that elevates existing wireframes into a seamless, engaging subscription management and cooking experience."
 ---
 

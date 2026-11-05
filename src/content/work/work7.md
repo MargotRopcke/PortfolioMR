@@ -2,7 +2,7 @@
 name: Modica
 image: img/modica.png
 categories: ["Motion Design"]
-madeWith: ["After Effects", "Illustrator", "Photoshop"]
+madeWith: ["After Effects", "Illustrator", "Photoshop", "ElevenLabs"]
 assignment: "A 30-to-60-second motion graphics promotional video created to re-imagine a real Kickstarter campaign that lacked effective visual marketing. Operating under strict broadcast constraints (1080p, 25fps), the assignment required designing a full motion package—from pitch deck and animatic to final render—combining product storytelling, kinetic animation, and synchronized audio and voiceover to convert potential backers."
 ---
 

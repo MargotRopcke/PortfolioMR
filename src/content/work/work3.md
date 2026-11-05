@@ -2,7 +2,7 @@
 name: Opposites
 image: img/cc.png
 categories: ["Development"]
-madeWith: ["p5.js", "Processing", "Photoshop"]
+madeWith: ["p5.js", "Photoshop"]
 assignment: "A creative coding assignment exploring the visual duality of Chaos, Order, Dark, and Light using p5.js. The brief required developing four distinct animated scenes triggered by specific keys (C, V, B, N), using algorithmic generative techniques—including Perlin noise, trigonometric functions, grid systems, and object-oriented programming—to convey spatial atmosphere without text."
 ---
 

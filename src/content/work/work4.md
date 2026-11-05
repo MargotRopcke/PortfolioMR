@@ -2,7 +2,7 @@
 name: NMBS Calling
 image: img/nmbs.png
 categories: ["Motion Design"]
-madeWith: ["After Effects", "Premiere Pro", "Illustrator"]
+madeWith: ["After Effects", "Photoshop", "Illustrator"]
 assignment: 'A 30-second vertical motion graphics competition entry celebrating the 100th anniversary of the Belgian National Railway Company (NMBS/SNCB) under the theme "100 Years: The Journey Continues." Designed for silent vertical playback (9:16 format), the project explores train travel as a symbol of sustainable mobility, emotional connection, and historical progress using After Effects visual storytelling, fluid rhythm, and seamless looping techniques.'
 ---
 
